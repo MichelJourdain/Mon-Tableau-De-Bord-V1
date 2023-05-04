@@ -1,0 +1,225 @@
+#
+# File      : colorstops-template.yaml
+# Project   : Home Assistant
+# Repository: https://github.com/AmoebeLabs/Home-Assistant-Config
+#
+# Author: Mars @ AmoebeLabs.com
+# 
+# License: CC BY-SA, https://creativecommons.org/licenses/by/4.0/
+#
+# -----
+# Description:
+#   Swiss Army Knife colorstops template definition
+#
+#   This template defines all sorts of colorstops to be used in cards and/or
+#   tools templates.
+#
+###############################################################################
+
+colorstops_lux:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'grey'
+      50: 'var(--theme-gradient-color-01)'
+      75: 'var(--theme-gradient-color-02)'
+      100: 'var(--theme-gradient-color-03)'
+      125: 'var(--theme-gradient-color-04)'
+      150: 'var(--theme-gradient-color-05)'
+      175: 'var(--theme-gradient-color-06)'
+
+colorstops_pressure:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      980: 'lightgrey'
+      990: 'var(--theme-gradient-color-01)'
+      1020: 'var(--theme-gradient-color-05)'
+
+colorstops_temperature_inside:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      17: 'PowderBlue'
+      19: 'var(--theme-gradient-color-01)'
+      21: 'var(--theme-gradient-color-04)'
+
+colorstops_humidity:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      00: 'var(--theme-gradient-color-02)'
+      35: 'DarkSeaGreen'
+      65: 'PowderBlue'
+      
+colorstops_temperature_mjt_inside:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'red'
+      10: 'yellow'
+      20: 'green'
+      30: 'orange'
+      
+colorstops_temperature_mjt_outside:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+        -20: 'bleu'
+        0: 'yellow'
+        15: 'green'
+        30: 'red'
+
+colorstops_mjt_humidite:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      00: 'green'
+      25: 'yellow'
+      50: 'orange'
+      75: 'red'
+      
+colorstops_mjt_co2:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      380: 'green'
+      800: 'yellow'
+      1400: 'orange'
+      2500: 'red'
+
+colorstops_mjt_vitesse_vent:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'green'
+      15: 'yellow'
+      30: 'orange'
+      50: 'red'
+
+colorstops_mjt_pluie:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'green'
+      10: 'yellow'
+      20: 'orange'
+      30: 'red'
+      
+colorstops_mjt_lumiere:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'green'
+      30000: 'yellow'
+      50000: 'orange'
+      80000: 'red'
+      
+colorstops_mjt_uv:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'green'
+      3: 'yellow'
+      6: 'orange'
+      8: 'red'
+      
+colorstops_mjt_nb_eclaires:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'green'
+      200: 'yellow'
+      400: 'orange'
+      600: 'red'
+     
+colorstops_mjt_distance_eclaires:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    colors:
+      0: 'red'
+      5: 'orange'
+      15: 'yellow'
+      20: 'green'
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

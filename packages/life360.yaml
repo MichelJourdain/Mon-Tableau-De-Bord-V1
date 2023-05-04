@@ -1,0 +1,85 @@
+#life360:
+
+# Pile des téléphone Life360
+
+sensor:
+
+  - platform: template
+    sensors:
+      life360_pile_tel_michel:
+        unique_id: "life360_pile_tel_michel"
+        friendly_name: "Pile des téléphone Life360 michel"
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('device_tracker.michel', 'battery_level') }}"
+
+  - platform: template
+    sensors:
+      life360_pile_tel_claude:
+        unique_id: "life360_pile_tel_claude"
+        friendly_name: "Pile des téléphone Life360 Claude"
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('device_tracker.claude', 'battery_level') }}"
+
+  - platform: template
+    sensors:
+      life360_pile_tel_valerie:
+        unique_id: "life360_pile_tel_valerie"
+        friendly_name: "Pile des téléphone Life360 Valérie"
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('device_tracker.valerie_jourdain', 'battery_level') }}"
+
+  - platform: template
+    sensors:
+      life360_pile_tel_brigitte:
+        unique_id: "life360_pile_tel_brigitte"
+        friendly_name: "Pile des téléphone Life360 Brigitte"
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('device_tracker.brigitte', 'battery_level') }}"
+
+  - platform: template
+    sensors:
+      life360_pile_tel_en_charge_michel:
+        unique_id: "life360_pile_tel_en_charge_michel"
+        friendly_name: "Pile des téléphone en charge Life360 michel"
+        value_template:  >
+          {% if state_attr('device_tracker.michel', 'battery_charging') == true %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}       
+
+  - platform: template
+    sensors:
+      life360_pile_tel_en_charge_claude:
+        unique_id: "life360_pile_tel_en_charge_claude"
+        friendly_name: "Pile des téléphone en charge Life360 Claude"
+        value_template:  >
+          {% if state_attr('device_tracker.claude', 'battery_charging') == true %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}      
+          
+  - platform: template
+    sensors:
+      life360_pile_tel_en_charge_valerie:
+        unique_id: "life360_pile_tel_en_charge_valerie"
+        friendly_name: "Pile des téléphone en charge Life360 Valérie"
+        value_template:  >
+          {% if state_attr('device_tracker.valerie_jourdain', 'battery_charging') == true %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}         
+
+  - platform: template
+    sensors:
+      life360_pile_tel_en_charge_brigitte:
+        unique_id: "life360_pile_tel_en_charge_brigitte"
+        friendly_name: "Pile des téléphone en charge Life360 Brigitte"
+        value_template:  >
+          {% if state_attr('device_tracker.brigitte', 'battery_charging') == true %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}        

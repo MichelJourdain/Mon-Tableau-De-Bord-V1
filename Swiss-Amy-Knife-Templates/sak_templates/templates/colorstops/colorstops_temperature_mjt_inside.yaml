@@ -1,0 +1,16 @@
+colorstops_temperature_mjt_inside:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+      0: 'red'
+      10: 'yellow'
+      20: 'green'
+      30: 'orange'

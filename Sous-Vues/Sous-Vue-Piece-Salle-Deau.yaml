@@ -1,0 +1,240 @@
+# Sous Vue Chambre des Maîtres
+
+theme: MonTableau
+title: "Salle D'eau"
+path: sous-vue-piece-salle-deau
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+      - type: custom:dwains-flexbox-card
+        items_classes: "col-xs-12 col-sm-4"
+        cards:
+          - type: custom:button-card
+            icon: ios:toilette#fullcolor
+            tap_action: none
+            size: 100%
+            styles:
+              card:
+                - height: 60px
+              icon:
+                - color: "#0099cc"
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+          - type: custom:button-card
+            name: "Toilette"
+            tap_action: none
+            styles:
+              card:
+                - height: 60px
+                - font-size: 10px
+                - color: "#0099cc"
+              name:
+                - text-transform: uppercase
+                - letter-spacing: 0.3em
+                - font-familly: AppleGothic
+                - justify-self: center
+                - padding: 0px 5px
+                - font-size: 25px
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+          - type: custom:button-card
+            icon: ios:retour-maison#fullcolor
+            size: 100%
+            styles:
+              card:
+                - height: 60px
+            tap_action:
+              action: navigate
+              navigation_path: vue-page-Information
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Environnements"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 3em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                name: Actuellement
+                unit: "\xB0C"
+              - attribute: hvac_action
+                entity: climate.sinope_thermostat_salle_deau
+                icon: mdi:radiator
+                name: Chauffage?
+              - attribute: temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                icon: mdi:thermostat-box
+                name: Souhaitable
+              - entity: sensor.ajout_sensor_humidite_salle_deau
+                unit: "%"
+              - attribute: hourly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                name: Heure
+                unit: kw
+              - attribute: hourly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                unit: kw
+              - attribute: daily_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                name: Jour
+                unit: kw
+              - attribute: daily_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                unit: kw
+              - attribute: monthly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                name: Mois
+                unit: kw
+              - attribute: monthly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_deau
+                unit: kw
+              - attribute: wattage
+                entity: climate.sinope_thermostat_salle_deau
+                unit: w
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sinope
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_salle_deau
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Températureé"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_salle_deau_2
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_salon_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:swiss-army-knife-card
+                    disable_card: true
+                    layout:
+                      template:
+                        name: sak_layout_fce_header
+                        variables:
+                          - sak_layout_header_content: "Éclairage"
+                          - sak_layout_header_font_color: var(--secondary-text-color)
+                          - sak_layout_header_font_size: 6em
+                          - sak_layout_header_font_text_transform: capitalize
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.sinope_lumieres_salle_deau
+                        name: Lumière
+                    layout:
+                      template:
+                        name: sak_layout_fce_light
+
+              - type: vertical-stack
+                cards:
+                  - type: custom:swiss-army-knife-card
+                    disable_card: true
+                    layout:
+                      template:
+                        name: sak_layout_fce_header
+                        variables:
+                          - sak_layout_header_content: "Fuites"
+                          - sak_layout_header_font_color: var(--secondary-text-color)
+                          - sak_layout_header_font_size: 6em
+                          - sak_layout_header_font_text_transform: capitalize
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: binary_sensor.sinope_mq_detecteur_deau_salle_eau_water_leak
+                        name: "Toilette"
+                      - entity: binary_sensor.sinope_mq_detecteur_deau_salle_eau_water_leak
+                        format: relative
+                        secondary_info: last_changed
+                      - entity: sensor.sinope_mq_detecteur_deau_salle_eau_battery
+                        units: "%"
+                        decimals: 0
+                      - entity: sensor.sinope_mq_detecteur_deau_salle_eau_temperature
+                        decimals: 0
+                    layout:
+                      template:
+                        name: sak_layout_mjt_alert_fuites
+                        variables:
+                          - dummy: 0
+
+          - type: custom:vacuum-card
+            entity: vacuum.roomba_1
+            image: /local/images/roomba4.png
+            show_name: true
+            show_status: true
+            show_toolbar: true

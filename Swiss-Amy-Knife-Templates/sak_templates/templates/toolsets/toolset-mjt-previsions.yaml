@@ -1,0 +1,149 @@
+toolset_mjt_previsions:
+  template:
+    type: toolset
+    defaults: 
+      - poscx: 50
+      - poscy: 50
+      - index_heure_jour: 0
+      - index_conditions: 0
+      - index_temperature_maximun: 0
+      - index_temperature_minimun_vent: 0
+      - index_possibilite_de_pluie: 0
+      - index_precipitation: 0
+
+  toolset:
+
+                position:
+                  cx: 123
+                  cy: 418
+                tools:
+
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 50
+                      height: 152
+                      width: 60
+                      radius:
+                        all: 3
+                    styles:
+                      rectex:
+                        fill: teal
+
+                  - type: circle
+                    position:
+                      cx: 50
+                      cy: 20
+                      radius: 20
+                    styles:
+                      circle:
+                        fill: black
+                        filter: url(#filter)
+
+                  # Jour
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 50
+                      cy: -15
+                    entity_index: 20
+                    derived_entity:
+                      state: >
+                        [[[
+                          if (typeof(entity) === 'undefined') return('?');
+                          return (new Date(state).toLocaleDateString(undefined, {weekday: 'short'}));
+                        ]]]
+                    styles:
+                      state:
+                        font-size: 19em
+                        font-weight: 700
+                        text-anchor: middle
+                        text-transform: capitalize
+
+                  - type: 'usersvg'
+                    id: 10
+                    entity_index: 21
+                    position:
+                      cx: 50
+                      cy: 20
+                      height: 40
+                      width: 40
+                    style: 'images'
+                    images:
+                      - clear-night: /local/images/weather/clear-night.svg
+                      - cloudy: /local/images/weather/cloudy-day.svg
+                      - fog: /local/images/weather/fog-day.svg
+                      - hail: /local/images/weather/hail-day.svg
+                      - lightning: /local/images/weather/lightning-day.svg
+                      - partlycloudy: /local/images/weather/partlycloudy-day.svg
+                      - pouring: /local/images/weather/pouring-day.svg
+                      - rainy: /local/images/weather/rainy-day.svg
+                      - snowy: /local/images/weather/snowy-day.svg
+                      - snowy-rainy: /local/images/weather/snowy-rainy-day.svg
+                      - sunny: /local/images/weather/sunny-day.svg
+                      - windy: /local/images/weather/windy-day.svg
+                      - windy-variant: /local/images/weather/windy-variant-day.svg
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: '[[[ return (state); ]]]'
+                    # styles:
+                      # usersvg:
+                        # filter: url(#nm-1)
+
+                  # temperature
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 50
+                      cy: 50
+                    entity_index: 22
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 700
+                        text-anchor: middle
+
+                  # templow
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 50
+                      cy: 72
+                    entity_index: 23
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 700
+                        text-anchor: middle
+
+                  # Possibilité de pluie
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 50
+                      cy: 92
+                    entity_index: 24
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 700
+                        text-anchor: middle
+
+                  # precipitation
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 50
+                      cy: 111
+                    entity_index: 25
+                    derived_entity:
+                      state: >
+                        [[[
+                          if (typeof(state) === 'undefined') return('0');
+                          return (state);
+                        ]]]
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 700
+                        text-anchor: middle

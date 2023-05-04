@@ -1,0 +1,53 @@
+#Sensibo
+
+sensor:
+
+  - platform: template
+    sensors:
+      sensibo_temperature_courante_cuisine:
+        unique_id: "sensibo_temperature_courante_cuisine"
+        friendly_name: "Sensibo Temperature Courante Cuisine"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sensibo_cuisine', 'current_temperature') }}"
+        
+  - platform: template
+    sensors:
+      sensibo_temperature_cuisine:
+        unique_id: "sensibo_temperature_cuisine"
+        friendly_name: "Sensibo Temperature Cuisine"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sensibo_cuisine', 'temperature') }}"
+        
+  - platform: template
+    sensors:
+      sensibo_humiditee_courante_cuisine:
+        unique_id: "sensibo_humiditee_courante_cuisine"
+        friendly_name: "Sensibo Humiditée Cuisine"
+        unit_of_measurement: "°%"
+        icon_template: mdi:water-percent
+        value_template: "{{ state_attr('climate.sensibo_cuisine', 'current_humidity') }}"        
+        
+  - platform: template
+    sensors:
+      sensibo_temperature_courante_salle_de_repos:
+        unique_id: "sensibo_temperature_courante_salle_de_repos"
+        friendly_name: "Sensibo Temperature Courante Salle De Repos"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sensibo_salle_de_repos', 'current_temperature') }}"
+        
+  - platform: template
+    sensors:
+      sensibo_temperature_salle_de_repos:
+        unique_id: "sensibo_temperature_salle_de_repos"
+        friendly_name: "Sensibo Temperature Salle De Repos"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sensibo_salle_de_repos', 'temperature') }}"
+        
+  - platform: template
+    sensors:
+      sensibo_humiditee_courante_salle_de_repos:
+        unique_id: "sensibo_humiditee_courante_salle_de_repos"
+        friendly_name: "Sensibo Humiditée Salle De Repos"
+        unit_of_measurement: "°%"
+        icon_template: mdi:water-percent
+        value_template: "{{ state_attr('climate.sensibo_salle_de_repos', 'current_humidity') }}"        

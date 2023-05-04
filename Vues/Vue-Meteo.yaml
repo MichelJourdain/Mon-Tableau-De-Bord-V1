@@ -1,0 +1,511 @@
+# Vue Météo
+
+theme: MonTableau
+title: Météo
+path: vue-page-meteo
+icon: ios:meteo#fullcolor
+type: panel
+badges: []
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: col-xs-12
+    cards:
+      - type: custom:dwains-flexbox-card
+        items_classes: "col-xs-12 col-sm-4"
+        cards:
+          - type: custom:button-card
+            icon: ios:meteo#fullcolor
+            tap_action: none
+            size: 100%
+            styles:
+              card:
+                - height: 60px
+              icon:
+                - color: "#0099cc"
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+          - type: custom:button-card
+            name: Météo
+            tap_action: none
+            styles:
+              card:
+                - height: 60px
+                - font-size: 10px
+                - color: "#0099cc"
+              name:
+                - text-transform: uppercase
+                - letter-spacing: 0.3em
+                - font-familly: AppleGothic
+                - justify-self: center
+                - padding: 0px 5px
+                - font-size: 25px
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+          - type: custom:button-card
+            icon: ios:retour-maison#fullcolor
+            size: 100%
+            styles:
+              card:
+                - height: 60px
+            tap_action:
+              action: navigate
+              navigation_path: vue-page-Information
+            card_mod:
+              style: |
+                ha-card {
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Météo"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 3em
+                  - sak_layout_header_font_text_transform: capitalize
+          # ==============================================================================
+
+          - type: "custom:swiss-army-knife-card"
+            entities:
+              #entity_indexes 0-5
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+              - entity: sensor.tempest_st_00032986_temperature
+                decimals: 1
+                unit: "°C"
+              - entity: sensor.tempest_st_00032986_humidity
+                decimals: 1
+              - entity: sensor.tempest_st_00032986_sea_level_pressure
+                decimals: 0
+              - entity: sensor.weatherflow_vitesse_vent_km
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_wind_direction
+
+                #entity_indexes 6-13
+              - entity: sensor.minmax_temperature_max_jour
+                icon: mdi:arrow-collapse-up
+                unit: "°C"
+                decimals: 0
+              - entity: sensor.minmax_temperature_min_jour
+                icon: mdi:arrow-collapse-down
+                unit: "°C"
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_feels_like_temperature
+                unit: "°C"
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_rain_intensity
+                icon: mdi:weather-pouring
+              - entity: sensor.tempest_st_00032986_pressure_trend
+              - entity: sensor.meteo_def_detecteurs_prevision_precipitation
+              - entity: sensor.tempest_st_00032986_rain_rate
+                unit: "m/h"
+                decimals: 1
+                icon: mdi:weather-cloudy-clock
+              - entity: sensor.tempest_st_00032986_rain_today
+                decimals: 1
+
+                #entity_indexes 14-19 jour 1
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].datetime
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].templow
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[0].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 20-25 jour 2
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].datetime
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].temperature
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].templow
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[1].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 26-31 jour 3
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].datetime
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].temperature
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].templow
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[2].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 32-37 jour 4
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].datetime
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].temperature
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].templow
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[3].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 38-43 jour 5
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].datetime
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].temperature
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].templow
+                decimals: 0
+                unit: "°C"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+                attribute: forecast[4].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 44-49 heure 1
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].datetime
+                unit: "H"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].wind_speed
+                decimals: 0
+                unit: "km"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[0].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 50-55 heure 2
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].datetime
+                unit: "H"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].wind_speed
+                decimals: 0
+                unit: "km"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[1].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 56-61 heure 3
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].datetime
+                unit: "H"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].wind_speed
+                decimals: 0
+                unit: "km"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[2].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 62-67 heure 4
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].datetime
+                unit: "H"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].wind_speed
+                decimals: 0
+                unit: "km"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[3].precipitation
+                decimals: 0
+                unit: "mm"
+
+                #entity_indexes 68-73 heure 5
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].datetime
+                unit: "H"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].condition
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].temperature
+                decimals: 0
+                unit: "°C"
+                icon: mdi:thermometer-chevron-up
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].wind_speed
+                decimals: 0
+                unit: "km"
+                icon: mdi:thermometer-chevron-down
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].precipitation_probability
+                decimals: 0
+                unit: "%"
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+                attribute: forecast[4].precipitation
+                decimals: 0
+                unit: "mm"
+
+              #entity_indexes 74-80
+              - entity: sensor.tempest_st_00032986_dew_point
+                unit: "°C"
+                decimals: 0
+              - entity: sensor.phases_de_la_lune
+              - entity: sensor.soleil_position
+              - entity: sun.sun
+              - entity: sensor.moon
+              - entity: sensor.soleil_lever
+              - entity: sensor.soleil_coucher
+
+              #entity_indexes 81-83
+              - entity: sensor.tempest_st_00032986_rain_yesterday
+                decimals: 0
+                unit: "mm"
+                icon: mdi:calendar-arrow-left
+              - entity: sensor.tempest_st_00032986_lightning_count_today
+                icon: mdi:flash
+              - entity: sensor.tempest_st_00032986_lightning_distance
+                icon: mdi:map-marker-distance
+
+            layout:
+              template:
+                name: sak_layout_mjt_meteo
+                variables:
+                  - dummy: "dummy"
+
+          # ==============================================================================
+          - type: markdown
+            content: >
+
+              {% set x = [ 'sensor.shawinigan_avis', 'sensor.shawinigan_bulletins', 'sensor.shawinigan_veilles', 'sensor.shawinigan_alertes', 'sensor.shawinigan_terminaisons' ] %}
+              {{ states("sensor.shawinigan_prevision") }}
+              {% for state in states.sensor if state.entity_id in x %}
+                {% for attr in state.attributes %}
+                  {%- if attr.startswith('alert_') %}
+                    {%- if attr.startswith('alert_time_') %}
+                      {{ state_attr(state.entity_id, attr) }}</ha-alert>
+                    {% else %}
+                      {{'\n'}}<ha-alert title="{{ state_attr(state.entity_id,'friendly_name') }}">{{ state_attr(state.entity_id, attr) }}
+                    {%- endif %}
+                  {%- endif %}
+                {%- endfor %}
+              {% endfor %}
+
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Radar Shawinigan"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 3em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: picture-entity
+            show_state: false
+            show_name: false
+            camera_view: auto
+            entity: camera.shawinigan_radar
+            name: Radar Shawinigan
+
+      - type: custom:dwains-flexbox-card
+        items_classes: "col-xs-12 col-sm-4"
+        cards:
+          - type: custom:mushroom-template-card
+            primary: "Jour- :{{states('sensor.minmax_temperature_min_jour') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_min_jour_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-down
+            icon_color: green
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+
+          - type: custom:mushroom-template-card
+            primary: "Mois- :{{states('sensor.minmax_temperature_min_mois') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_min_mois_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-down
+            icon_color: yellow
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+
+          - type: custom:mushroom-template-card
+            primary: "Min- :{{states('sensor.minmax_temperature_minimum') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_minimum_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-down
+            icon_color: blue
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+
+          - type: custom:mushroom-template-card
+            primary: "Jour+ :{{states('sensor.minmax_temperature_max_jour') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_max_jour_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-up
+            icon_color: green
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+
+          - type: custom:mushroom-template-card
+            primary: "Mois+ :{{states('sensor.minmax_temperature_max_mois') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_max_mois_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-up
+            icon_color: yellow
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+
+          - type: custom:mushroom-template-card
+            primary: "Max+ :{{states('sensor.minmax_temperature_maximum') }} °C"
+            secondary: "{{states('sensor.minmax_temperature_maximum_heure_date')}}"
+            fill_container: false
+            multiline_secondary: true
+            icon: mdi:arrow-collapse-up
+            icon_color: blue
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none

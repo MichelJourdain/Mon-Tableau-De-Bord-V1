@@ -1,0 +1,70 @@
+sensor:
+
+  - platform: template
+    sensors:
+      phases_de_la_lune:
+        friendly_name: 'Lune'
+        value_template: >-
+          {% set phases = {'first_quarter': 'Premier quartier', 'full_moon': 'Pleine lune',
+                           'last_quarter': 'Dernier quartier', 'new_moon': 'Nouvelle lune',
+                           'waning_crescent': 'Dernier croissant', 'waning_gibbous': 'Gibbeuse décroissante',
+                           'waxing_crescent': 'Premier croissant', 'waxing_gibbous': 'Gibbeuse croissante'} %}
+          {% set phase = states('sensor.moon') %}
+          {{ phases[phase] if phase in phases.keys() else 'Error' }}
+        entity_picture_template: /local/moon_phases/{{ states('sensor.moon') }}.png
+        
+  - platform: template
+    sensors:
+      saison_courante:
+        friendly_name: 'Saisons'
+        value_template: >-
+          {% set saisons = {'summer': 'Été', 'autumn': 'Automne',
+                           'winter': 'Hiver', 'spring': 'Printemps'} %}
+          {% set saison = states('sensor.season') %}
+          {{ saisons[saison] if saison in saisons.keys() else 'Error' }}
+        entity_picture_template: /local/saisons/{{ states('sensor.season') }}.PNG
+        
+  - platform: template
+    sensors:
+      soleil_position:
+        friendly_name: 'Position du soleil'
+        value_template: >-
+          {% set soleils = {'above_horizon': 'Au dessus de l\'horizon', 'below_horizon': 'En dessous de l\'horizon'} %}
+          {% set soleil = states('sun.sun') %}
+          {{ soleils[soleil] if soleil in soleils.keys() else 'Error' }}
+        entity_picture_template: /local/images/{{ states('sun.sun') }}.svg
+
+  - platform: template
+    sensors:
+     soleil_lever:
+        unique_id: "soleil_lever"
+        friendly_name: "soleil lever"
+        icon_template: mdi:weather-sunset-up
+        value_template: "{{ as_timestamp(state_attr('sun.sun', 'next_rising')) | timestamp_custom('%H:%M') }}"
+
+  - platform: template
+    sensors:
+     soleil_coucher:
+        unique_id: "soleil_coucher"
+        friendly_name: "soleil coucher"
+        icon_template: mdi:weather-sunset-down
+        value_template: "{{ as_timestamp(state_attr('sun.sun', 'next_setting')) | timestamp_custom('%H:%M') }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

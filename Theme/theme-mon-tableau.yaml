@@ -1,0 +1,71 @@
+MonTableau:
+# Enlever la bordure des cartes
+  ha-card-border-width: 0px
+  
+# Pour les cartes Swiss Army Knife
+  theme-gradient-color-01: '#FFF6E3'
+  theme-gradient-color-02: '#FFE9B9'
+  theme-gradient-color-03: '#FFDA8A'
+  theme-gradient-color-04: '#FFCB5B' 
+  theme-gradient-color-05: '#FFBF37' 
+  theme-gradient-color-06: '#ffb414' 
+  theme-gradient-color-07: '#FFAD12' 
+  theme-gradient-color-08: '#FFA40E' 
+  theme-gradient-color-09: '#FF9C0B' 
+  theme-gradient-color-10: '#FF8C06' 
+  theme-gradient-color-11: '#FF8305'
+  
+  cs-theme-default-darken-15: '#d6d4d4'
+  
+  theme-ref-palette-primary60: rgb(0,159,182)
+  theme-ref-palette-primary65: rgb(20,173,196) 
+  theme-ref-palette-primary70: rgb(40,187,211)
+  theme-ref-palette-primary75: rgb(61,201,225) 
+  theme-ref-palette-primary80: rgb(82,215,240)       
+
+  theme-ref-palette-secondary80: rgb(178,203,209)
+  theme-ref-palette-secondary30: rgb(51,75,80)     
+  
+  theme-ref-palette-tertiary65: rgb(147,156,192)       
+  theme-ref-palette-tertiary80: rgb(189,197,234) 
+  
+  theme-ref-elevation-surface-neutral4-dark: rgb(51,54,55)
+ 
+# Définir la couleur de l'état d'une personne
+  state-person-home: '#16B84E'
+  state-person-Maison-CB: '#16B84E'
+  state-person-Maison-SV: '#16B84E'
+  state-person-unknown: '#FF0000'
+  state-person-Travail-B: '#2C75FF'
+  state-person-Travail-C: '#2C75FF'
+  state-person-Travail-VR: '#2C75FF'
+  state-person-Travail-VS: '#2C75FF'
+  state-person-Ecole-V: '#F4661B'
+  state-person-Plaza: '#806D5A'
+  
+  modes:
+    light: {}
+    dark:
+    
+      theme-sys-color-primary: var(--theme-ref-palette-primary80)
+      
+      theme-sys-color-secondary: var(--theme-ref-palette-secondary80)
+      theme-sys-color-secondary-container: var(--theme-ref-palette-secondary30)
+      
+      theme-sys-palette-primary50: var(--theme-ref-palette-primary60)
+      theme-sys-palette-primary45: var(--theme-ref-palette-primary65)
+      theme-sys-palette-primary40: var(--theme-ref-palette-primary70)
+      theme-sys-palette-primary35: var(--theme-ref-palette-primary75)
+      
+      theme-sys-color-tertiary: var(--theme-ref-palette-tertiary80)
+      theme-sys-palette-tertiary45: var(--theme-ref-palette-tertiary65)
+      
+      theme-sys-elevation-surface-neutral4: var(--theme-ref-elevation-surface-neutral4-dark)
+
+
+  
+      
+      
+      
+      
+      

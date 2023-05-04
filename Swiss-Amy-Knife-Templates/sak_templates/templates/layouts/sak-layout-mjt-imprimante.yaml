@@ -1,0 +1,858 @@
+sak_layout_mjt_imprimante:
+  template:
+    type: layout
+    defaults: 
+      - dummy: 0
+
+  layout:
+     aspectratio: 6/3          
+
+     toolsets:
+
+#=========== Rangée Imprimante =======================================
+
+              - toolset: half-circle
+                position:
+                  cx: 0                             # Center on cards border 
+                  cy: 60
+                tools:
+                  - type: circle
+                    position:
+                      cx: 50
+                      cy: 50
+                      radius: 50
+                    styles:
+                      circle:
+                        fill: none
+                        stroke: var(--theme-sys-color-secondary)
+                        stroke-width: 3em
+                        opacity: 0.5
+                        
+              - toolset: column-icon
+                position:
+                  cx: 23
+                  cy: 60
+                tools:
+                  - type: icon
+                    position:
+                      cx: 50
+                      cy: 50
+                      align: center
+                      icon_size: 45
+                    entity_index: 0
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+              - toolset: column-imprimnate
+                position:
+                  cx: 0
+                  cy: 0
+                tools:
+                
+                  - type: rectex
+                    position:
+                      cx: 170
+                      cy: 110
+                      height: 40
+                      width: 120
+                      radius:
+                        all: 5
+                    styles:
+                      rectex:
+                         fill: teal #var(--theme-sys-palette-primary40)
+ 
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 170
+                      cy: 110
+                    text: "Imprimante"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 20em
+                        font-weight: 700
+                        
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 340
+                      cy: 80
+                    text: "État"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        
+                  - type: rectex
+                    position:
+                      cx: 340
+                      cy: 130
+                      height: 40
+                      width: 110
+                      radius:
+                        all: 5
+                    styles:
+                      rectex:
+                         fill: teal #var(--theme-sys-palette-primary40)
+                        
+                  - type: state
+                    position:
+                      cx: 340
+                      cy: 130
+                    entity_index: 1
+                    show:
+                      uom: none
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 15em
+                        font-weight: 900
+                        opacity: 1
+                        
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 548
+                      cy: 80
+                    text: "En fonction depuis"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        
+                  - type: rectex
+                    position:
+                      cx: 548
+                      cy: 130
+                      height: 40
+                      width: 110
+                      radius:
+                        all: 5
+                    styles:
+                      rectex:
+                         fill: teal #var(--theme-sys-palette-primary40)
+
+                  - type: state
+                    position:
+                      cx: 548
+                      cy: 130
+                    entity_index: 2
+                    show:
+                      uom: none
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 15em
+                        font-weight: 900
+                        opacity: 1
+
+#=========== Lignes ============================================
+
+              - toolset: line1
+                position:
+                  cx: 300
+                  cy: 125
+                tools:
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: horizontal
+                      length: 550
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+
+              - toolset: line2
+                position:
+                  cx: 190
+                  cy: 63
+                tools:
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: vertical
+                      length: 100
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+              - toolset: line3
+                position:
+                  cx: 400
+                  cy: 63
+                tools:
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: vertical
+                      length: 100
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+              - toolset: line4
+                position:
+                  cx: 190
+                  cy: 215
+                tools:
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: vertical
+                      length: 140
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+#=========== Rangée  Encre ============================================
+
+              - toolset: half-circle
+                position:
+                  cx: 0                             # Center on cards border 
+                  cy: 213
+                tools:
+                  - type: circle
+                    position:
+                      cx: 50
+                      cy: 50
+                      radius: 50
+                    styles:
+                      circle:
+                        fill: none
+                        stroke: var(--theme-sys-color-secondary)
+                        stroke-width: 3em
+                        opacity: 0.5
+ 
+              - toolset: column-icon
+                position:
+                  cx: 21
+                  cy: 213
+                tools:
+                  - type: icon
+                    position:
+                      cx: 50
+                      cy: 50
+                      align: center
+                      icon_size: 50
+                    entity_index: 3
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+              - toolset: column-encre
+                position:
+                  cx: 0
+                  cy: 100
+                tools:
+                
+                  - type: rectex
+                    position:
+                      cx: 170
+                      cy: 162
+                      height: 40
+                      width: 120
+                      radius:
+                        all: 5
+                    styles:
+                      rectex:
+                         fill: teal #var(--theme-sys-palette-primary40)
+ 
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 170
+                      cy: 162
+                    text: "Encres"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 20em
+                        font-weight: 700
+#=========== Encre noire ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 300
+                      cy: 88
+                    text: "Noire"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 300
+                      cy: 117
+                      align: center
+                      icon_size: 20
+                    entity_index: 3
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 305
+                      cy: 135
+                    entity_index: 3
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 300
+                      cy: 130
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 3
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre grise ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 300
+                      cy: 172
+                    text: "Grise"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 300
+                      cy: 202
+                      align: center
+                      icon_size: 20
+                    entity_index: 4
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 305
+                      cy: 219
+                    entity_index: 4
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 300
+                      cy: 215
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 4
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre grise claire ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 400
+                      cy: 88
+                    text: "Gris claire"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 400
+                      cy: 117
+                      align: center
+                      icon_size: 20
+                    entity_index: 5
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 405
+                      cy: 135
+                    entity_index: 5
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 400
+                      cy: 130
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 5
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre cyan ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 400
+                      cy: 172
+                    text: "Cyan"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 400
+                      cy: 202
+                      align: center
+                      icon_size: 20
+                    entity_index: 6
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 405
+                      cy: 219
+                    entity_index: 6
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 400
+                      cy: 215
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 6
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre Mangenta ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 500
+                      cy: 88
+                    text: "Mangenta"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 500
+                      cy: 117
+                      align: center
+                      icon_size: 20
+                    entity_index: 7
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 505
+                      cy: 135
+                    entity_index: 7
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 500
+                      cy: 130
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 7
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre Jaune ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 500
+                      cy: 172
+                    text: "Jaune"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 500
+                      cy: 202
+                      align: center
+                      icon_size: 20
+                    entity_index: 8
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 505
+                      cy: 219
+                    entity_index: 8
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 500
+                      cy: 215
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 8
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Encre Cyan Photo ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 600
+                      cy: 88
+                    text: "Cyan PH"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 600
+                      cy: 117
+                      align: center
+                      icon_size: 18
+                    entity_index: 9
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 605
+                      cy: 135
+                    entity_index: 9
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 600
+                      cy: 130
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 9
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+ #=========== Mangenta Photo ============================================
+                  - type: text
+                    position:
+                      orientation: horiontal
+                      cx: 600
+                      cy: 172
+                    text: "Mangenta PH"
+                    styles:
+                      text:
+                        text-anchor: middle
+                        font-size: 14em
+                        font-weight: 700
+                        
+                  - type: icon
+                    position:
+                      cx: 600
+                      cy: 202
+                      align: center
+                      icon_size: 18
+                    entity_index: 10
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 605
+                      cy: 219
+                    entity_index: 10
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 600
+                      cy: 215
+                      start_angle: 0
+                      end_angle: 360
+                      width: 6
+                      radius: 30
+                    entity_index: 10
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'red'
+                          25: 'orange'
+                          50: 'yellow'
+                          75: 'green'
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1

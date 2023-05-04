@@ -1,0 +1,664 @@
+sak_layout_mjt_informations:
+  template:
+    type: layout
+    defaults: 
+      - dummy: "Hum"
+ 
+  layout:
+         
+    aspectratio: 6/2      
+         
+    toolsets:
+        
+              - toolset: les-lignes
+                position:
+                  cx: 0
+                  cy: 0
+                tools:
+                
+                  - type: line
+                    position:
+                      cx: 350
+                      cy: 55
+                      orientation: horizontal
+                      length: 570
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+
+                  - type: line
+                    position:
+                      cx: 350
+                      cy: 245
+                      orientation: horizontal
+                      length: 570
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+                  - type: line
+                    position:
+                      cx: 205
+                      cy: 150
+                      orientation: vertical
+                      length: 170
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+                  - type: line
+                    position:
+                      cx: 410
+                      cy: 150
+                      orientation: vertical
+                      length: 170
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+                  - type: line
+                    position:
+                      cx: 530
+                      cy: 118
+                      orientation: horizontal
+                      length: 215
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+                  - type: line
+                    position:
+                      cx: 530
+                      cy: 182
+                      orientation: horizontal
+                      length: 215
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+                        
+ #==========================================================                         
+              - toolset: colonne-previsions
+                position:
+                  cx: 0
+                  cy: 0
+                tools:
+                
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 125
+                      cy: 150
+                      radius: 70
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: '#003366' #var(--primary-background-color)
+                        
+                  - type: 'usersvg'
+                    id: 2
+                    entity_index: 0
+                    position:
+                      cx: 125
+                      cy: 150
+                      height: 150
+                      width: 150
+                    style: 'images'
+                    images:
+                      - clear-night-night: /local/images/weather/clear-night.svg
+                      - cloudy-day: /local/images/weather/cloudy-day.svg
+                      - cloudy-night: /local/images/weather/cloudy-night.svg
+                      - fog-day: /local/images/weather/fog-day.svg
+                      - fog-night: /local/images/weather/fog-night.svg
+                      - hail-day: /local/images/weather/hail-day.svg
+                      - hail-night: /local/images/weather/hail-night.svg
+                      - lightning-day: /local/images/weather/lightning-day.svg
+                      - lightning-night: /local/images/weather/lightning-night.svg
+                      - partlycloudy-day: /local/images/weather/partlycloudy-day.svg
+                      - partlycloudy-night: /local/images/weather/partlycloudy-night.svg
+                      - pouring-day: /local/images/weather/pouring.svg
+                      - pouring-night: /local/images/weather/pouring-night.svg
+                      - rainy-day: /local/images/weather/rainy-day.svg
+                      - rainy-night: /local/images/weather/rainy-night.svg
+                      - snowy-day: /local/images/weather/snowy-day.svg
+                      - snowy-night: /local/images/weather/snowy-night.svg
+                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
+                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
+                      - sunny-day: /local/images/weather/sunny-day.svg
+                      - sunny-night: /local/images/weather/clear-night.svg
+                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
+                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
+                      - windy-day: /local/images/weather/windy-day.svg
+                      - windy-night: /local/images/weather/windy-night.svg
+                      - windy-variant-day: /local/images/weather/windy-variant.svg
+                      - windy-variant-night: /local/images/weather/windy-variant.svg
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: >
+                          [[[
+                            if (states["sun.sun"].state == 'below_horizon') return (state + '-night');
+                            return (state + '-day');
+                          ]]]
+                         
+     # ================================================================    
+              - toolset: column-cadran-temperature
+                position:
+                  cx: 265
+                  cy: 23
+                tools:
+                
+                  - type: icon
+                    position:
+                      cx: 2
+                      cy: 69
+                      align: center
+                      icon_size: 20
+                    entity_index: 1
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 2
+                      cy: 95
+                    entity_index: 1
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 25em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 2
+                      cy: 87
+                      start_angle: 0
+                      end_angle: 360
+                      width: 9
+                      radius: 50
+                    entity_index: 1
+                    scale:
+                      min: -40
+                      max: 40
+                      width: 3
+                      offset: -6
+                    show:
+                      scale: true
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 2
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 2
+                        colors:
+                          -30: '#22427C'
+                          -20: '#318CE7'
+                          -10: '#77B5FE'
+                          0: '#FFD700'
+                          10: '#FEF86C'
+                          20: '#16B84E'
+                          30: '#D90115'
+  
+  
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+                        
+     # ================================================================    
+              - toolset: column-cadran-humidite
+                position:
+                  cx: 145
+                  cy: 105
+                tools:
+                
+                  - type: icon
+                    position:
+                      cx: 202
+                      cy: 69
+                      align: center
+                      icon_size: 20
+                    entity_index: 2
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                          
+                  - type: state
+                    position:
+                      cx: 204
+                      cy: 95
+                    entity_index: 2
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 25em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 202
+                      cy: 85
+                      start_angle: 0
+                      end_angle: 360
+                      width: 9
+                      radius: 50
+                    entity_index: 2
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 3
+                      offset: -6
+                    show:
+                      scale: true
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 2
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 2
+                        colors:
+                          0: 'green'
+                          20: 'yellow'
+                          40: 'orange'
+                          60: '#8C001A'
+                          80: 'red'
+  
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+     # ================================================================    
+ 
+              - toolset: column-cadran-vent
+                position:
+                  cx: 348
+                  cy: 83
+                tools:
+                
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 10
+                      cy: 2
+                      icon_size: 17
+                    entity_index: 9
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+                        
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 10
+                      cy: 20
+                    entity_index: 9
+                    styles:
+                      state:
+                        font-size: 17em
+                        font-weight: 700
+                        text-anchor: middle
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 10
+                      cy: 15
+                      start_angle: 0
+                      end_angle: 360
+                      width: 8
+                      radius: 35
+                    entity_index: 9
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 2
+                      offset: -4.5
+                    show:
+                      scale: true
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 4
+                        colors:
+                          0: 'green'
+                          15: 'yellow'
+                          30: 'yellow'
+                          45: 'orange'
+                          60: 'red'
+  
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+                        
+     # ================================================================    
+
+              - toolset: column-pluie
+                position:
+                  cx: 247
+                  cy: 186
+                tools:
+                
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 10
+                      cy: 2
+                      icon_size: 17
+                    entity_index: 10
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+                        
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 10
+                      cy: 20
+                    entity_index: 10
+                    styles:
+                      state:
+                        font-size: 17em
+                        font-weight: 700
+                        text-anchor: middle
+
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 10
+                      cy: 15
+                      start_angle: 0
+                      end_angle: 360
+                      width: 8
+                      radius: 35
+                    entity_index: 10
+                    scale:
+                      min: 0
+                      max: 50
+                      width: 2
+                      offset: -4.5
+                    show:
+                      scale: true
+                      style: 'colorstops'
+                    segments:
+                      colorlist:
+                        gap: 4
+                        colors: 
+                          - var(--theme-sys-palette-primary50)
+                      colorstops:
+                        gap: 2
+                        colors:
+                          0: '#0000FF'
+                          10: '#16B84E'
+                          20: '#FFFF00'
+                          30: '#DF6D14'
+                          40: '#FF0000'
+                          
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                        opacity: 1
+                        
+ #==========================================================                         
+              - toolset: column-soleil
+                position:
+                  cx: 450
+                  cy: 63
+                tools:
+                       
+                  - type: text
+                    position:
+                      cx: 53
+                      cy: 5
+                    text: "Soleil"
+                    styles:
+                      text:
+                        text-anchor: middle  
+                        font-size: 14em
+                        font-weight: 700
+                
+                  # Surface circle
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 0
+                      cy: 25
+                      radius: 28
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: '#003366' #var(--primary-background-color)
+
+                  - type: 'usersvg' 
+                    id: 2
+                    entity_index: 3
+                    position:
+                      cx: 0
+                      cy: 25
+                      height: 41
+                      width: 41
+                    style: 'images'
+                    images:
+                      - below_horizon: /local/images/below_horizon.svg
+                      - above_horizon: /local/images/above_horizon.svg
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: >
+                          [[[
+                            return (state);
+                          ]]]
+                        
+                  - type: state
+                    position:
+                      cx: 35
+                      cy: 22
+                    entity_index: 4
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+
+                  - type: icon
+                    position:
+                      cx: 46
+                      cy: 40
+                      align: center
+                      icon_size: 25
+                    entity_index: 5
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 65
+                      cy: 40
+                    entity_index: 5
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700
+                        fill: var(--primary-text-color)                        
+
+                  - type: icon
+                    position:
+                      cx: 130
+                      cy: 40
+                      align: center
+                      icon_size: 25
+                    entity_index: 6
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 145
+                      cy: 40
+                    entity_index: 6
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700
+                        fill: var(--primary-text-color)                        
+ #==========================================================     
+              - toolset: column-lune
+                position:
+                  cx: 450
+                  cy: 130
+                tools:
+                       
+                  - type: text
+                    position:
+                      cx: 53
+                      cy: 0
+                    text: "Lune"
+                    styles:
+                      text:
+                        text-anchor: middle  
+                        font-size: 14em
+                        font-weight: 700
+                
+                  # Surface circle
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 0
+                      cy: 20
+                      radius: 28
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: '#003366' #var(--primary-background-color)
+
+                  - type: 'usersvg'
+                    id: 2
+                    entity_index: 7
+                    position:
+                      cx: 0
+                      cy: 20
+                      height: 41
+                      width: 41
+                    style: 'images'
+                    images:
+                      - first_quarter: /local/moon_phases/first_quarter.png
+                      - full_moon: /local/moon_phases/full_moon.png
+                      - last_quarter: /local/moon_phases/last_quarter.png
+                      - new_moon: /local/moon_phases/new_moon.png
+                      - waning_crescent: /local/moon_phases/waning_crescent.png
+                      - waning_gibbous: /local/moon_phases/waning_gibbous.png
+                      - waxing_crescent: /local/moon_phases/waxing_crescent.png
+                      - waxing_gibbous: /local/moon_phases/waxing_gibbous.png
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: >
+                          [[[
+                            return (state);
+                          ]]]
+                        
+                  - type: state
+                    position:
+                      cx: 35
+                      cy: 22
+                    entity_index: 8
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+                        
+ #==========================================================     
+              - toolset: column-saisons
+                position:
+                  cx: 450
+                  cy: 193
+                tools:
+                       
+                  - type: text
+                    position:
+                      cx: 58
+                      cy: 0
+                    text: "Saison"
+                    styles:
+                      text:
+                        text-anchor: middle  
+                        font-size: 14em
+                        font-weight: 700
+                
+                  # Surface circle
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 0
+                      cy: 20
+                      radius: 28
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: '#003366' #var(--primary-background-color)
+
+                  - type: 'usersvg'
+                    id: 2
+                    entity_index: 11
+                    position:
+                      cx: 0
+                      cy: 20
+                      height: 41
+                      width: 41
+                    style: 'images'
+                    images:
+                      - summer: /local/saisons/summer.PNG
+                      - autumn: /local/saisons/autumn.PNG
+                      - winter: /local/saisons/winter.PNG
+                      - spring: /local/saisons/spring.PNG
+
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: >
+                          [[[
+                            return (state);
+                          ]]]
+                        
+                  - type: state
+                    position:
+                      cx: 35
+                      cy: 22
+                    entity_index: 12
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+   

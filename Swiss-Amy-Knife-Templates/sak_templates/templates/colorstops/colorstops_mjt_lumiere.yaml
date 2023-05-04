@@ -1,0 +1,16 @@
+colorstops_mjt_lumiere:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+      0: 'green'
+      30000: 'yellow'
+      50000: 'orange'
+      80000: 'red'

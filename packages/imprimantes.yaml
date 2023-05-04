@@ -1,0 +1,28 @@
+sensor:
+
+# Traduire l'état de l'imprimante
+  - platform: template
+    sensors:
+      imprimante_canon_traduire_etat:
+        unique_id: "imprimante_canon_traduire_etat"
+        friendly_name: "Traduire l'état de l'imprimante Canon"
+        value_template:  >
+          {% if is_state('sensor.canon_pro_100_series', 'idle') %}
+            Inactive
+          {% elif is_state('sensor.canon_pro_100_series', 'printing') %}
+            Impression
+          {% elif is_state('sensor.canon_pro_100_series', 'stopped') %}
+            Arrêtée
+          {% else %}
+            {{ states('sensor.canon_pro_100_series') }}
+          {% endif %}     
+          
+# Afficher le temps que l'imprimante est active
+
+  - platform: template
+    sensors:
+      imprimante_canon_format_date:
+        unique_id: "imprimante_canon_format_date"
+        friendly_name: "Formater la date de l'imprimante Canon"
+        value_template:  >
+           {{ as_timestamp(states('sensor.canon_pro_100_series_uptime')) | timestamp_custom('%d-%m-%Y') }}

@@ -1,0 +1,19 @@
+colorstops_temperature_mjt_outside:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+        -30: '#22427C'
+        -20: '#318CE7'
+        -10: '#77B5FE'
+        0: '#FFD700'
+        10: '#FEF86C'
+        20: '#16B84E'
+        30: '#D90115'

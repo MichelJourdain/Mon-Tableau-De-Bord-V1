@@ -1,0 +1,16 @@
+colorstops_mjt_uv:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+      0: 'green'
+      3: 'yellow'
+      6: 'orange'
+      8: 'red'

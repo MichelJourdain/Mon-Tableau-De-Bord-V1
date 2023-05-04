@@ -1,0 +1,16 @@
+colorstops_mjt_humidite:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+      00: 'green'
+      25: 'yellow'
+      50: 'orange'
+      75: 'red'
