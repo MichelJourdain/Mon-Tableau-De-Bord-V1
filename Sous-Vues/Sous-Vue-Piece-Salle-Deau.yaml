@@ -234,7 +234,7 @@ cards:
 
           - type: custom:vacuum-card
             entity: vacuum.roomba_1
-            image: /local/images/roomba4.png
+            image: /local/mes_images/Roomba9.PNG
             show_name: true
             show_status: true
             show_toolbar: true
