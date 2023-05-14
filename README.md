@@ -46,8 +46,6 @@
 
 ![image](https://user-images.githubusercontent.com/83040228/234997272-10311140-fd0c-4632-9b8d-4a6ad4bc49c1.png)
 
-![image](https://user-images.githubusercontent.com/83040228/234997285-6358f95b-9672-45a4-92ec-f260118e8e08.png)
-
 ![image](https://user-images.githubusercontent.com/83040228/234998299-6503d61c-0cb0-4fa3-a490-74cee402792f.png)
 
 ## Pop-Ups
