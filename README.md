@@ -46,8 +46,6 @@
 
 ![image](https://user-images.githubusercontent.com/83040228/234997272-10311140-fd0c-4632-9b8d-4a6ad4bc49c1.png)
 
-![image](https://user-images.githubusercontent.com/83040228/234998299-6503d61c-0cb0-4fa3-a490-74cee402792f.png)
-
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/29b4c49a-3b77-47f4-b0d0-47691c9bb6b8)
 
 ## Pop-Ups
