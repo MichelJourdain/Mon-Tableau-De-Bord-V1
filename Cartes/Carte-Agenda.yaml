@@ -1,0 +1,33 @@
+# Agenda pour aujourd'hui
+
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:atomic-calendar-revive
+    name: Agenda
+    entities:
+      - entity: calendar.michel
+      - entity: calendar.anniversaires
+      - entity: calendar.sports
+      - entity: calendar.ordures_compostage
+      - entity: calendar.ordures_menageres
+      - entity: calendar.ordures_recuperation
+    fullDayEventText: Jour entier
+    language: fr
+    maxDaysToShow: 1
+    noEventText: "Aucun \xE9v\xE9nement pour aujourd'hui"
+    noEventsForNextDaysText: "Aucun \xE9v\xE9nement prochainement"
+    showHours: true
+    showMonth: true
+    showNoEventsForToday: true
+    showProgressBar: true
+    showWeekDay: true
+    showRelativeTime: false
+    styles:
+      card:
+        - text-transform: uppercase
+        - font-size: 125%
+        - border-radius: 0%
+        - font-weight: 100
+        - letter-spacing: 10px
+        - height: 15px
+        - border-top: 5px solid rgba(225, 225, 225, 0.60)

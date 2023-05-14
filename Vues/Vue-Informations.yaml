@@ -1,0 +1,95 @@
+# Vue Informations
+
+theme: MonTableau
+title: Informations
+path: vue-page-Information
+icon: ios:informations#fullcolor
+type: panel
+badges: []
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+ 
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-10"
+        cards:
+          - type: markdown
+            content: "Informations"
+
+          # Personnes cartes Pop-Up
+
+          - type: horizontal-stack
+            cards:
+              - !include ../Cartes-Pop-Up/PopUp-Personne-Valerie.yaml
+              - !include ../Cartes-Pop-Up/PopUp-Personne-Brigitte.yaml
+              - !include ../Cartes-Pop-Up/PopUp-Personne-Claude.yaml
+              - !include ../Cartes-Pop-Up/PopUp-Personne-Michel.yaml
+
+          # Informations météo, astres et saison
+
+          - type: "custom:swiss-army-knife-card"
+            entities:
+              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+              - entity: sensor.tempest_st_00032986_temperature
+                unit: "°C"
+                decimals: 0
+              - entity: sensor.weatherflow_vitesse_vent_km
+                decimals: 0
+              - entity: sun.sun
+              - entity: sensor.soleil_position
+              - entity: sensor.soleil_lever
+              - entity: sensor.soleil_coucher
+              - entity: sensor.moon
+              - entity: sensor.phases_de_la_lune
+              - entity: sensor.tempest_st_00032986_humidity
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_rain_today
+                decimals: 0
+              - entity: sensor.season
+              - entity: sensor.saison_courante
+              - entity: sensor.minmax_temperature_min_jour
+                icon: mdi:arrow-down-bold-box
+              - entity: sensor.minmax_temperature_max_jour
+                icon: mdi:arrow-up-bold-box
+            layout:
+              template:
+                name: sak_layout_mjt_informations
+                variables:
+                  - dummy: "dummy"
+
+          # Collectes des déchets
+          
+          - !include  ../Cartes/Carte-Collectes.yaml
+        
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-2"
+        cards:
+        
+          # Contrôles
+
+          - type: markdown
+            content: "Contrôles"
+          - !include ../Cartes/Carte-Controles.yaml
+
+      # Tuiles pour les pièces
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - !include ../Tuiles/Tuile-Salon.yaml
+              - !include ../Tuiles/Tuile-Cuisine.yaml
+              - !include ../Tuiles/Tuile-Salle-A-Manger.yaml
+              - !include ../Tuiles/Tuile-salle-Deau.yaml
+              - !include ../Tuiles/Tuile-Chambre-Maitres.yaml
+              - !include ../Tuiles/Tuile-Bureau.yaml
+
+          - type: horizontal-stack
+            cards:
+              - !include ../Tuiles/Tuile-Salle-De-Bain-Maitres.yaml
+              - !include ../Tuiles/Tuile-Salle-De-Repos.yaml
+              - !include ../Tuiles/Tuile-Salle-Familiale.yaml
+              - !include ../Tuiles/Tuile-Chambre-Invites.yaml
+              - !include ../Tuiles/Tuile-Atelier.yaml
+              - !include ../Tuiles/Tuile-Exterieur.yaml
