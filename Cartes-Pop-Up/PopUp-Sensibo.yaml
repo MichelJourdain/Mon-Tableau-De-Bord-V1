@@ -1,0 +1,130 @@
+type: custom:vertical-stack-in-card
+cards:
+
+  - type: custom:swiss-army-knife-card
+    disable_card: true
+    layout:
+      template:
+        name: sak_layout_fce_header
+        variables:
+            - sak_layout_header_content: "Salle à manger"
+            - sak_layout_header_font_color: var(--secondary-text-color)
+            - sak_layout_header_font_size: 4em
+            - sak_layout_header_font_text_transform: capitalize
+
+  - type: custom:swiss-army-knife-card
+    entities:
+      - attribute: current_temperature
+        decimals: 1
+        entity: climate.sensibo_cuisine
+        unit: "\xB0C"
+      - attribute: temperature
+        decimals: 0
+        entity: climate.sensibo_cuisine
+      - attribute: current_humidity
+        decimals: 0
+        entity: climate.sensibo_cuisine
+        unit: "%"
+      - entity: climate.sensibo_cuisine
+        icon: mdi:fire
+      - entity: climate.sensibo_cuisine
+        icon: mdi:snowflake
+      - entity: climate.sensibo_cuisine
+        icon: mdi:water-percent
+      - entity: climate.sensibo_cuisine
+        icon: mdi:power
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: Silencieux
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: Faible
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: Moyen
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: "Moyen-\xC9lev\xE9"
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: "\xC9lev\xE9"
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: Puissant
+      - attribute: fan_mode
+        entity: climate.sensibo_cuisine
+        icon: mdi:fan
+        name: Automatique
+    layout:
+      template:
+        name: sak_layout_mjt_thermostats_popup_sensibo
+
+  - type: custom:swiss-army-knife-card
+    disable_card: true
+    layout:
+      template:
+        name: sak_layout_fce_header
+        variables:
+            - sak_layout_header_content: "Salle de repos"
+            - sak_layout_header_font_color: var(--secondary-text-color)
+            - sak_layout_header_font_size: 4em
+            - sak_layout_header_font_text_transform: capitalize
+
+  - type: custom:swiss-army-knife-card
+    entities:
+      - attribute: current_temperature
+        decimals: 1
+        entity: climate.sensibo_salle_de_repos
+        unit: "\xB0C"
+      - attribute: temperature
+        decimals: 0
+        entity: climate.sensibo_salle_de_repos
+      - attribute: current_humidity
+        decimals: 0
+        entity: climate.sensibo_salle_de_repos
+        unit: "%"
+      - entity: climate.sensibo_salle_de_repos
+        icon: mdi:fire
+      - entity: climate.sensibo_salle_de_repos
+        icon: mdi:snowflake
+      - entity: climate.sensibo_salle_de_repos
+        icon: mdi:water-percent
+      - entity: climate.sensibo_salle_de_repos
+        icon: mdi:power
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: Silencieux
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: Faible
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: Moyen
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: "Moyen-\xC9lev\xE9"
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: "\xC9lev\xE9"
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: Puissant
+      - attribute: fan_mode
+        entity: climate.sensibo_salle_de_repos
+        icon: mdi:fan
+        name: Automatique
+    layout:
+      template:
+        name: sak_layout_mjt_thermostats_popup_sensibo

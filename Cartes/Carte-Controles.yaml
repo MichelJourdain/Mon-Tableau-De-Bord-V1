@@ -1,0 +1,201 @@
+# Contrôles et alerts
+
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:mushroom-chips-card
+    chips:
+      - content_info: name
+        entity: light.lampes_salon_groupe_de_lumieres
+        icon: mdi:lamps
+        icon_color: yellow
+        name: Lampes Salon
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        double_tap_action:
+          action: none
+        type: entity
+
+      - content_info: name
+        entity: light.exterieure_avant_groupe_de_lumieres
+        icon_color: yellow
+        name: Galerie Avant
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        double_tap_action:
+          action: none
+        type: entity
+
+      - content_info: name
+        entity: light.sinope_lumieres_galerie_arriere
+        icon_color: yellow
+        name: Galerie Arrière
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        double_tap_action:
+          action: none
+        type: entity
+
+      - type: template
+        content: Thermopompe
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Contrôle de la thermopompe
+              content:
+                type: entities
+                entities:
+                  - !include ../Cartes-Pop-Up/PopUp-Sensibo.yaml
+        icon: mdi:air-conditioner
+        icon_color: |-
+          {% if is_state('climate.sensibo_cuisine', 'off') %}
+              grey
+          {% else %}
+              yellow
+          {% endif %}
+
+      - type: template
+        content: Caméras
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Contrôle des Caméras
+              content:
+                type: entities
+                entities:
+                  - !include ../Cartes-Pop-Up/PopUp-Cameras-De-Securite.yaml
+
+        icon: |-
+          {% if is_state('alarm_control_panel.blink_cameras_exterieures', 'armed_away') %}
+              mdi:cctv
+          {% elif is_state('alarm_control_panel.blink_cameras_exterieures', 'disarmed') %}
+              mdi:cctv-off
+          {% else %}
+              mdi:alert-circle-outline
+          {% endif %}
+        icon_color: |-
+          {% if is_state('alarm_control_panel.blink_cameras_exterieures', 'armed_away') %}
+              green
+          {% elif is_state('alarm_control_panel.blink_cameras_exterieures', 'disarmed') %}
+              red
+          {% else %}
+              yellow
+          {% endif %}
+        card_mod:
+          style: |
+            {% if is_state('alarm_control_panel.blink_cameras_exterieures', 'disarmed') %}
+               ha-card {
+               animation: borderPulse 2s ease-out infinite;
+            }
+              @keyframes borderPulse {
+              50% {
+              box-shadow: 0 0 20px red;
+              }
+            }
+            {% endif %}
+
+      - type: template
+        content: Serrure
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Contrôle de la serrure
+              content:
+                type: entities
+                entities:
+                  - !include ../Cartes-Pop-Up/PopUp-Serrure.yaml
+        icon: |-
+          {% if is_state('lock.porte_d_entree', 'locked') %}
+              mdi:lock-outline
+          {% elif is_state('lock.porte_d_entree', 'unlocked') %}
+              mdi:lock-open-variant-outline
+          {% else %}
+              mdi:alert-circle-outline
+          {% endif %}
+        icon_color: |-
+          {% if is_state('lock.porte_d_entree', 'locked') %}
+              green
+          {% elif is_state('lock.porte_d_entree', 'unlocked') %}
+              red
+          {% else %}
+              yellow
+          {% endif %}
+        card_mod:
+          style: |
+            {% if is_state('lock.porte_d_entree', 'unlocked') %}
+               ha-card {
+               animation: borderPulse 2s ease-out infinite;
+            }
+              @keyframes borderPulse {
+              50% {
+              box-shadow: 0 0 20px red;
+              }
+            }
+            {% endif %}
+
+      - type: template
+        content: Télécommande
+        icon: mdi:remote
+        icon_color: green
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Télécommande Harmony
+              content:
+                type: entities
+                entities:
+                  - !include ../Cartes-Pop-Up/PopUp-Telecommande.yaml
+
+      - type: template
+        content: Mise à jours
+        icon: |-
+          {% if is_state('sensor.mises_a_jours_disponnibles', 'off') %}
+              mdi:update
+          {% elif is_state('sensor.mises_a_jours_disponnibles', 'on') %}
+              mdi:cellphone-arrow-down
+          {% else %}
+              mdi:alert-circle-outline
+          {% endif %}
+        icon_color: |-
+          {% if is_state('sensor.mises_a_jours_disponnibles', 'off') %}
+              green
+          {% elif is_state('sensor.mises_a_jours_disponnibles', 'on') %}
+              red
+          {% else %}
+              yellow
+          {% endif %}
+        card_mod:
+          style: |
+            {% if is_state('sensor.mises_a_jours_disponnibles', 'on') %}
+               ha-card {
+               animation: borderPulse 2s ease-out infinite;
+            }
+              @keyframes borderPulse {
+              50% {
+              box-shadow: 0 0 20px red;
+              }
+            }
+            {% endif %}
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Mises à jours
+              content:
+                type: entities
+                entities:
+                  - !include ../Cartes-Pop-Up/PopUp-Mises-A-Jours.yaml

@@ -1,0 +1,250 @@
+# Sous Vue Chambre des Maîtres
+
+theme: MonTableau
+title: Bureau
+path: sous-vue-piece-bureau
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Bureau'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/bureau.svg'
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Environnements"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 3em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                name: Actuellement
+                unit: "\xB0C"
+              - attribute: hvac_action
+                entity: climate.sinope_thermostat_bureau
+                icon: mdi:radiator
+                name: Chauffage?
+              - attribute: temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                icon: mdi:thermostat-box
+                name: Souhaitable
+              - entity: sensor.ajout_sensor_humidite_bureau
+                unit: "%"
+              - attribute: hourly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                name: Heure
+                unit: kw
+              - attribute: hourly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                unit: kw
+              - attribute: daily_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                name: Jour
+                unit: kw
+              - attribute: daily_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                unit: kw
+              - attribute: monthly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                name: Mois
+                unit: kw
+              - attribute: monthly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_bureau
+                unit: kw
+              - attribute: wattage
+                entity: climate.sinope_thermostat_bureau
+                unit: w
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sinope
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_bureau
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Température"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_bureau
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_bureau_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+          - type: vertical-stack
+            cards:
+              - type: custom:swiss-army-knife-card
+                disable_card: true
+                layout:
+                  template:
+                    name: sak_layout_fce_header
+                    variables:
+                      - sak_layout_header_content: "Éclairage"
+                      - sak_layout_header_font_color: var(--secondary-text-color)
+                      - sak_layout_header_font_size: 3em
+                      - sak_layout_header_font_text_transform: capitalize
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.sinope_lumieres_bureau
+                        name: Plafond
+                    layout:
+                      template:
+                        name: sak_layout_fce_light
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.neviweb130_light_light_garde_robe_bureau
+                        name: Garde Robe
+                    layout:
+                      template:
+                        name: sak_layout_fce_light
+
+          - type: vertical-stack
+            cards:
+              - type: custom:swiss-army-knife-card
+                disable_card: true
+                layout:
+                  template:
+                    name: sak_layout_fce_header
+                    variables:
+                      - sak_layout_header_content: "Prises"
+                      - sak_layout_header_font_color: var(--secondary-text-color)
+                      - sak_layout_header_font_size: 3em
+                      - sak_layout_header_font_text_transform: capitalize
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - attribute: Wattage_instant
+                        entity: switch.neviweb130_switch_bibliotheque
+                        name: Étagère
+                      - entity: switch.neviweb130_switch_bibliotheque
+                      - entity: switch.neviweb130_switch_bibliotheque
+                        name: Étagère
+                    layout:
+                      template:
+                        name: sak_layout_fce_power_outlet2
+                        variables:
+                          - sak_layout_power_outlet_segarc_scale_max_watt: 70
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - attribute: Wattage_instant
+                        entity: switch.sinope_prise_ordinateur
+                        name: Ordinateur
+                      - entity: switch.sinope_prise_ordinateur
+                      - entity: switch.sinope_prise_ordinateur
+                        name: Chevets
+                    layout:
+                      template:
+                        name: sak_layout_fce_power_outlet2
+                        variables:
+                          - sak_layout_power_outlet_segarc_scale_max_watt: 50
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Imprimante Canon"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 3em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: "custom:swiss-army-knife-card"
+            disable_card: false
+            entities:
+              - entity: sensor.canon_pro_100_series
+              - entity: sensor.imprimante_canon_traduire_etat
+              - entity: sensor.imprimante_canon_format_date
+              - entity: sensor.canon_pro_100_series_black_bk
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_gray
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_light_gray
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_cyan
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_magenta
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_yellow
+                icon: mdi:water-percent
+              - entity: sensor.canon_pro_100_series_photo_cyan
+                icon: mdi:camera
+              - entity: sensor.canon_pro_100_series_photo_magenta
+                icon: mdi:camera
+            layout:
+              template:
+                name: sak_layout_mjt_imprimante
+
+          - type: custom:vacuum-card
+            entity: vacuum.roomba_2
+            image: /local/mes_images/Roomba9.png
+            show_name: true
+            show_status: true
+            show_toolbar: true
