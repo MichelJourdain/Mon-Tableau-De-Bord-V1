@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<!-- Created by jmrivera (jmanuel1995@yahoo.es) 16-07-04 -->
+<!-- tree_whit_fruits - arbol_con_frutas -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="svg602"
+    space="preserve"
+    viewBox="0 0 670.93 802.78"
+    sodipodi:version="0.32"
+    version="1.0"
+    inkscape:output_extension="org.inkscape.output.svg.inkscape"
+    inkscape:version="0.46"
+    sodipodi:docname="tree_whit_fruits_01.svg"
+    sodipodi:docbase="/home/joan/Documentos/"
+  >
+  <sodipodi:namedview
+      id="base"
+      inkscape:window-x="132"
+      inkscape:window-y="99"
+      snaptoguides="true"
+      inkscape:zoom="0.43901235"
+      inkscape:window-height="667"
+      showgrid="false"
+      inkscape:current-layer="svg602"
+      inkscape:cx="372.04724"
+      inkscape:cy="526.18109"
+      inkscape:window-width="640"
+  />
+  <g
+      id="g636"
+      transform="matrix(1.3963 0 0 1.3174 -107.72 -277.16)"
+    >
+    <path
+        id="path623"
+        sodipodi:rx="95.879547"
+        sodipodi:ry="89.267166"
+        style="fill-rule:evenodd;fill:#000000"
+        sodipodi:type="arc"
+        d="m251.27 403.25a95.88 89.267 0 1 1 -191.76 0 95.88 89.267 0 1 1 191.76 0z"
+        transform="matrix(1.2299 0 0 1.2222 3.9522 -105.04)"
+        sodipodi:cy="403.24664"
+        sodipodi:cx="155.39099"
+    />
+    <path
+        id="path624"
+        sodipodi:rx="90.369225"
+        sodipodi:ry="91.471298"
+        style="fill-rule:evenodd;fill:#000000"
+        sodipodi:type="arc"
+        d="m368.09 323.9a90.369 91.471 0 1 1 -180.74 0 90.369 91.471 0 1 1 180.74 0z"
+        transform="matrix(1.1314 0 0 1.1446 1.8401 -55.645)"
+        sodipodi:cy="323.89801"
+        sodipodi:cx="277.72006"
+    />
+    <path
+        id="path625"
+        sodipodi:rx="96.981613"
+        sodipodi:ry="95.879547"
+        style="fill-rule:evenodd;fill:#000000"
+        sodipodi:type="arc"
+        d="m632.58 438.51a96.982 95.88 0 1 1 -193.96 0 96.982 95.88 0 1 1 193.96 0z"
+        transform="matrix(1.1364 0 0 1.1494 -161.2 -132.75)"
+        sodipodi:cy="438.51266"
+        sodipodi:cx="535.60297"
+    />
+    <path
+        id="path628"
+        sodipodi:nodetypes="cccccccccc"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:18.25;fill:#b85e00"
+        d="m249.07 543.21c19.1 0.73 38.2 1.47 57.3 2.2 3.68 36.74 5.15 49.23 17.64 63.92 22.04-13.22 35.26-26.45 39.67-46.28 0 0 85.96-13.23 55.1 0-19.83 50.69-66.12 57.3-72.73 99.18-8.08 49.23 13.62 100.9 18.77 147.92-41.15-0.73-88.97 0.74-130.12 0 22.78-83.02 42.29-104.57 51.84-165.55-1.47-47.02-27.19-60.98-37.47-101.39z"
+    />
+    <path
+        id="path626"
+        sodipodi:rx="90.369225"
+        sodipodi:ry="82.654755"
+        style="fill-rule:evenodd;fill:#000000"
+        sodipodi:type="arc"
+        d="m279.92 480.39a90.369 82.655 0 1 1 -180.73 0 90.369 82.655 0 1 1 180.73 0z"
+        transform="matrix(1.1829 0 0 1.12 52.388 -54.341)"
+        sodipodi:cy="480.39108"
+        sodipodi:cx="189.55496"
+    />
+    <path
+        id="path627"
+        sodipodi:rx="92.573364"
+        sodipodi:ry="85.960983"
+        style="fill-rule:evenodd;fill:#000000"
+        sodipodi:type="arc"
+        d="m484.91 463.86a92.573 85.961 0 1 1 -185.15 0 92.573 85.961 0 1 1 185.15 0z"
+        transform="matrix(1.1071 0 0 1.1154 -36.525 -28.175)"
+        sodipodi:cy="463.86011"
+        sodipodi:cx="392.33472"
+    />
+    <path
+        id="path610"
+        sodipodi:rx="92.573364"
+        sodipodi:ry="85.960983"
+        style="fill-rule:evenodd;fill:#80df00"
+        sodipodi:type="arc"
+        d="m484.91 463.86a92.573 85.961 0 1 1 -185.15 0 92.573 85.961 0 1 1 185.15 0z"
+        transform="translate(-2.2041 13.225)"
+        sodipodi:cy="463.86011"
+        sodipodi:cx="392.33472"
+    />
+    <path
+        id="path611"
+        sodipodi:rx="90.369225"
+        sodipodi:ry="82.654755"
+        style="fill-rule:evenodd;fill:#80df00"
+        sodipodi:type="arc"
+        d="m279.92 480.39a90.369 82.655 0 1 1 -180.73 0 90.369 82.655 0 1 1 180.73 0z"
+        transform="translate(85.961 -6.6124)"
+        sodipodi:cy="480.39108"
+        sodipodi:cx="189.55496"
+    />
+    <path
+        id="path612"
+        sodipodi:rx="95.879547"
+        sodipodi:ry="89.267166"
+        style="fill-rule:evenodd;fill:#80df00"
+        sodipodi:type="arc"
+        d="m251.27 403.25a95.88 89.267 0 1 1 -191.76 0 95.88 89.267 0 1 1 191.76 0z"
+        transform="translate(39.674 -15.429)"
+        sodipodi:cy="403.24664"
+        sodipodi:cx="155.39099"
+    />
+    <path
+        id="path613"
+        sodipodi:rx="96.981613"
+        sodipodi:ry="95.879547"
+        style="fill-rule:evenodd;fill:#80df00"
+        sodipodi:type="arc"
+        d="m632.58 438.51a96.982 95.88 0 1 1 -193.96 0 96.982 95.88 0 1 1 193.96 0z"
+        transform="translate(-94.777 -66.124)"
+        sodipodi:cy="438.51266"
+        sodipodi:cx="535.60297"
+    />
+    <path
+        id="path609"
+        sodipodi:rx="90.369225"
+        sodipodi:ry="91.471298"
+        style="fill-rule:evenodd;fill:#80df00"
+        sodipodi:type="arc"
+        d="m368.09 323.9a90.369 91.471 0 1 1 -180.74 0 90.369 91.471 0 1 1 180.74 0z"
+        transform="translate(37.47 -.000052227)"
+        sodipodi:cy="323.89801"
+        sodipodi:cx="277.72006"
+    />
+    <path
+        id="path629"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.91304 0 0 .85714 69.504 -47.487)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+    <path
+        id="path630"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.80435 0 0 .75510 202.74 43.874)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+    <path
+        id="path631"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.76087 0 0 .69388 371.96 81.986)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+    <path
+        id="path632"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.80435 0 0 .75510 145.94 -93.1)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+    <path
+        id="path633"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.86956 0 0 .85714 258.77 -110.96)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+    <path
+        id="path635"
+        sodipodi:rx="38.419582"
+        sodipodi:ry="40.925201"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:11.417;fill:#ff5e00"
+        sodipodi:type="arc"
+        d="m165.37 608.87a38.42 40.925 0 1 1 -76.838 0 38.42 40.925 0 1 1 76.838 0z"
+        transform="matrix(.69565 0 0 .67347 366.04 -58.43)"
+        sodipodi:cy="608.8667"
+        sodipodi:cx="126.95164"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >tree with fruits</dc:title
+        >
+        <dc:date
+          >2009-05-26T15:57:28</dc:date
+        >
+        <dc:description
+          >Simple tree with fruits (apple tree?) by jmrivera. From OCAL 0.18 release.</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/26259/tree-with-fruits-by-anonymous-26259</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >Anonymous</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >apple</rdf:li
+            >
+            <rdf:li
+              >basic</rdf:li
+            >
+            <rdf:li
+              >cartoon</rdf:li
+            >
+            <rdf:li
+              >colour</rdf:li
+            >
+            <rdf:li
+              >fruit</rdf:li
+            >
+            <rdf:li
+              >green</rdf:li
+            >
+            <rdf:li
+              >nature</rdf:li
+            >
+            <rdf:li
+              >plant</rdf:li
+            >
+            <rdf:li
+              >red</rdf:li
+            >
+            <rdf:li
+              >simple</rdf:li
+            >
+            <rdf:li
+              >tree</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
