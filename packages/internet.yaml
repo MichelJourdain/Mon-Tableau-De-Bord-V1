@@ -1,0 +1,9 @@
+sensor:
+    
+  - platform: template
+    sensors:
+      internet_telechargement_mb:
+        unique_id: "internet_telechargement_mb"
+        friendly_name: "Internet téléchargement MB"
+        unit_of_measurement: "MB"
+        value_template: "{{ states('sensor.arris_tg2472g_router_b_received')  | float / 8000000 | round(2) }}"

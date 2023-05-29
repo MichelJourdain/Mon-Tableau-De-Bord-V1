@@ -1,0 +1,47 @@
+template:
+  - sensor:
+  
+    - name: "ordures_menageres_date"
+      unique_id: ordures_menageres_date
+      state: "{{((as_timestamp(states.calendar.ordures_menageres.attributes.start_time)- as_timestamp(now())) /86400+1) | int}}"
+      
+    - name: "ordures_recuperation_date"
+      unique_id: ordures_recuperation_date
+      state: "{{((as_timestamp(states.calendar.ordures_recuperation.attributes.start_time)- as_timestamp(now())) /86400+1) | int}}"
+  
+    - name: "ordures_compostage_date"
+      unique_id: ordures_compostage_date
+      state: "{{((as_timestamp(states.calendar.ordures_compostage.attributes.start_time)- as_timestamp(now())) /86400+1) | int}}"
+
+    - name: "ordures_menageres_jour"
+      unique_id: ordures_menageres_jour
+      state: >
+        {% if states('sensor.ordures_menageres_date') | int > 1 %}
+          Dans {{ states('sensor.ordures_menageres_date') }} jours
+        {% elif states('sensor.ordures_menageres_date') | int == 1 %}
+          Demain
+        {% else %}
+          Aujourd'hui
+        {% endif %}
+        
+    - name: "ordures_recuperation_jour"
+      unique_id: ordures_recuperation_jour
+      state: >
+        {% if states('sensor.ordures_recuperation_date') | int > 1 %}
+          Dans {{ states('sensor.ordures_recuperation_date') }} jours
+        {% elif states('sensor.ordures_recuperation_date') | int == 1 %}
+          Demain
+        {% else %}
+          Aujourd'hui
+        {% endif %}       
+      
+    - name: "ordures_compostage_jour"
+      unique_id: ordures_compostage_jour
+      state: >
+        {% if states('sensor.ordures_compostage_date') | int > 1 %}
+          Dans {{ states('sensor.ordures_compostage_date') }} jours
+        {% elif states('sensor.ordures_compostage_date') | int == 1 %}
+          Demain
+        {% else %}
+          Aujourd'hui
+        {% endif %}

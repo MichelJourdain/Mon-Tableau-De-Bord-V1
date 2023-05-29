@@ -1,0 +1,29 @@
+# Risque d'incendie de forêt.
+
+sensor:
+  - platform: command_line
+    name: SOPFEU Data
+    unique_id: sopfeu_reg_25
+    command: curl -s --request POST "https://sopfeu.qc.ca/wp-content/themes/sopfeu/widget/app/ajax.php" --form media=25
+    scan_interval: 3600
+
+template:
+  - sensor:
+    - name: "SOPFEU Risque d'incendie aujourd'hui"
+      unique_id: sopfeu_reg_25_today
+      icon: mdi:pine-tree-fire
+      state: >
+        {% set sopfeu_data = states('sensor.sopfeu_data')|from_json %}
+        {{ sopfeu_data.indice.danger }}
+    - name: "SOPFEU Risque d'incendie demain"
+      unique_id: sopfeu_reg_25_tomorrow
+      icon: mdi:pine-tree-fire
+      state: >
+        {% set sopfeu_data = states('sensor.sopfeu_data')|from_json %}
+        {{ sopfeu_data.indice.danger_next }}
+    - name: "SOPFEU Risque d'incendie après-demain"
+      unique_id: sopfeu_reg_25_after_tomorrow
+      icon: mdi:pine-tree-fire
+      state: >
+        {% set sopfeu_data = states('sensor.sopfeu_data')|from_json %}
+        {{ sopfeu_data.indice.danger_future }}

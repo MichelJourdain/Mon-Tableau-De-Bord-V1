@@ -1,0 +1,93 @@
+sensor:
+
+# Traduire Netatmo Tendance
+
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_temperature_thermopompe:
+        friendly_name: "Traduire la tendance temperature thermopompe"
+        value_template:  >
+          {% if is_state('sensor.netatmo_thermopompe_temperature_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_thermopompe_temperature_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_thermopompe_temperature_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_thermopompe_temperature_trend') }}
+          {% endif %}         
+          
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_pression_salon:
+        friendly_name: "Traduire la tendance de pression salon"
+        value_template:  >
+          {% if is_state('sensor.netatmo_salon_pressure_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_salon_pressure_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_salon_pressure_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_salon_pressure_trend') }}
+          {% endif %}         
+          
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_temperature_chambre_maitres:
+        friendly_name: "Traduire la tendance de températue chambre maîtres"
+        value_template:  >
+          {% if is_state('sensor.netatmo_chambre_maitres_temperature_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_chambre_maitres_temperature_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_chambre_maitres_temperature_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_chambre_maitres_temperature_trend') }}
+          {% endif %}         
+          
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_temperature_sous_sol:
+        friendly_name: "Traduire la tendance de températue Sous-sol"
+        value_template:  >
+          {% if is_state('sensor.netatmo_sous_sol_temperature_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_sous_sol_temperature_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_sous_sol_temperature_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_sous_sol_temperature_trend') }}
+          {% endif %}        
+          
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_temperature_salon:
+        friendly_name: "Traduire la tendance de températue salon"
+        value_template:  >
+          {% if is_state('sensor.netatmo_salon_temperature_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_salon_temperature_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_salon_temperature_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_salon_temperature_trend') }}
+          {% endif %}        
+
+  - platform: template
+    sensors:
+      netatmo_traduire_tendance_temperature_bureau:
+        friendly_name: "Traduire la tendance de températue bureau"
+        value_template:  >
+          {% if is_state('sensor.netatmo_bureau_temperature_trend', 'up') %}
+           À la hausse
+          {% elif is_state('sensor.netatmo_bureau_temperature_trend', 'down') %}
+            À la baisse
+          {% elif is_state('sensor.netatmo_bureau_temperature_trend', 'stable') %}
+            Stable
+          {% else %}
+            {{ states('sensor.netatmo_bureau_temperature_trend') }}
+          {% endif %}        
