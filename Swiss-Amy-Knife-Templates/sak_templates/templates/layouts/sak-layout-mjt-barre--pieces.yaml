@@ -1,0 +1,109 @@
+sak_layout_mjt_barre_pieces:
+  template:
+    type: layout
+    defaults: 
+      - sak_layout_mjt_barre_pieces_titre: 'Salon'
+      - sak_layout_mjt_barre_pieces_image: '/local/mes_images/sofa.svg'
+ 
+  layout: 
+ 
+          aspectratio: 6/0.35
+          toolsets:
+      # ==============================================================================
+            - toolset: bare-des-titres-icon
+              position:
+                cx: 50
+                cy: 20
+              tools:
+
+                - type: rectex
+                  id: 1
+                  position:
+                    cx: 100
+                    cy: 50
+                    width: 100
+                    height: 30
+                    radius:
+                      all: 2
+                  styles:
+                     rectex:  
+                       fill: '#2F4F4F' 
+                       
+                - type: 'usersvg'
+                  id: 2
+                  position:
+                    cx: 100       
+                    cy: 50           
+                    height: 25
+                    width: 25
+                  style: 'images'
+                  images:                  
+                     - default: '[[sak_layout_mjt_barre_pieces_image]]'
+                
+            - toolset: bare-des-titres-titre
+              position:
+                cx: 150
+                cy: 20
+              tools:
+        
+                - type: rectex
+                  id: 1
+                  position:
+                    cx: 200
+                    cy: 50
+                    width: 250
+                    height: 30
+                    radius:
+                      all: 2
+                  styles:
+                     rectex:  
+                       fill: '#2F4F4F' 
+
+                - type: text
+                  position:
+                    cx: 200
+                    cy: 50
+                    align: center           
+                  text: '[[sak_layout_mjt_barre_pieces_titre]]'
+                  styles:
+                    text:
+                      fill: whith
+                      letter-spacing: 0.1em
+                      font-size: 20em
+                      text-transform: 'capitalize'
+                      
+            - toolset: bare-des-titres-navigation
+              position:
+                cx: 350
+                cy: 20
+              tools:
+        
+                - type: rectex
+                  id: 1
+                  position:
+                    cx: 200
+                    cy: 50
+                    width: 100
+                    height: 30
+                    radius:
+                      all: 2
+                  styles:
+                     rectex:  
+                       fill: '#2F4F4F' 
+
+                - type: 'usersvg'
+                  id: 2
+                  position:
+                    cx: 200
+                    cy: 50           
+                    height: 25
+                    width: 25
+                  style: 'images'
+                  images:                  
+                     - default: /local/mes_images/retour-maison.svg
+                  user_actions:
+                    tap_action:
+                      haptic: success
+                      actions:
+                        - action: navigate
+                          navigation_path: vue-page-Information

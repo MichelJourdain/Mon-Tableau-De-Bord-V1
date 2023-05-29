@@ -1,0 +1,753 @@
+sak_layout_mjt_plantes:
+  template:
+    type: layout
+    defaults: 
+      - dummy: 0
+
+  layout:
+
+            aspectratio: 6/3            
+            styles:
+              card:
+            toolsets:
+        
+                - toolset: line10
+                  position:
+                    cx: 150
+                    cy: 65
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: vertical
+                        length: 100
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+
+                - toolset: line11
+                  position:
+                    cx: 440
+                    cy: 65
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: vertical
+                        length: 100
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+        
+        
+                - toolset: colonne-plante
+                  position:
+                    cx: 130
+                    cy: 55
+                  tools:
+              
+#-------------Gauche haut--------------------------------------------------------------                      
+                    - type: icon
+                      position:
+                        cx: 83
+                        cy: 40
+                        align: center
+                        icon_size: 30
+                      entity_index: 0
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                      
+                    - type: rectex
+                      position:
+                        cx: 151
+                        cy: 40
+                        height: 22
+                        width: 110
+                        radius:
+                          all: 5
+                      styles:
+                        rectex:
+                          fill: teal
+                      
+                    - type: state
+                      position:
+                        cx: 158
+                        cy: 40
+                      entity_index: 0
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+#---------gauche bas ----------------------------------------------------                      
+                    - type: icon
+                      position:
+                        cx: 83
+                        cy: 85
+                        align: center
+                        icon_size: 30
+                      entity_index: 1
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                      
+                    - type: rectex
+                      position:
+                        cx: 151
+                        cy: 85
+                        height: 22
+                        width: 110
+                        radius:
+                          all: 5
+                      styles:
+                        rectex:
+                          fill: teal # var(--theme-sys-palette-primary40)
+                      
+                    - type: state
+                      position:
+                        cx: 158
+                        cy: 85
+                      entity_index: 1
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+#---------droite haut----------------------------------------------------------                      
+                    - type: icon
+                      position:
+                        cx: 227
+                        cy: 40
+                        align: center
+                        icon_size: 30
+                      entity_index: 2
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                      
+                    - type: rectex
+                      position:
+                        cx: 300
+                        cy: 40
+                        height: 22
+                        width: 110
+                        radius:
+                          all: 5
+                      styles:
+                        rectex:
+                          fill: teal # var(--theme-sys-palette-primary40)
+                      
+                    - type: state
+                      position:
+                        cx: 305
+                        cy: 40
+                      entity_index: 2
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+#---------droite bas----------------------------------------------------------                      
+                    - type: icon
+                      position:
+                        cx: 227
+                        cy: 85
+                        align: center
+                        icon_size: 30
+                      entity_index: 3
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                      
+                    - type: rectex
+                      position:
+                        cx: 300
+                        cy: 85
+                        height: 22
+                        width: 110
+                        radius:
+                          all: 5
+                      styles:
+                        rectex:
+                          fill: teal # var(--theme-sys-palette-primary40)
+                      
+                    - type: state
+                      position:
+                        cx: 305
+                        cy: 85
+                      entity_index: 3
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+#---------------------------------------------------------------------------     
+                    - type: 'usersvg'
+                      id: 2
+                      entity_index: 0
+                      position:
+                        cx: 2.5
+                        cy: 60
+                        height: 100
+                        width: 100
+                      style: 'images'
+                      images:
+                        - face1: /local/mes_images/lis-01.jpg
+                        - face2: /local/mes_images/lis-02.jpg
+                      animations:
+                        - state: '30'
+                          operator: <=
+                          image: face1
+                        - state: '20'
+                          operator: <=
+                          image: face2
+                      styles:
+                         usersvg:
+                           opacity: 1
+        
+                - toolset: line1
+                  position:
+                    cx: 300
+                    cy: 130
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 550
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+#================================================================================                      
+                - toolset: line2
+                  position:
+                    cx: 78
+                    cy: 228
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 130
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+          
+                - toolset: column-temperature
+                  position:
+                      cx: 78
+                      cy: 223
+                  tools:
+                          
+                    - type: icon
+                      position:
+                        cx: -10
+                        cy: -20
+                        align: center
+                        icon_size: 30
+                      entity_index: 0
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 20
+                      entity_index: 0
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 50
+                        cy: 40
+                      text: "Température"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
+                              
+                    - type: 'segarc'
+                      id: 0
+                      position:
+                        cx: 50
+                        cy: 50
+                        start_angle: -90
+                        end_angle: 90
+                        width: 10
+                        radius: 70
+                      entity_index: 0
+                      scale:
+                        min: 0
+                        max: 40
+                        width: 20
+                        offset: 12
+                      show:
+                        scale: false
+                        style: 'colorstops'
+                      segments:
+                        colorlist:
+                          gap: 4
+                          colors: 
+                            - var(--theme-sys-palette-primary50)
+                        colorstops:
+                            gap: 4
+                            colors:
+                              0: 'red'
+                              15: 'green'
+                              30: 'orange'
+                      styles:
+                        foreground:
+                           fill: darkgrey
+                        background:
+                            fill: var(--theme-sys-elevation-surface-neutral4)
+                            opacity: 1
+                                  
+                    - type: 'bar'
+                      id: 5
+                      entity_index: 0
+                      position:
+                        orientation: vertical
+                        cx: 50
+                        cy: 90
+                        width:  135
+                        height: 50
+                      hours: 24
+                      barhours: 1
+                      styles:
+                        bar:
+                          stroke: var(--theme-gradient-color-01);
+                          stroke-linecap: butt;
+#================================================================================
+                - toolset: line3
+                  position:
+                    cx: 225
+                    cy: 228
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 130
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+          
+                - toolset: column-humiditee
+                  position:
+                      cx: 225
+                      cy: 223
+                  tools:
+                          
+                    - type: icon
+                      position:
+                        cx: -10
+                        cy: -20
+                        align: center
+                        icon_size: 30
+                      entity_index: 1
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 20
+                      entity_index: 1
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 50
+                        cy: 40
+                      text: "Humidité"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
+                              
+                    - type: 'segarc'
+                      id: 0
+                      position:
+                        cx: 50
+                        cy: 50
+                        start_angle: -90
+                        end_angle: 90
+                        width: 10
+                        radius: 70
+                      entity_index: 1
+                      scale:
+                        min: 0
+                        max: 100
+                        width: 20
+                        offset: 12
+                      show:
+                        scale: false
+                        style: 'colorstops'
+                      segments:
+                        colorlist:
+                          gap: 4
+                          colors: 
+                            - var(--theme-sys-palette-primary50)
+                        colorstops:
+                            gap: 4
+                            colors:
+                               0: 'red'
+                               20: 'yellow'
+                               50: 'green'
+                      styles:
+                        foreground:
+                            fill: darkgrey
+                        background:
+                            fill: var(--theme-sys-elevation-surface-neutral4)
+                            opacity: 1
+                                  
+                    - type: 'bar'
+                      id: 5
+                      entity_index: 1
+                      position:
+                        orientation: vertical
+                        cx: 50
+                        cy: 90
+                        width:  135
+                        height: 50
+                      hours: 24
+                      barhours: 1
+                      styles:
+                        bar:
+                          stroke: var(--theme-gradient-color-01);
+                          stroke-linecap: butt;
+#================================================================================
+                - toolset: line4
+                  position:
+                    cx: 375
+                    cy: 228
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 130
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+          
+                - toolset: column-luminosite
+                  position:
+                      cx: 375
+                      cy: 223
+                  tools:
+                          
+                    - type: icon
+                      position:
+                        cx: -10
+                        cy: -20
+                        align: center
+                        icon_size: 30
+                      entity_index: 2
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 20
+                      entity_index: 2
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 50
+                        cy: 40
+                      text: "Luminosité"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
+                              
+                    - type: 'segarc'
+                      id: 0
+                      position:
+                        cx: 50
+                        cy: 50
+                        start_angle: -90
+                        end_angle: 90
+                        width: 10
+                        radius: 70
+                      entity_index: 2
+                      scale:
+                        min: 0
+                        max: 6000
+                        width: 20
+                        offset: 12
+                      show:
+                        scale: false
+                        style: 'colorstops'
+                      segments:
+                        colorlist:
+                          gap: 4
+                          colors: 
+                            - var(--theme-sys-palette-primary50)
+                        colorstops:
+                          gap: 4
+                          colors:
+                             0: 'red'
+                             2000: 'yellow'
+                             4000: 'green'
+                      styles:
+                        foreground:
+                            fill: darkgrey
+                        background:
+                            fill: var(--theme-sys-elevation-surface-neutral4)
+                            opacity: 1
+                                  
+                    - type: 'bar'
+                      id: 5
+                      entity_index: 2
+                      position:
+                        orientation: vertical
+                        cx: 50
+                        cy: 90
+                        width:  135
+                        height: 50
+                      hours: 24
+                      barhours: 1
+                      styles:
+                        bar:
+                          stroke: var(--theme-gradient-color-01);
+                          stroke-linecap: butt;
+#================================================================================
+                - toolset: line5
+                  position:
+                    cx: 525
+                    cy: 228
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 130
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+          
+                - toolset: column-fertilite
+                  position:
+                    cx: 525
+                    cy: 223
+                  tools:
+                          
+                    - type: icon
+                      position:
+                        cx: -10
+                        cy: -20
+                        align: center
+                        icon_size: 30
+                      entity_index: 3
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 20
+                      entity_index: 3
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 20em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 50
+                        cy: 40
+                      text: "Fertilité"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
+                              
+                    - type: 'segarc'
+                      id: 0
+                      position:
+                        cx: 50
+                        cy: 50
+                        start_angle: -90
+                        end_angle: 90
+                        width: 10
+                        radius: 70
+                      entity_index: 3
+                      scale:
+                        min: 0
+                        max: 4000
+                        width: 20
+                        offset: 12
+                      show:
+                        scale: false
+                        style: 'colorstops'
+                      segments:
+                        colorlist:
+                          gap: 4
+                          colors: 
+                            - var(--theme-sys-palette-primary50)
+                        colorstops:
+                            gap: 4
+                            colors:
+                               0: 'red'
+                               1500: 'yellow'
+                               3000: 'green'
+                      styles:
+                        foreground:
+                            fill: darkgrey
+                        background:
+                            fill: var(--theme-sys-elevation-surface-neutral4)
+                            opacity: 1
+                                  
+                    - type: 'bar'
+                      id: 5
+                      entity_index: 3
+                      position:
+                        orientation: vertical
+                        cx: 50
+                        cy: 90
+                        width:  135
+                        height: 50
+                      hours: 24
+                      barhours: 1
+                      styles:
+                        bar:
+                          stroke: var(--theme-gradient-color-01);
+                          stroke-linecap: butt;
+#================================================================================                      
+                - toolset: line6
+                  position:
+                    cx: 515
+                    cy: 70
+                  tools:
+                    - type: line
+                      position:
+                        cx: 50
+                        cy: 50
+                        orientation: horizontal
+                        length: 120
+                      styles:
+                        line:
+                          fill: var(--primary-text-color)
+                          opacity: 1
+          
+                - toolset: column-pile-signal
+                  position:
+                     cx: 515
+                     cy: 75
+                  tools:
+                          
+                    - type: icon
+                      position:
+                        cx: 5
+                        cy: 0
+                        align: center
+                        icon_size: 25
+                      entity_index: 4
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 27
+                      entity_index: 4
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 25em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 60
+                        cy: 0
+                      text: "Niveau pile"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
+                          
+                    - type: icon
+                      position:
+                        cx: 5
+                        cy: 60
+                        align: center
+                        icon_size: 25
+                      entity_index: 5
+                      styles:
+                        icon:
+                          fill: var(--theme-sys-color-secondary)
+                          
+                    - type: state
+                      position:
+                        cx: 50
+                        cy: 85
+                      entity_index: 5
+                      styles:
+                        state:
+                          text-anchor: middle
+                          font-size: 25em
+                          font-weight: 700
+                          fill: var(--primary-text-color)
+                                   
+                    - type: text
+                      position:
+                        cx: 55
+                        cy: 60
+                      text: "Signal"
+                      styles:
+                        text:
+                          text-anchor: middle  
+                          font-size: 15em
+                          font-weight: 700
