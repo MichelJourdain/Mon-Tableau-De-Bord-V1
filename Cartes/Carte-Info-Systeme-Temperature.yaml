@@ -1,0 +1,36 @@
+                      type: custom:apexcharts-card
+                      experimental:
+                        color_threshold: true
+                      show:
+                        last_updated: true
+                      header:
+                        standard_format: false
+                        show: true
+                        show_states: true
+                        colorize_states: true
+                        title: Température du processeur
+                      graph_span: 24h
+                      apex_config:
+                        chart:
+                          height: 160px
+                      series:
+                        - entity: sensor.processor_temperature
+                          name: Température
+                          type: area
+                          group_by:
+                            func: last
+                            duration: 30m
+                          stroke_width: 5
+                          show:
+                            extremas: true
+                            header_color_threshold: true
+                          color_threshold:
+                            - value: 0
+                              color: "#1FA055"
+                            - value: 50
+                              color: "#FFFF00"
+                            - value: 60
+                              color: "#ED7F10"
+                            - value: 70
+                              color: "#FF0000"
+ 
