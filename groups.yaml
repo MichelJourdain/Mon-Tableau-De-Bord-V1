@@ -1,0 +1,24 @@
+# Groupe pour détecter les mouvements extérieures.
+
+mouvement_cameras_exterieur_allumer_les lumières_exterieures:
+  name: Mouvements détectés sur les caméras extérieure
+  entities:
+    - binary_sensor.blink_galerie_avant_motion_detected
+    - binary_sensor.blink_allee_motion_detected
+    - binary_sensor.blink_galerie_arriere_motion_detected
+    
+# Groupe des lumières à alumer lors d'un mouvement.
+
+mouvement_allumer_les_lumières_exterieures:
+  name: Allumer les lumières extérieures lors de mouvements
+  entities:
+      - light.philips_lumiere_galerie_avant_1
+      - light.philips_lumiere_galerie_avant_2
+      - light.philips_lumiere_lampadaire_1
+      - light.philips_lumiere_lampadaire_2
+      - light.philips_lumiere_lampadaire_3
+      - light.sinope_lumieres_galerie_arriere
+    
+    
+    
+    
