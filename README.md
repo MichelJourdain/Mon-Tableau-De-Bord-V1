@@ -66,5 +66,21 @@
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/022285c6-bc95-455a-a1d6-daaa4022f795)
 
-
 ## Pop-Ups
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/ec5d4749-e483-413e-bfa3-f509f129af2d)
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/80e8c8a8-d6f9-42ed-817e-61deeb73d28f)
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/695beaee-fd3d-44a7-8bb6-c980b7297826)
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/d0b0face-3b56-46e1-a57b-5d22efbd97aa)
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/1571dfb2-27d5-49c0-9735-df3507b1490b)
+
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/5b430520-c5c3-42bc-bc89-6ef32bbf2a7b)
+
+
+
+
+
