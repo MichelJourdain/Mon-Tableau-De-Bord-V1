@@ -1,0 +1,18 @@
+# pop-Up Automations
+
+type: custom:vertical-stack-in-card
+cards:
+
+          - type: custom:text-divider-row
+            text: "Automations"
+            align: left
+  
+          - type: custom:scheduler-card
+            include:
+              - vacuum
+              - group
+              - switch
+              - light
+              - alarm_control_panel
+              - scene
+              - climate

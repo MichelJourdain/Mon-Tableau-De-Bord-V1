@@ -1,0 +1,25 @@
+   type: 'custom:swiss-army-knife-card'
+   entities:
+    # CPU
+    - entity: sensor.processor_use
+      decimals: 0
+      name: 'Système'
+    # Memory
+    - entity: sensor.memory_use_percent
+      icon: mdi:memory
+      decimals: 0
+    # Disk
+    - entity: sensor.disk_use_percent_config
+      decimals: 0
+      icon: mdi:harddisk
+    # System Load
+    - entity: sensor.load_1m
+      decimals: 2
+      unit: '1m'
+    # Last changed
+    - entity: sensor.processor_use
+      secondary_info: last_changed
+      format: relative
+   layout:
+     template:
+       name: sak_layout_fce_server_statistics 

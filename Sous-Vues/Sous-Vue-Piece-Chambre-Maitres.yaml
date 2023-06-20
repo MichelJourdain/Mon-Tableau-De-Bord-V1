@@ -1,0 +1,176 @@
+# Sous Vue Chambre des Maîtres
+
+theme: MonTableau
+title: Chambre des Maîtres
+path: sous-vue-piece-chambre-maitres
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Chambre des maître'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/lit-principale.svg'
+              
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Environnements"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                name: Actuellement
+                unit: "\xB0C"
+              - attribute: hvac_action
+                entity: climate.sinope_thermostat_chambre_maitres
+                icon: mdi:radiator
+                name: Chauffage?
+              - attribute: temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                icon: mdi:thermostat-box
+                name: Souhaitable
+              - entity: sensor.ajout_sensor_humidite_chambre_maitres
+                unit: "%"
+              - attribute: hourly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                name: Heure
+                unit: kw
+              - attribute: hourly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                unit: kw
+              - attribute: daily_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                name: Jour
+                unit: kw
+              - attribute: daily_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                unit: kw
+              - attribute: monthly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                name: Mois
+                unit: kw
+              - attribute: monthly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_chambre_maitres
+                unit: kw
+              - attribute: wattage
+                entity: climate.sinope_thermostat_chambre_maitres
+                unit: w
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sinope
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_chambre_maitres
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Températureé"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_chambre_maitres
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_chambre_maitres_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-3"
+        cards:
+          - type: custom:text-divider-row
+            text: "Éclairages"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.brilliant_chambre_maitres
+                name: Plafond
+              - entity: light.brilliant_chambre_maitres
+                unit_of_measurement: "%"
+                attribute: brightness
+            layout:
+              template:
+                name: sak_layout_fce_light_with_slider
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.chambre_des_maitre_lampe_de_chevets
+                name: Chevets
+              - entity: light.chambre_des_maitre_lampe_de_chevets
+                unit_of_measurement: "%"
+                attribute: brightness
+            layout:
+              template:
+                name: sak_layout_fce_light_with_slider
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-3"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Prises"
+            align: center
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:swiss-army-knife-card
+                entities:
+                  - attribute: Wattage_instant
+                    entity: switch.sinope_prise_lampes_chevets
+                    name: Chevets
+                  - entity: switch.sinope_prise_lampes_chevets
+                  - entity: switch.sinope_prise_lampes_chevets
+                    name: Chevets
+                layout:
+                  template:
+                    name: sak_layout_fce_power_outlet2
+                    variables:
+                      - sak_layout_power_outlet_segarc_scale_max_watt: 25

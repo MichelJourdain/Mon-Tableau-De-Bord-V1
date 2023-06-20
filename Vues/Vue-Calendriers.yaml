@@ -1,0 +1,46 @@
+# Vue Calendrier
+
+theme: MonTableau
+title: Calendriers
+path: vue-page-calendriers
+icon: ios:calendrier#fullcolor
+type: panel
+badges: []
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Calendrier'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/calendrier.svg'
+
+      - type: custom:dwains-flexbox-card
+        items_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: calendar
+            initial_view: dayGridMonth
+            entities:
+              - calendar.michel
+              - calendar.anniversaires
+              - calendar.sports
+              - calendar.ordures_compostage
+              - calendar.ordures_menageres
+              - calendar.ordures_recuperation
+            title: Calendrier
+
+          - type: calendar
+            initial_view: listWeek
+            entities:
+              - calendar.michel
+              - calendar.anniversaires
+              - calendar.sports
+              - calendar.ordures_compostage
+              - calendar.ordures_menageres
+              - calendar.ordures_recuperation
+            title: Mon Agenda

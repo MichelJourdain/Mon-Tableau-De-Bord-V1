@@ -1,0 +1,213 @@
+# Sous Vue Salle Familiale
+
+theme: MonTableau
+title: Salle Familiale
+path: sous-vue-piece-salle-familiale
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+ 
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Salle familliale'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/famille.svg'
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Environnements"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                name: Actuellement
+                unit: "\xB0C"
+              - attribute: hvac_action
+                entity: climate.sinope_thermostat_salle_familiale
+                icon: mdi:radiator
+                name: Chauffage?
+              - attribute: temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                icon: mdi:thermostat-box
+                name: Souhaitable
+              - entity: sensor.ajout_sensor_humidite_salle_familiale
+                unit: "%"
+              - attribute: hourly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                name: Heure
+                unit: kw
+              - attribute: hourly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                unit: kw
+              - attribute: daily_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                name: Jour
+                unit: kw
+              - attribute: daily_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                unit: kw
+              - attribute: monthly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                name: Mois
+                unit: kw
+              - attribute: monthly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_salle_familiale
+                unit: kw
+              - attribute: wattage
+                entity: climate.sinope_thermostat_salle_familiale
+                unit: w
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sinope
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_salle_familiale
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Températureé"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_salle_familiale
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_sous_sol_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-3"
+        cards:
+          - type: custom:text-divider-row
+            text: "Éclairages"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.salle_familiale
+                name: Lumière
+              - entity: light.salle_familiale
+                unit_of_measurement: "%"
+                attribute: brightness
+            layout:
+              template:
+                name: sak_layout_fce_light_with_slider
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.escalier_sous_sol_groupe_de_lumieres
+                name: Escalier
+              - entity: light.escalier_sous_sol_groupe_de_lumieres
+                unit_of_measurement: "%"
+                attribute: brightness
+            layout:
+              template:
+                name: sak_layout_fce_light_with_slider
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.philips_lumiere_echangeur_dair
+                name: Échangeur
+              - entity: light.philips_lumiere_echangeur_dair
+                unit_of_measurement: "%"
+                attribute: brightness
+            layout:
+              template:
+                name: sak_layout_fce_light_with_slider
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-3"
+        cards:
+          - type: custom:text-divider-row
+            text: "Mouvements"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: binary_sensor.blink_sous_sol_motion_detected
+                name: Sous-Sol
+              - entity: binary_sensor.blink_sous_sol_motion_detected
+                format: relative
+                secondary_info: last_changed
+              - attribute: wifi_strength
+                decimals: 0
+                entity: camera.blink_sous_sol
+                icon: mdi:signal
+              - attribute: temperature_c
+                decimals: 0
+                entity: camera.blink_sous_sol
+                icon: mdi:thermometer
+            layout:
+              template:
+                name: sak_layout_mjt_alert_mouvements
+                variables:
+                  - dummy: 0
+
+          - type: custom:text-divider-row
+            text: "Fuites"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: binary_sensor.sinope_mq_detecteur_d_eau_chauffe_eau_water_leak
+                name: "R\xE9servoire"
+              - entity: binary_sensor.sinope_mq_detecteur_d_eau_chauffe_eau_water_leak
+                format: relative
+                secondary_info: last_changed
+              - entity: sensor.sinope_mq_detecteur_d_eau_chauffe_eau_battery
+                units: "%"
+                decimals: 0
+              - entity: sensor.sinope_mq_detecteur_d_eau_chauffe_eau_temperature
+                decimals: 0
+            layout:
+              template:
+                name: sak_layout_mjt_alert_fuites
+                variables:
+                  - dummy: 0

@@ -1,0 +1,66 @@
+type: custom:apexcharts-card
+apex_config:
+  chart:
+    stacked: true
+    height: 255px
+  tooltip:
+    enabled: true
+    theme: light
+    style:
+      fontsize: 6px
+    onDatasetHover:
+      highlightDataSeries: true
+    x:
+      show: false
+      format: MMM YYYY
+      formatter: |
+        EVAL:function(value) {
+          const array_list = ['Jan','Feb','Mar','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']      
+          const unixts = value;
+          var date = new Date(unixts);
+          date.setDate(date.getDate() + 2);
+          var syear = date.getFullYear();
+          var result = array_list[date.getMonth()] + ' ' + syear;
+          return result;
+        }    
+    marker:
+      show: true
+    fixed:
+      enabled: false
+      position: topRight
+      offsetX: -10
+      offsetY: 0
+update_interval: 1d
+graph_span: 6month
+span:
+  end: month
+show:
+  last_updated: true
+header:
+  show: true
+  title: Utilisation de la bande passante
+  show_states: true
+  colorize_states: true
+series:
+  - entity: sensor.internet_telechargement_bande_passante
+    type: column
+    unit: "Go"
+    name: Téléchargement
+    color: green
+    group_by:
+      func: delta
+      duration: 1month
+      fill: zero
+    show:
+      legend_value: false
+  - entity: sensor.internet_televersement_bande_passante
+    type: column
+    unit: "Go"
+    name: Téléversement
+    color: rgb(0, 164, 206)
+    group_by:
+      func: delta
+      duration: 1month
+      fill: zero
+    show:
+      legend_value: false

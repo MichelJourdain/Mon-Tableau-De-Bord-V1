@@ -1,0 +1,143 @@
+# Vue Médias
+
+theme: MonTableau
+title: Média
+path: vue-page-medias
+icon: ios:medias#fullcolor
+type: panel
+badges: []
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Médias'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/medias.svg'
+
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Spotify"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 4em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: custom:mini-media-player
+            entity: media_player.spotify_michel
+            hide:
+              icon: true
+              info: true
+              name: true
+              power: true
+              source: true
+              volume: false
+            info: scroll
+            mini-media-player-scale: 10
+            name: Spotify
+            shuffle: true
+            sound_mode: full
+            toggle_power: true
+            artwork: full-cover
+
+          - type: entities
+            entities:
+              - entity: input_select.spotify_playlist
+                icon: mdi:playlist-music
+                name: Liste de lecture
+              - entity: input_select.spotify_source
+                icon: mdi:speaker-multiple
+                name: Haut-Pareleurs
+              - entity: script.spotify_music
+                icon: mdi:play
+                name: Jouer
+              - entity: sensor.spotify_att_artiste_en_lecture
+                icon: mdi:account-music
+                name: Artiste
+              - entity: sensor.spotify_att_album_en_lecture
+                icon: mdi:album
+                name: Album
+              - entity: sensor.spotify_att_piece_en_lecture
+                icon: mdi:bookmark-music-outline
+                name: "Pi\xE8ce"
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          # Médias
+
+          - type: custom:swiss-army-knife-card
+            disable_card: true
+            layout:
+              template:
+                name: sak_layout_fce_header
+                variables:
+                  - sak_layout_header_content: "Médias"
+                  - sak_layout_header_font_color: var(--secondary-text-color)
+                  - sak_layout_header_font_size: 4em
+                  - sak_layout_header_font_text_transform: capitalize
+
+          - type: custom:mini-media-player
+            entity: media_player.salon
+            hide:
+              icon: false
+              info: false
+              name: false
+              power: true
+              source: false
+              volume: true
+            info: scroll
+            name: Apple TV
+            shuffle: false
+            toggle_power: false
+            artwork: full-cover
+
+          - type: custom:mushroom-media-player-card
+            media_controls:
+              - on_off
+            fill_container: true
+            use_media_info: true
+            show_volume_level: true
+            collapsible_controls: true
+            volume_controls: []
+            entity: media_player.tele_samsung_8k
+            name: Télévision
+
+          - type: custom:mushroom-media-player-card
+            media_controls:
+              - play_pause_stop
+              - on_off
+            name: Épico
+            fill_container: true
+            use_media_info: true
+            show_volume_level: true
+            collapsible_controls: true
+            entity: media_player.televiseur_du_salon
+            volume_controls:
+              - volume_set
+              - volume_buttons
+
+          - type: custom:mushroom-media-player-card
+            media_controls:
+              - on_off
+            fill_container: true
+            use_media_info: true
+            show_volume_level: true
+            collapsible_controls: true
+            volume_controls:
+              - volume_mute
+              - volume_set
+              - volume_buttons
+            name: Amplificateur
+            entity: media_player.denon_avr_x4500h

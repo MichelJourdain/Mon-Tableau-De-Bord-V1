@@ -1,0 +1,172 @@
+# Vue Suivi
+
+theme: MonTableau
+title: Automations
+path: vue-page-suivi
+icon: ios:suivi#fullcolor
+type: panel
+badges: []
+cards:
+ 
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Suivi'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/suivi.svg'
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Risque d'incendie"
+            align: left
+            
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: sensor.sopfeu_risque_d_incendie_actuel
+                name: "Actuel"
+                icon: mdi:pine-tree-fire
+              - entity: sensor.sopfeu_risque_d_incendie_demain
+                name: "Demain"
+              - entity: sensor.sopfeu_risque_d_incendie_apres_demain
+                name: "Après-demain"
+              - entity: sensor.sopfeu_risque_d_incendie_actuel_texte
+              - entity: sensor.sopfeu_risque_d_incendie_demain_texte
+              - entity: sensor.sopfeu_risque_d_incendie_apres_demain_texte
+              - entity: sensor.sopfeu_feux_actifs_au_quebec
+                name: "Feux Actifs au Québec"
+                icon: mdi:fire-circle
+            layout:
+              template:
+                name: sak_layout_mjt_risque_incendie
+                variables:
+                  - dummy: "dummy"
+        
+          - type: custom:apexcharts-card
+            header:
+              standard_format: true
+              show: true
+              show_states: true
+              colorize_states: true
+              title: "Prix de l'essence"
+              disable_actions: true
+            graph_span: 10d
+            span:
+              end: day
+            show:
+              last_updated: true
+            yaxis:
+              - min: 1.00
+                max: ~2.50
+                decimals: 2
+            series:
+              - entity: sensor.caa_prix_essence_shawinigan_aujourd_hui
+                type: column
+                name: "Actuellement"
+                float_precision: 3
+                group_by:
+                  func: last
+                  duration: 1d
+                stroke_width: 5
+                show:
+                  legend_value: false
+                  extremas: true
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Indice de la qualité de l'air"
+            align: left
+            
+          - type: 'custom:swiss-army-knife-card'
+            entities:
+              - entity: sensor.iqa_numeric_shawinigan
+                name: "IQA"
+              - entity: sensor.iqa_numeric_shawinigan
+                secondary_info: last_changed
+                format: relative
+              - entity: sensor.iqa_text_shawinigan
+                icon: mdi:air-filter
+            layout:
+              template:
+                name: sak_layout_mjt_iqa
+              
+          - type: entities
+            title: Prix carburants
+            entities:
+
+              - type: custom:multiple-entity-row
+                entity: sensor.caa_prix_essence_quebec_aujourd_hui
+                name: Québec
+                show_state: false
+                secondary_info: last-changed
+                entities:
+                  - entity: sensor.caa_prix_essence_quebec_aujourd_hui
+                    name: Actuel
+                    unit: $
+                  - entity: sensor.caa_prix_essence_quebec_hier
+                    name: Hier
+                    unit: $
+
+              - type: section
+
+              - type: custom:multiple-entity-row
+                entity: sensor.caa_prix_essence_trois_rivieres_aujourd_hui
+                name: Trois-Rivères
+                show_state: false
+                secondary_info: last-changed
+                entities:
+                  - entity: sensor.caa_prix_essence_trois_rivieres_aujourd_hui
+                    name: false
+                    unit: $
+                  - entity: sensor.caa_prix_essence_trois_rivieres_hier
+                    name: false
+                    unit: $
+
+              - type: section
+
+              - type: custom:multiple-entity-row
+                entity: sensor.caa_prix_essence_montreal_aujourd_hui
+                name: Montréal
+                show_state: false
+                secondary_info: last-changed
+                entities:
+                  - entity: sensor.caa_prix_essence_montreal_aujourd_hui
+                    name: false
+                    unit: $
+                  - entity: sensor.caa_prix_essence_montreal_hier
+                    name: false
+                    unit: $
+                    
+          - type: entities
+            title: Historique du prix du carburants
+            entities:
+              - type: section
+              - type: custom:multiple-entity-row
+                entity: sensor.caa_prix_essence_shawinigan_aujourd_hui
+                name: Shawingan
+                show_state: false
+                secondary_info: last-changed
+                column: true
+                entities:
+                  - entity: sensor.caa_prix_essence_shawinigan_aujourd_hui
+                    name: Actuel
+                  - entity: sensor.caa_prix_essence_shawinigan_hier
+                    name: Hier
+                  - entity: sensor.caa_prix_essence_shawinigan_la_semaine_derniere
+                    name: Semaine dernière
+                  - entity: sensor.caa_prix_essence_shawinigan_le_mois_dernier
+                    name: Mois dernier
+                  - entity: sensor.caa_prix_essence_shawinigan_l_annee_derniere
+                    name: Année dernière
+

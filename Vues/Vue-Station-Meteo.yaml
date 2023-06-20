@@ -1,0 +1,1403 @@
+# Vue Station Météo
+
+theme: MonTableau
+title: Station Météo
+path: vue-page-stations-meteos
+icon: ios:thermometre#fullcolor
+type: panel
+badges: []
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: col-xs-12
+    cards:
+
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Station météo'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/thermometre.svg'
+
+      - type: custom:tabbed-card
+        styles:
+          --mdc-theme-primary: yellow
+          --mdc-tab-text-label-color-default: lightblue
+        options: {}
+        tabs:
+          - card:
+              type: custom:dwains-flexbox-card
+              items_classes: "col-xs-12"
+              cards:
+                - type: custom:vertical-stack-in-card
+                  item_classes: "col-xs-12 col-sm-6"
+                  cards:
+                    - type: custom:apexcharts-card
+                      experimental:
+                        color_threshold: true
+                      show:
+                        last_updated: false
+                      header:
+                        standard_format: false
+                        show: false
+                        show_states: false
+                        colorize_states: false
+                        title: Température
+                      graph_span: 12d
+                      apex_config:
+                        chart:
+                          height: 185px
+                      series:
+                        - entity: sensor.tempest_st_00032986_temperature
+                          name: Température
+                          type: area
+                          group_by:
+                            func: last
+                            duration: 1d
+                          stroke_width: 5
+                          show:
+                            extremas: true
+                            header_color_threshold: true
+                          color_threshold:
+                            - value: -30
+                              color: "#003366"
+                            - value: -20
+                              color: "#22427C"
+                            - value: -15
+                              color: "#77B5FE"
+                            - value: -10
+                              color: "#77B5FE"
+                            - value: -5
+                              color: "#A9EAFE"
+                            - value: 0
+                              color: "#EF9B0F"
+                            - value: 10
+                              color: "#FFFF05"
+                            - value: 15
+                              color: "#16B84E"
+                            - value: 20
+                              color: "#00FF00"
+                            - value: 30
+                              color: "#EE1010"
+
+                    - type: custom:windrose-card
+                      hours_to_show: 12
+                      max_width: 400
+                      refresh_interval: 300
+                      windspeed_bar_location: right
+                      windspeed_bar_full: true
+                      wind_direction_count: 16
+                      wind_direction_entity:
+                        entity: sensor.tempest_st_00032986_wind_bearing
+                        direction_unit: degrees
+                        use_statistics: false
+                        direction_compensation: 0
+                      windspeed_entities:
+                        - entity: sensor.weatherflow_vitesse_vent_km
+                          name: Vent
+                          speed_unit: auto
+                          use_statistics: false
+                        - entity: sensor.weatherflow_vitesse_rafale_vent_km
+                          name: Rafales
+                          speed_unit: auto
+                          use_statistics: false
+                      output_speed_unit: kph
+                      speed_range_beaufort: false
+                      windrose_draw_north_offset: -40
+                      cardinal_direction_letters: NESO
+                      matching_strategy: direction-first
+                      center_calm_percentage: true
+                      speed_ranges:
+                        - from_value: 0
+                          color: darkgreen
+                        - from_value: 5
+                          color: yellow
+                        - from_value: 10
+                          color: hsl(200, 100%, 60%)
+                        - from_value: 20
+                          color: orange
+                        - from_value: 30
+                          color: red
+
+                    - type: custom:uv-index-card
+                      entity: sensor.tempest_st_00032986_uv_index
+                      name: Indice UV
+                      language: fr
+
+                - type: custom:vertical-stack-in-card
+                  item_classes: "col-xs-12 col-sm-6"
+                  cards:
+                    - type: markdown
+                      content: |
+                        ## État de la station Tempest 
+                        Voltage : {{ states('sensor.tempest_st_00032986_voltage') }}V  
+                        État : {{ states('sensor.tempest_st_00032986_battery_mode') }}
+                        {{ states('sensor.weatherflow_mode_descption') }}
+
+                    - type: custom:apexcharts-card
+                      experimental:
+                        color_threshold: true
+                      show:
+                        last_updated: false
+                      header:
+                        standard_format: false
+                        show: true
+                        show_states: true
+                        colorize_states: true
+                        title: Pile
+                      graph_span: 12d
+                      apex_config:
+                        chart:
+                          height: 210px
+                      series:
+                        - entity: sensor.tempest_st_00032986_battery
+                          type: area
+                          group_by:
+                            func: last
+                            duration: 1d
+                          stroke_width: 5
+                          show:
+                            extremas: true
+                            header_color_threshold: true
+                            name_in_header: false
+                          color_threshold:
+                            - value: 0
+                              color: red
+                            - value: 20
+                              color: yellow
+                            - value: 40
+                              color: orange
+                            - value: 60
+                              color: steelblue
+                            - value: 80
+                              color: green
+
+                    - type: custom:rain-gauge-card
+                      entity: sensor.tempest_st_00032986_rain_today
+                      name: Pluie
+                      border_colour: red
+                      max_level: 60
+                      hourly_rate_entity: sensor.tempest_st_00032986_rain_rate
+
+            attributes:
+              icon: mdi:eye-plus-outline
+              label: Observations
+
+          - card:
+              type: custom:dwains-flexbox-card
+              items_classes: "col-xs-12 col-sm-6 col-sm-6 col-md-4"
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Température
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_temperature
+                              color: white
+                              show_fill: true
+                            - entity: sensor.tempest_st_00032986_temperature
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.tempest_st_00032986_temperature
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:weather-partly-snowy-rainy
+                          name: Actuellement
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.tempest_st_00032986_temperature_level
+                          name: Description
+                        - entity: sensor.tempest_st_00032986_dew_point
+                          name: "Pointe de ros\xE9e"
+                        - entity: sensor.tempest_st_00032986_feels_like_temperature
+                          name: Ressenti
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_temperature
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Température"
+                                - thecolor: "colorstops_temperature_mjt_outside"
+                                - themin: -40
+                                - themax: 40
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_feels_like_temperature
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Ressenti"
+                                - thecolor: "colorstops_temperature_mjt_outside"
+                                - themin: -40
+                                - themax: 40
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Vent
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.weatherflow_vitesse_vent_km
+                              color: white
+                              show_fill: true
+                            - entity: sensor.weatherflow_vitesse_vent_km
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.weatherflow_vitesse_vent_km
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:weather-windy
+                          name: Vent
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.weatherflow_vitesse_rafale_vent_km
+                          name: Rafales
+                        - entity: sensor.tempest_st_00032986_wind_direction
+                          name: Direction
+                        - entity: sensor.tempest_st_00032986_wind_bearing
+                          name: "Degr\xE9s"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.weatherflow_vitesse_vent_km
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Vitesse"
+                                - thecolor: "colorstops_mjt_vitesse_vent"
+                                - themin: 0
+                                - themax: 80
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.weatherflow_vitesse_rafale_vent_km
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Rafale"
+                                - thecolor: "colorstops_mjt_vitesse_vent"
+                                - themin: 0
+                                - themax: 80
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Pluie
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_rain_today
+                              color: white
+                              show_fill: true
+                            - entity: sensor.tempest_st_00032986_rain_today
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.tempest_st_00032986_rain_today
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:weather-rainy
+                          name: Aujourd'hui
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.tempest_st_00032986_precipitation_type
+                          name: "Type de pr\xE9citation"
+                        - entity: sensor.tempest_st_00032986_last_rain_start
+                          name: "Derni\xE8re fois"
+                        - entity: sensor.tempest_st_00032986_rain_yesterday
+                          name: Pluie Hier
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_rain_today
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Aujourd'hui"
+                                - thecolor: "colorstops_mjt_pluie"
+                                - themin: 0
+                                - themax: 70
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_rain_yesterday
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Hier"
+                                - thecolor: "colorstops_mjt_pluie"
+                                - themin: 0
+                                - themax: 70
+
+            attributes:
+              icon: mdi:home-lightning-bolt
+              label: Ext 1
+
+          - card:
+              type: custom:dwains-flexbox-card
+              items_classes: "col-xs-12 col-sm-6 col-sm-6 col-md-4"
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: "Barom\xE8tre"
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_sea_level_pressure
+                              color: white
+                              show_fill: true
+                            - entity: sensor.tempest_st_00032986_sea_level_pressure
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.tempest_st_00032986_sea_level_pressure
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:gauge
+                          name: Pression
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.tempest_st_00032986_station_pressure
+                          name: Niveau de la mer
+                        - entity: sensor.tempest_st_00032986_pressure_trend
+                          name: Tendance
+                        - entity: sensor.tempest_st_00032986_air_density
+                          name: "Densit\xE9 de l'air"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_station_pressure
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Station"
+                                - thecolor: "colorstops_pressure"
+                                - themin: 900
+                                - themax: 1100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_sea_level_pressure
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Niveau Mer"
+                                - thecolor: "colorstops_pressure"
+                                - themin: 900
+                                - themax: 1100
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: "Humidit\xE9"
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_humidity
+                              color: white
+                              show_fill: true
+                            - entity: sensor.tempest_st_00032986_humidity
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.tempest_st_00032986_humidity
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:water-percent
+                          name: "Humidit\xE9"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.tempest_st_00032986_dewpoint_comfort_level
+                          name: Confort
+                        - entity: sensor.tempest_st_00032986_absolute_humidity
+                          name: Sensation
+                        - entity: sensor.tempest_st_00032986_wet_bulb_temperature
+                          name: Indice TTGM
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_humidity
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_wet_bulb_temperature
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Indice TTGM"
+                                - thecolor: "colorstops_temperature_mjt_inside"
+                                - themin: -40
+                                - themax: 40
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: "\xC9claire"
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_lightning_count_today
+                              color: white
+                              show_fill: true
+                            - entity: sensor.tempest_st_00032986_lightning_count_today
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.tempest_st_00032986_lightning_count_today
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:lightning-bolt
+                          name: Éclaires
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.weatherflow_nombre_eclaires_mois
+                          name: Nombre dans le mois
+                        - entity: sensor.tempest_st_00032986_lightning_distance
+                          name: Distance (Km))
+                        - entity: sensor.tempest_st_00032986_lightning_count_3_hours
+                          name: Depuis trois heure
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_lightning_count_today
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Nb Éclaire"
+                                - thecolor: "colorstops_mjt_nb_eclaires"
+                                - themin: 0
+                                - themax: 1000
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.tempest_st_00032986_lightning_distance
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Distance"
+                                - thecolor: "colorstops_mjt_distance_eclaires"
+                                - themin: 0
+                                - themax: 40
+
+            attributes:
+              icon: mdi:home-lightning-bolt
+              label: Ext 2
+
+          - card:
+              type: custom:dwains-flexbox-card
+              items_classes: "col-xs-12 col-sm-6 col-sm-6 col-md-4"
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Salon
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.netatmo_salon_temperature
+                              color: white
+                              show_fill: true
+                            - entity: sensor.netatmo_salon_temperature
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.netatmo_salon_temperature
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.netatmo_salon_co2
+                          name: CO2
+                        - entity: sensor.netatmo_salon_humidity
+                          name: "Humidit\xE9"
+                        - entity: sensor.netatmo_salon_pressure
+                          name: Pression
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_salon_humidity
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_salon_co2
+                              icon: mdi:molecule-co2
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Niveau CO2"
+                                - thecolor: "colorstops_mjt_co2"
+                                - themin: 380
+                                - themax: 4000
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Chambre Maîtres
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.netatmo_chambre_maitres_temperature
+                              color: white
+                              show_fill: true
+                            - entity: sensor.netatmo_chambre_maitres_temperature
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.netatmo_chambre_maitres_temperature
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.netatmo_chambre_maitres_co2
+                          name: CO2
+                        - entity: sensor.netatmo_chambre_maitres_humidity
+                          name: "Humidit\xE9"
+                        - entity: sensor.netatmo_traduire_tendance_temperature_chambre_maitres
+                          name: "Tendance Temp\xE9rature"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_chambre_maitres_humidity
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_chambre_maitres_co2
+                              icon: mdi:molecule-co2
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Niveau CO2"
+                                - thecolor: "colorstops_mjt_co2"
+                                - themin: 380
+                                - themax: 4000
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Bureau
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.netatmo_bureau_temperature
+                              color: white
+                              show_fill: true
+                            - entity: sensor.netatmo_bureau_temperature
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.netatmo_bureau_temperature
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.netatmo_bureau_co2
+                          name: CO2
+                        - entity: sensor.netatmo_bureau_humidity
+                          name: "Humidit\xE9"
+                        - entity: sensor.netatmo_traduire_tendance_temperature_bureau
+                          name: "Tendance Temp\xE9rature"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_bureau_humidity
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_bureau_co2
+                              icon: mdi:molecule-co2
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Niveau CO2"
+                                - thecolor: "colorstops_mjt_co2"
+                                - themin: 380
+                                - themax: 4000
+
+            attributes:
+              icon: mdi:home-lightning-bolt
+              label: Int 1
+
+          - card:
+              type: custom:dwains-flexbox-card
+              items_classes: "col-xs-12 col-sm-6 col-sm-6 col-md-4"
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Sous-sol
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.netatmo_sous_sol_temperature
+                              color: white
+                              show_fill: true
+                            - entity: sensor.netatmo_sous_sol_temperature
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.netatmo_sous_sol_temperature
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.netatmo_sous_sol_co2
+                          name: CO2
+                        - entity: sensor.netatmo_sous_sol_humidity
+                          name: "Humidit\xE9"
+                        - entity: sensor.netatmo_traduire_tendance_temperature_sous_sol
+                          name: "Tendance Temp\xE9rature"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_sous_sol_humidity
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.netatmo_sous_sol_co2
+                              icon: mdi:molecule-co2
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Niveau CO2"
+                                - thecolor: "colorstops_mjt_co2"
+                                - themin: 380
+                                - themax: 4000
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Cuisine
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.sensibo_temperature_courante_cuisine
+                              color: white
+                              show_fill: true
+                            - entity: sensor.sensibo_temperature_courante_cuisine
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.sensibo_temperature_courante_cuisine
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.sensibo_humiditee_courante_cuisine
+                          name: "Humidit\xE9"
+                        - entity: sensor.cuisine_filter_last_reset
+                          name: "Changement du Filtre"
+                        - entity: button.cuisine_reset_filter
+                          name: "Filtre nettoyé"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.sensibo_temperature_courante_cuisine
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Température"
+                                - thecolor: "colorstops_temperature_mjt_inside"
+                                - themin: 0
+                                - themax: 40
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.sensibo_humiditee_courante_cuisine
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+                - type: vertical-stack
+                  cards:
+                    - type: "custom:button-card"
+                      name: Salle De Repos
+                      styles:
+                        card:
+                          - text-transform: uppercase
+                          - color: white
+                          - font-size: 125%
+                          - border-radius: 0%
+                          - font-weight: 100
+                          - letter-spacing: 10px
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:mini-graph-card"
+                          entities:
+                            - entity: sensor.sensibo_temperature_courante_salle_de_repos
+                              color: white
+                              show_fill: true
+                            - entity: sensor.sensibo_temperature_courante_salle_de_repos
+                              color: green
+                              show_fill: false
+                          font_size: 95
+                          hours_to_show: 24
+                          line_width: 2
+                          hour24: true
+                          points_per_hour: 2
+                          decimals: 0
+                          show:
+                            animate: true
+                            icon: false
+                            labels: false
+                            legend: false
+                            name: false
+                            graph: line
+                            extrema: true
+                            average: false
+
+                        - type: "custom:button-card"
+                          theme: ios-dark-mode-blue-red
+                          entity: sensor.sensibo_temperature_courante_salle_de_repos
+                          aspect_ratio: 1/1.5
+                          color: "rgb(41, 158, 200)"
+                          icon: mdi:thermometer
+                          name: "Temp\xE9rature"
+                          show_state: true
+                          size: 40%
+                          state:
+                            - color: "var(--disabled-text-color)"
+                              value: "off"
+                            - color: "rgb(41, 158, 194)"
+                              value: "on"
+                          styles:
+                            name:
+                              - text-transform: uppercase
+                              - font-size: 10px
+                            state:
+                              - text-transform: uppercase
+                              - font-size: 15px
+                              - font: bold
+
+                    - type: entities
+                      entities:
+                        - entity: sensor.sensibo_humiditee_courante_salle_de_repos
+                          name: "Humidit\xE9"
+                        - entity: sensor.salle_de_repos_filter_last_reset
+                          name: "Changement du Filtre"
+                        - entity: button.salle_de_repos_reset_filter
+                          name: "Filtre nettoyé"
+
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.sensibo_temperature_courante_salle_de_repos
+                              decimals: 0
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Températureé"
+                                - thecolor: "colorstops_temperature_mjt_inside"
+                                - themin: 0
+                                - themax: 40
+
+                        - type: "custom:swiss-army-knife-card"
+                          entities:
+                            - entity: sensor.sensibo_humiditee_courante_salle_de_repos
+                          layout:
+                            template:
+                              name: sak_layout_mjt_demi_cercle_graphique
+                              variables:
+                                - thetext: "Humidité"
+                                - thecolor: "colorstops_mjt_humidite"
+                                - themin: 0
+                                - themax: 100
+
+            attributes:
+              icon: mdi:home-lightning-bolt
+              label: Int 2

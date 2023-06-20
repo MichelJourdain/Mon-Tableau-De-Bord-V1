@@ -1,0 +1,193 @@
+# Sous Vue Extérieur
+
+theme: MonTableau
+title: Extérieur
+path: sous-vue-piece-exterieur
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Extérieur'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/arbre.svg'
+
+      - type: custom:vertical-stack-in-card
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: custom:text-divider-row
+            text: "Environnements"
+            align: center
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.tempest_st_00032986_temperature
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Températureé"
+                      - thecolor: "colorstops_temperature_mjt_outside"
+                      - themin: -40
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.tempest_st_00032986_humidity
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.tempest_st_00032986_station_pressure
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Station"
+                      - thecolor: "colorstops_pressure"
+                      - themin: 900
+                      - themax: 1100
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:text-divider-row
+                    text: "Éclairages"
+                    align: center
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.exterieure_avant_groupe_de_lumieres
+                        name: Avant
+                      - entity: light.exterieure_avant_groupe_de_lumieres
+                        unit_of_measurement: "%"
+                        attribute: brightness
+                    layout:
+                      template:
+                        name: sak_layout_fce_light_with_slider
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.galerie_avant_groupe_de_lumieres
+                        name: Galerie Avant
+                      - entity: light.galerie_avant_groupe_de_lumieres
+                        unit_of_measurement: "%"
+                        attribute: brightness
+                    layout:
+                      template:
+                        name: sak_layout_fce_light_with_slider
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.lampadaire_groupe_de_lumieres
+                        name: Lampadaire
+                      - entity: light.lampadaire_groupe_de_lumieres
+                        unit_of_measurement: "%"
+                        attribute: brightness
+                    layout:
+                      template:
+                        name: sak_layout_fce_light_with_slider
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: light.sinope_lumieres_galerie_arriere
+                        name: Galerie Arrière
+                    layout:
+                      template:
+                        name: sak_layout_fce_light
+
+              - type: vertical-stack
+                cards:
+                
+                  - type: custom:text-divider-row
+                    text: "Mouvements"
+                    align: center
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: binary_sensor.blink_galerie_avant_motion_detected
+                        name: Avant
+                      - entity: binary_sensor.blink_galerie_avant_motion_detected
+                        format: relative
+                        secondary_info: last_changed
+                      - attribute: wifi_strength
+                        decimals: 0
+                        entity: camera.blink_galerie_avant
+                        icon: mdi:signal
+                      - attribute: temperature_c
+                        decimals: 0
+                        entity: camera.blink_galerie_avant
+                        icon: mdi:thermometer
+                    layout:
+                      template:
+                        name: sak_layout_mjt_alert_mouvements
+                        variables:
+                          - dummy: 0
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: binary_sensor.blink_galerie_arriere_motion_detected
+                        name: Arrière
+                      - entity: binary_sensor.blink_galerie_arriere_motion_detected
+                        format: relative
+                        secondary_info: last_changed
+                      - attribute: wifi_strength
+                        decimals: 0
+                        entity: camera.blink_galerie_arriere
+                        icon: mdi:signal
+                      - attribute: temperature_c
+                        decimals: 0
+                        entity: camera.blink_galerie_arriere
+                        icon: mdi:thermometer
+                    layout:
+                      template:
+                        name: sak_layout_mjt_alert_mouvements
+                        variables:
+                          - dummy: 0
+
+                  - type: custom:swiss-army-knife-card
+                    entities:
+                      - entity: binary_sensor.blink_allee_motion_detected
+                        name: Allée
+                      - entity: binary_sensor.blink_allee_motion_detected
+                        format: relative
+                        secondary_info: last_changed
+                      - attribute: wifi_strength
+                        decimals: 0
+                        entity: camera.blink_allee
+                        icon: mdi:signal
+                      - attribute: temperature_c
+                        decimals: 0
+                        entity: camera.blink_allee
+                        icon: mdi:thermometer
+                    layout:
+                      template:
+                        name: sak_layout_mjt_alert_mouvements
+                        variables:
+                          - dummy: 0
+

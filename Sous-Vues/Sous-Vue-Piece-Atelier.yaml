@@ -1,0 +1,138 @@
+# Sous Vue Chambre des Maîtres
+
+theme: MonTableau
+title: Atelier
+path: sous-vue-piece-atelier
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Atelier'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/outils.svg'
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-6"
+        cards:
+                  
+          - type: custom:text-divider-row
+            text: "Environnements"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                name: Actuellement
+                unit: "\xB0C"
+              - attribute: hvac_action
+                entity: climate.sinope_thermostat_atelier
+                icon: mdi:radiator
+                name: Chauffage?
+              - attribute: temperature
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                icon: mdi:thermostat-box
+                name: Souhaitable
+              - entity: sensor.ajout_sensor_humidite_atelier
+                unit: "%"
+              - attribute: hourly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                name: Heure
+                unit: kw
+              - attribute: hourly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                unit: kw
+              - attribute: daily_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                name: Jour
+                unit: kw
+              - attribute: daily_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                unit: kw
+              - attribute: monthly_kwh
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                name: Mois
+                unit: kw
+              - attribute: monthly_kwh_count
+                decimals: 1
+                entity: climate.sinope_thermostat_atelier
+                unit: kw
+              - attribute: wattage
+                entity: climate.sinope_thermostat_atelier
+                unit: w
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sinope
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_atelier
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Température"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_atelier
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_sous_sol_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-3"
+        cards:
+        
+          - type: custom:text-divider-row
+            text: "Éclairages"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - entity: light.sinope_lumieres_atelier
+                name: Établie
+            layout:
+              template:
+                name: sak_layout_fce_light

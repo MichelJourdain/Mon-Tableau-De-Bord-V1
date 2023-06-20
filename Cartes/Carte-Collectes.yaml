@@ -1,0 +1,66 @@
+# Collectes des déchets.
+
+type: horizontal-stack
+cards:
+  - type: custom:mushroom-template-card
+    primary: Déchets
+    secondary: "{{states('sensor.ordures_menageres_jour')}}"
+    fill_container: true
+    multiline_secondary: true
+    layout: horizontal
+    picture: >
+      {% if states('sensor.ordures_menageres_date') | int < 1 %}
+        local/mes_images/waste_today.png
+      {% elif states('sensor.ordures_menageres_date') | int < 2 %}
+        local/mes_images/waste_tomorow.png
+      {% else %}
+        local/mes_images/waste.png
+      {% endif %}
+    hold_action:
+      action: none
+    tap_action:
+      action: none
+    double_tap_action:
+      action: none
+
+  - type: custom:mushroom-template-card
+    primary: Récupération
+    secondary: "{{states('sensor.ordures_recuperation_jour')}}"
+    fill_container: true
+    multiline_secondary: true
+    layout: horizontal
+    picture: >
+      {% if states('sensor.ordures_recuperation_date') | int < 1 %}
+        local/mes_images/recycling_today.png
+      {% elif states('sensor.ordures_recuperation_date') | int < 2 %}
+        local/mes_images/recycling_tomorow.png
+      {% else %}
+        local/mes_images/recycling.png
+      {% endif %}
+    hold_action:
+      action: none
+    tap_action:
+      action: none
+    double_tap_action:
+      action: none
+
+  - type: custom:mushroom-template-card
+    primary: Compostage
+    secondary: "{{states('sensor.ordures_compostage_jour')}}"
+    fill_container: true
+    multiline_secondary: true
+    layout: horizontal
+    picture: >
+      {% if states('sensor.ordures_compostage_date') | int < 1 %}
+         local/mes_images/organic_today.png
+       {% elif states('sensor.ordures_compostage_date') | int < 2 %}
+         local/mes_images/organic_tomorow.png
+       {% else %}
+         local/mes_images/organic.png
+       {% endif %}
+    hold_action:
+      action: none
+    tap_action:
+      action: none
+    double_tap_action:
+      action: none

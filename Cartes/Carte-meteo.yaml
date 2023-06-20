@@ -1,0 +1,277 @@
+type: custom:dwains-flexbox-card
+items_classes: col-xs-6
+cards:
+ 
+  - type: custom:text-divider-row
+    text: 7 Hours Ahead
+    align: center
+  - type: vertical-stack
+    cards:
+      - type: custom:weather-chart-card
+        entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+        show_main: true
+        show_attributes: false
+        icons: /local/images/
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              margin-top: -20px;
+              margin-right: -10px;
+              margin-left: -5px;
+              margin-bottom: 0px;
+              padding-bottom: 0px;
+              padding-top: 0px;
+            }
+            ha-card div.chart-container {
+              height: 0.1px;
+            }
+            ha-card div.conditions img {
+              height: 40px; width: 40px;
+            }
+      - type: custom:apexcharts-card
+        graph_span: 7h
+        span:
+          start: hour
+          offset: +1h
+        header:
+          show: false
+          show_states: false
+        all_series_config:
+          group_by:
+            func: last
+            duration: 1h
+        apex_config:
+          grid:
+            xaxis:
+              lines:
+                show: false
+            yaxis:
+              lines:
+                show: false
+          chart:
+            height: 40
+          plotOptions:
+            bar:
+              columnWidth: 80%
+              borderRadius:
+                - 5
+          legend:
+            show: false
+          xaxis:
+            axisBorder:
+              color: '#2E2E2E'
+          yaxis:
+            show: false
+            id: temp
+        series:
+          - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+            name: min.
+            yaxis_id: temp
+            unit: °C
+            type: column
+            color: '#FFBF00'
+            data_generator: |
+              return entity.attributes.forecast.map((entry) => 
+              {
+                var date = new Date(entry.datetime);
+                
+                return [date, entry.temperature];
+              });
+            show:
+              datalabels: true
+          - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
+            name: Precip mm
+            yaxis_id: mm
+            unit: mm
+            type: column
+            color: '#6495ED'
+            data_generator: |
+              return entity.attributes.forecast.map((entry) => 
+                {
+                  var date = new Date(entry.datetime);
+                    return [date, entry.precipitation];
+                });
+            show:
+              datalabels: true
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              border-radius: 0px;
+              padding: 0px 0px 0px 0px;
+              margin-top: -30px;
+              margin-right: 0px;
+              margin-left: 0px;
+              margin-bottom: -40px;
+            }
+  - type: custom:text-divider-row
+    text: Next 5 Days
+    align: center
+  - type: vertical-stack
+    cards:
+      - type: custom:weather-chart-card
+        entity: weather.tempest_st_00032986_shawinigan_sud_daily
+        show_main: false
+        show_attributes: false
+        icons: /local/images/
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              margin-top: -22px;
+              margin-right: -10px;
+              margin-left: -20px;
+              margin-bottom: 0px;
+              padding: 0px 0px 0px 0px;
+            }
+            ha-card div.chart-container {
+              height: 0.1px;
+            }
+            ha-card div.conditions img {
+              height: 40px; width: 40px;
+            }
+      - type: custom:apexcharts-card
+        graph_span: 5d
+        span:
+          start: day
+          offset: +1d
+        header:
+          show: false
+          show_states: false
+        all_series_config:
+          group_by:
+            func: last
+            duration: 1d
+        apex_config:
+          grid:
+            xaxis:
+              lines:
+                show: false
+            yaxis:
+              lines:
+                show: false
+          chart:
+            height: 40
+          plotOptions:
+            bar:
+              columnWidth: 80%
+              borderRadius:
+                - 5
+          legend:
+            show: false
+          xaxis:
+            axisBorder:
+              color: '#2E2E2E'
+            lines:
+              show: false
+            labels:
+              format: ddd dd
+          yaxis:
+            show: false
+        series:
+          - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+            name: max.
+            yaxis_id: temp2
+            unit: °C
+            type: column
+            color: '#FFBF00'
+            data_generator: |
+              return entity.attributes.forecast.map((entry) => 
+              {
+                var date = new Date(entry.datetime);
+                return [date, entry.temperature];
+              });
+            show:
+              datalabels: true
+          - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+            name: min.
+            yaxis_id: temp3
+            unit: °C
+            type: column
+            color: '#87bf50'
+            data_generator: |
+              return entity.attributes.forecast.map((entry) => 
+              {
+                var date = new Date(entry.datetime);
+                return [date, entry.templow];
+              });
+            show:
+              datalabels: true
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              border-radius: 0px;
+              padding-bottom: 0px !important;
+              padding-top: 0px !important;
+              margin-top: -28px;
+              margin-right: 0px;
+              margin-left: -25px;
+              margin-bottom: -5px;
+            }
+      - type: custom:apexcharts-card
+        graph_span: 5d
+        span:
+          start: day
+          offset: +1d
+        header:
+          show: false
+          show_states: false
+        all_series_config:
+          group_by:
+            func: last
+            duration: 1d
+        apex_config:
+          grid:
+            xaxis:
+              lines:
+                show: false
+            yaxis:
+              lines:
+                show: false
+          chart:
+            height: 40
+          plotOptions:
+            bar:
+              columnWidth: 80%
+              borderRadius:
+                - 5
+          legend:
+            show: false
+          xaxis:
+            axisBorder:
+              color: '#2E2E2E'
+            lines:
+              show: false
+            labels:
+              format: ddd dd
+          yaxis:
+            show: false
+        series:
+          - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+            name: Precip
+            yaxis_id: mm
+            unit: mm
+            type: column
+            color: '#6495ED'
+            data_generator: |
+              return entity.attributes.forecast.map((entry) => 
+              {
+                var date = new Date(entry.datetime);
+                return [date, entry.precipitation];
+              });
+            show:
+              datalabels: true
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              border-radius: 0px;
+              padding-bottom: 0px !important;
+              padding-top: 0px !important;
+              margin-top: -34px;
+              margin-right: -20px;
+              margin-left: -40px;
+              margin-bottom: -13px;
+            }

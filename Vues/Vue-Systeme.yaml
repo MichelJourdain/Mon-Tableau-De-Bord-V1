@@ -1,0 +1,40 @@
+# Vue Système et Mise à jours
+
+theme: MonTableau
+title: Info système
+path: vue-page-systeme
+icon: ios:ordinateur#fullcolor
+type: panel
+badges: []
+cards:
+  - type: vertical-stack
+    cards:
+
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Informations système'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/ordinateur.svg'
+
+      - type: custom:dwains-flexbox-card
+        items_classes: "col-xs-12"
+        cards:
+        
+          - type: vertical-stack
+            item_classes: "col-xs-12 col-sm-6"
+            cards:
+        
+              - !include  ../Cartes/Carte-Internet-telechargement.yaml
+              - !include  ../Cartes/Carte-Internet-Utilisation.yaml
+          
+          - type: vertical-stack
+            item_classes: "col-xs-12 col-sm-6"
+            cards:
+
+              - !include  ../Cartes/Carte-Internet-televersement.yaml
+              - !include  ../Cartes/Carte-Infos-Systeme.yaml
+              - !include  ../Cartes/Carte-Info-Systeme-Temperature.yaml
+ 

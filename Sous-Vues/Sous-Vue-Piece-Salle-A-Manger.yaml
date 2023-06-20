@@ -1,0 +1,225 @@
+# Sous Vue Salle à manger
+
+theme: MonTableau
+title: Salle à manger
+path: sous-vue-piece-salle-a-manger
+type: panel
+subview: true
+badges: []
+visible: false
+cards:
+  - type: custom:dwains-flexbox-card
+    items_classes: "col-xs-12"
+    cards:
+    
+      - type: custom:swiss-army-knife-card
+        disable_card: true
+        layout:
+          template:
+            name: sak_layout_mjt_barre_pieces
+            variables:
+              - sak_layout_mjt_barre_pieces_titre: 'Salle à manger'
+              - sak_layout_mjt_barre_pieces_image: '/local/mes_images/nouriture-dinde.svg'
+              
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-7"
+        cards:
+          - type: custom:text-divider-row
+            text: "Environnements"
+            align: center
+
+          - type: custom:swiss-army-knife-card
+            entities:
+              - attribute: current_temperature
+                decimals: 1
+                entity: climate.sensibo_cuisine
+                unit: "\xB0C"
+              - attribute: temperature
+                decimals: 0
+                entity: climate.sensibo_cuisine
+              - attribute: current_humidity
+                decimals: 0
+                entity: climate.sensibo_cuisine
+                unit: "%"
+              - entity: climate.sensibo_cuisine
+                icon: mdi:fire
+              - entity: climate.sensibo_cuisine
+                icon: mdi:snowflake
+              - entity: climate.sensibo_cuisine
+                icon: mdi:water-percent
+              - entity: climate.sensibo_cuisine
+                icon: mdi:power
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: Silencieux
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: Faible
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: Moyen
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: "Moyen-\xC9lev\xE9"
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: "\xC9lev\xE9"
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: Puissant
+              - attribute: fan_mode
+                entity: climate.sensibo_cuisine
+                icon: mdi:fan
+                name: Automatique
+              - attribute: swing_mode
+                entity: climate.sensibo_cuisine
+            layout:
+              template:
+                name: sak_layout_mjt_thermostats_sensibo
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_temperature_salle_a_manger
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Température"
+                      - thecolor: "colorstops_temperature_mjt_inside"
+                      - themin: 0
+                      - themax: 40
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.ajout_sensor_humidite_salle_a_manger
+                    decimals: 0
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Humidité"
+                      - thecolor: "colorstops_mjt_humidite"
+                      - themin: 0
+                      - themax: 100
+
+              - type: "custom:swiss-army-knife-card"
+                entities:
+                  - entity: sensor.netatmo_salon_co2
+                    icon: mdi:molecule-co2
+                layout:
+                  template:
+                    name: sak_layout_mjt_demi_cercle_graphique
+                    variables:
+                      - thetext: "Niveau CO2"
+                      - thecolor: "colorstops_mjt_co2"
+                      - themin: 380
+                      - themax: 4000
+
+          - type: custom:text-divider-row
+            text: "Éclairages"
+            align: center
+            
+          - type: horizontal-stack
+            cards:
+              - type: custom:swiss-army-knife-card
+                entities:
+                  - entity: light.brilliant_salle_a_manger
+                    name: Table
+                  - entity: light.brilliant_salle_a_manger
+                    unit_of_measurement: "%"
+                    attribute: brightness
+                layout:
+                  template:
+                    name: sak_layout_fce_light_with_slider
+
+              - type: custom:swiss-army-knife-card
+                entities:
+                  - entity: light.brilliant_vestibule_avant
+                    name: Vestibule
+                  - entity: light.brilliant_vestibule_avant
+                    unit_of_measurement: "%"
+                    attribute: brightness
+                layout:
+                  template:
+                    name: sak_layout_fce_light_with_slider
+
+      - type: vertical-stack
+        item_classes: "col-xs-12 col-sm-5"
+        cards:
+          - type: custom:text-divider-row
+            text: "Lis de la paix"
+            align: center
+
+          - type: "custom:swiss-army-knife-card"
+            entities:
+              - entity: sensor.lis_de_la_paix_temperature
+              - entity: sensor.lis_de_la_paix_moisture
+                icon: mdi:water-percent
+              - entity: sensor.lis_de_la_paix_illuminance
+              - entity: sensor.lis_de_la_paix_conductivity
+                icon: mdi:leaf
+                unit: uS
+              - entity: sensor.lis_de_la_paix_battery
+              - entity: sensor.lis_de_la_paix_signal_strength
+            layout:
+              template:
+                name: sak_layout_mjt_plantes
+
+          - type: custom:text-divider-row
+            text: "Serrure"
+            align: center
+
+          - type: custom:dwains-flexbox-card
+            items_classes: "col-xs-12"
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:mushroom-lock-card
+                        entity: lock.porte_d_entree
+                        name: Verrouiller
+                        icon_color: green
+                        hide_state: true
+                        tap_action:
+                          action: call-service
+                          service: lock.lock
+                          service_data: {}
+                          target: null
+                        device_id: lock.porte_d_entree
+
+                      - type: custom:mushroom-lock-card
+                        entity: lock.porte_d_entree
+                        name: Déverrouillage
+                        icon: mdi:lock-open-variant
+                        icon_color: red
+                        hide_state: true
+                        tap_action:
+                          action: call-service
+                          service: lock.unlock
+                          data: {}
+                          target: null
+                        device_id: lock.porte_d_entree
+
+                  - type: entities
+                    entities:
+                      - entity: sensor.serrure_porte_avant_traduire_etat
+                        name: État
+                      - entity: binary_sensor.porte_d_entree_open
+                        name: Porte
+                      - entity: sensor.porte_d_entree_operator
+                        name: Opérateur
+                      - entity: sensor.porte_d_entree_battery
+                        name: Pile
+
+                    show_header_toggle: false
+                    state_color: true
