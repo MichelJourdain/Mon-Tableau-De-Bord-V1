@@ -1,0 +1,406 @@
+weather:
+
+  - platform: template
+    unique_id: "shawinigan-sud_daily"
+    name: tempest st 00032986 Shawinigan-sud daily
+    condition_template: "{{ states('sensor.wf_weather') }}"
+    temperature_template: "{{ states('sensor.tempest_st_00032986_temperature') | float}}"
+    humidity_template: "{{ states('sensor.tempest_st_00032986_humidity')| int }}"
+    pressure_template: "{{ states('sensor.tempest_st_00032986_sea_level_pressure')| float }}"
+    wind_speed_template: "{{ ( states('sensor.tempest_st_00032986_wind_speed_avg') | float * 18 / 5 ) | round(2) }}"
+    wind_bearing_template: "{{ states('sensor.tempest_st_00032986_wind_bearing_avg')| int }}"
+    visibility_template: "{{ states('sensor.tempest_st_00032986_visibility')| float }}"
+    forecast_template: "{{ state_attr('sensor.wf_weather', 'daily_forecast') }}"
+    
+  - platform: template
+    unique_id: "shawinigan-sud_hourly"
+    name: tempest st 00032986 Shawinigan-sud hourly
+    condition_template: "{{ states('sensor.wf_weather') }}"
+    temperature_template: "{{ states('sensor.tempest_st_00032986_temperature') | float}}"
+    humidity_template: "{{ states('sensor.tempest_st_00032986_humidity')| int }}"
+    pressure_template: "{{ states('sensor.tempest_st_00032986_sea_level_pressure')| float }}"
+    wind_speed_template: "{{ ( states('sensor.tempest_st_00032986_wind_speed_avg') | float * 18 / 5 ) | round(2) }}"
+    wind_bearing_template: "{{ states('sensor.tempest_st_00032986_wind_bearing_avg')| int }}"
+    visibility_template: "{{ states('sensor.tempest_st_00032986_visibility')| float }}"
+    forecast_template: "{{ state_attr('sensor.wf_weather', 'hourly_forecast') }}"
+
+sensor:
+
+  - platform: template
+    sensors:
+      weatherflow_vitesse_vent_km:
+        unique_id: "weatherflow_vitesse_vent_km"
+        friendly_name: "Weatherflow vitesse du vent en km"
+        icon_template: mdi:tailwind  
+        unit_of_measurement: "kph"
+        value_template: "{{ ( states('sensor.tempest_st_00032986_wind_speed') | float * 3.6 ) | round(2) }}"
+        
+  - platform: template
+    sensors:
+      weatherflow_vitesse_moyenne_vent_km:
+        unique_id: "weatherflow_vitesse_moyenne_vent_km"
+        friendly_name: "Weatherflow vitesse moyenne du vent en km"
+        icon_template: mdi:tailwind  
+        unit_of_measurement: "kph"
+        value_template: "{{ ( states('sensor.tempest_st_00032986_wind_speed_avg') | float * 3.6 ) | round(2) }}"
+
+  - platform: template
+    sensors:
+      weatherflow_vitesse_rafale_vent_km:
+        unique_id: "weatherflow_vitesse_rafale_vent_km"
+        friendly_name: "Weatherflow vitesse des rafale de vent en km"
+        icon_template: mdi:tailwind  
+        unit_of_measurement: "kph"
+        value_template: "{{ ( states('sensor.tempest_st_00032986_wind_gust') | float * 3.6 ) | round(2) }}"
+        
+  - platform: template
+    sensors:
+      weatherflow_vitesse_accalmie_vent_km:
+        unique_id: "weatherflow_vitesse_accalmie_vent_km"
+        friendly_name: "Weatherflow vitesse des accalmies de vent en km"
+        icon_template: mdi:tailwind  
+        unit_of_measurement: "kph"
+        value_template: "{{ ( states('sensor.tempest_st_00032986_wind_lull') | float * 3.6 ) | round(2) }}"
+        
+  - platform: template
+    sensors:
+      weatherflow_beaufort_scale:
+        unique_id: "weatherflow_beaufort_scale"
+        friendly_name: "Weatherflow description de la vitesse du vent"
+        icon_template: mdi:tailwind    
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_beaufort_scale', 'description') }}"
+        
+  - platform: template
+    sensors:
+      weatherflow_nombre_eclaires_mois:
+        unique_id: "weatherflow_nombre_eclaires_mois"
+        friendly_name: "Weatherflow nombre d'éclaires pour le mois"
+        icon_template: mdi:weather-lightning   
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_lightning_count_today', 'max_month') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_max_jour:
+        unique_id: "minmax_temperature_max_jour"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature maximale pour aujourd'hui"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'max_day') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_max_jour_heure_date:
+        unique_id: "minmax_temperature_max_jour_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature maximale pour aujourd'hui"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'max_day_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_min_jour:
+        unique_id: "minmax_temperature_min_jour"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature minimum pour Aujourd'hui"
+        icon_template: mdi:text-box-outline
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'min_day') }}"      
+        
+  - platform: template
+    sensors:
+      minmax_temperature_min_jour_heure_date:
+        unique_id: "minmax_temperature_min_jour_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature minimum pour aujourd'hui"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'min_day_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_max_mois:
+        unique_id: "minmax_temperature_max_mois"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature maximale pour le mois"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'max_month') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_max_mois_heure_date:
+        unique_id: "minmax_temperature_max_mois_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature max mois"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'max_month_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_min_mois:
+        unique_id: "minmax_temperature_min_mois"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature minimale pour le mois"
+        icon_template: mdi:text-box-outline
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'min_month') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_min_mois_heure_date:
+        unique_id: "minmax_temperature_min_mois_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature min mois"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'min_month_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+
+  - platform: template
+    sensors:
+      minmax_temperature_maximum:
+        unique_id: "minmax_temperature_maximum"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature maximale"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'max_all') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_maximum_heure_date:
+        unique_id: "minmax_temperature_maximum_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature maximum"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'max_all_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+        
+  - platform: template
+    sensors:
+      minmax_temperature_minimum:
+        unique_id: "minmax_temperature_minimum"
+        unit_of_measurement: "°C"
+        friendly_name: "Weatherflow Temperature minimale"
+        icon_template: mdi:text-box-outline
+        value_template: "{{ state_attr('sensor.tempest_st_00032986_temperature', 'min_all') }}"
+
+  - platform: template
+    sensors:
+      minmax_temperature_minimum_heure_date:
+        unique_id: "minmax_temperature_minimum_heure_date"
+        friendly_name: "Weatherflow heure et date de la Temperature minimum"
+        icon_template: mdi:text-box-outline 
+        value_template: "{{ as_timestamp(state_attr('sensor.tempest_st_00032986_temperature', 'min_all_time')) | timestamp_custom('%d-%m-%Y %H:%M') }}"
+        
+# Traduction des modes possible de la station tempest
+  - platform: template
+    sensors:
+      weatherflow_mode_descption:
+        unique_id: "weatherflow_mode_descption"
+        friendly_name: "Weatherflow Mode station météo tempest"
+        icon_template: mdi:tailwind    
+        value_template:  >
+          {% if states.sensor.tempest_st_00032986_battery_mode.state | int == 0 %}
+              Tous les capteurs sont activés et fonctionnant à pleine puissance.
+              Intervalle d'échantillonnage du vent toutes les 3 secondes
+          {% elif states.sensor.tempest_st_00032986_battery_mode.state | int == 1 %}
+              Intervalle d'échantillonnage du vent réglé sur 6 secondes.
+          {% elif states.sensor.tempest_st_00032986_battery_mode.state | int == 2 %}
+              Intervalle d'échantillonnage du vent réglé sur une minute.
+          {% elif states.sensor.tempest_st_00032986_battery_mode.state | int == 3 %}
+              Intervalle d'échantillonnage du vent réglé sur 5 minutes.
+              Intervalle d'échantillonnage de tous les autres capteurs réglé sur 5 minutes.
+              Le capteur de pluie haptique est désactivé de l'écoute active.
+          {% else %}
+              Indéterminé
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles:
+        friendly_name: "Conditions Actuelles"
+        value_template: "{{ states('weather.tempest_st_00032986_shawinigan_sud_hourly') }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_prevision_precipitation:
+        friendly_name: "Prévisions Précipitation"
+        icon_template: mdi:weather-rainy
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['precipitation_probability'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j0:
+        friendly_name: "Conditions Actuelles jour 00"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['condition'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j1:
+        friendly_name: "Conditions Actuelles jour 01"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[1]['condition'] }}"       
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j2:
+        friendly_name: "Conditions Actuelles jour 02"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[2]['condition'] }}"        
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j3:
+        friendly_name: "Conditions Actuelles jour 03"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[3]['condition'] }}"           
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j4:
+        friendly_name: "Conditions Actuelles jour 04"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[4]['condition'] }}"    
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_conditions_actuelles_j5:
+        friendly_name: "Conditions Actuelles jour 05"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[5]['condition'] }}"    
+
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j0:
+        friendly_name: "Conditions Actuelles temperature jour 0"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['temperature'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j1:
+        friendly_name: "Conditions Actuelles temperature jour 01"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[1]['temperature'] }}"       
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j2:
+        friendly_name: "Conditions Actuelles temperature jour 02"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[2]['temperature'] }}"        
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j3:
+        friendly_name: "Conditions Actuelles temperature jour 03"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[3]['temperature'] }}"           
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j4:
+        friendly_name: "Conditions Actuelles temperature jour 04"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[4]['temperature'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_temperature_j5:
+        friendly_name: "Conditions Actuelles temperature jour 05"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[5]['temperature'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j0:
+        friendly_name: "Conditions Actuelles templow jour 00"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['templow'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j1:
+        friendly_name: "Conditions Actuelles templow jour 01"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[1]['templow'] }}"       
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j2:
+        friendly_name: "Conditions Actuelles templow jour 02"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[2]['templow'] }}"        
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j3:
+        friendly_name: "Conditions Actuelles templow jour 03"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[3]['templow'] }}"           
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j4:
+        friendly_name: "Conditions Actuelles templow jour 04"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[4]['templow'] }}"     
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_templow_j5:
+        friendly_name: "Conditions Actuelles templow jour 05"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[5]['templow'] }}"           
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j0:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 0"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['precipitation_probability'] }}"
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j1:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 1"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[1]['precipitation_probability'] }}"       
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j2:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 2"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[2]['precipitation_probability'] }}"        
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j3:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 3"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[3]['precipitation_probability'] }}"           
+        
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j4:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 4"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[4]['precipitation_probability'] }}"  
+
+  - platform: template
+    sensors:
+      meteo_def_detecteurs_precipitation_probability_j5:
+        friendly_name: "Conditions Actuelles precipitation_probability jour 5"
+        value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[5]['precipitation_probability'] }}"       
+        
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j0:
+         friendly_name: "Conditions Actuelles precipitation jour 0"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[0]['precipitation'] }}"
+         
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j1:
+         friendly_name: "Conditions Actuelles precipitation jour 1"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[1]['precipitation'] }}"       
+        
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j2:
+         friendly_name: "Conditions Actuelles precipitation jour 2"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[2]['precipitation'] }}"        
+        
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j3:
+         friendly_name: "Conditions Actuelles precipitation jour 3"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[3]['precipitation'] }}"           
+        
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j4:
+         friendly_name: "Conditions Actuelles precipitation jour 4"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[4]['precipitation'] }}"   
+         
+  - platform: template
+    sensors:
+       meteo_def_detecteurs_precipitation_j5:
+         friendly_name: "Conditions Actuelles precipitation jour 5"
+         value_template: "{{ state_attr('weather.tempest_st_00032986_shawinigan_sud_daily', 'forecast')[5]['precipitation'] }}"       
+        
+
+        
+        
+        
+        
+        
+    

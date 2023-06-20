@@ -1,0 +1,18 @@
+sensor:
+    
+  - platform: template
+    sensors:
+      internet_telechargement_bande_passante:
+        unique_id: "internet_telechargement_bande_passante"
+        friendly_name: "Internet téléchargement"
+        value_template: "{{ (states('sensor.arris_tg2472g_router_b_received') | int / 1000000000 ) | round(1) | float }}"
+
+  - platform: template
+    sensors:
+      internet_televersement_bande_passante:
+        unique_id: "internet_televersement_bande_passante"
+        friendly_name: "Internet téléversement"
+        value_template: "{{ (states('sensor.arris_tg2472g_router_b_sent') | int / 1000000000 ) | round(1) | float }}"
+        
+        
+# filesizeformat())

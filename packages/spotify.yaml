@@ -1,0 +1,133 @@
+#spotify:
+
+group:
+  home_spotify_player:
+    name: Spotify Player
+    entities:
+      - media_player.spotify_michel
+  
+  home_spotify_controls:
+    name: Spotify Controls
+    entities:
+      - input_select.spotify_playlist
+      - input_select.spotify_source
+      - script.spotify_music
+
+#homeassistant:
+#  customize:
+#    script.spotify_music:
+#      friendly_name: 'Jouer'
+#      icon: mdi:play
+
+sensor:
+        
+  - platform: template    
+    sensors:
+      spotify_att_piece_en_lecture:
+        friendly_name: "Pièce"
+        icon_template: mdi:play-box-outline
+        value_template: > 
+          {% if is_state('media_player.spotify_michel', 'idle') %} 
+            Inactif présentement
+          {% else %}
+           {{ state_attr('media_player.spotify_michel', 'media_title') }}
+          {% endif %}
+
+  - platform: template
+    sensors:
+      spotify_att_artiste_en_lecture:
+        friendly_name: "Artiste"
+        icon_template: mdi:account-music
+        value_template: > 
+          {% if is_state('media_player.spotify_michel', 'idle') %} 
+            Inactif présentement
+          {% else %}
+           {{ state_attr('media_player.spotify_michel', 'media_artist') }}
+          {% endif %}
+
+  - platform: template
+    sensors:
+      spotify_att_album_en_lecture:
+        friendly_name: "Album"
+        icon_template: mdi:album
+        value_template: > 
+          {% if is_state('media_player.spotify_michel', 'idle') %} 
+            Inactif présentement
+          {% else %}
+           {{ state_attr('media_player.spotify_michel', 'media_album_name') }}
+          {% endif %}
+        
+input_select:
+  spotify_playlist:
+    name: 'Playlist:'
+    options:
+      - Reposantes
+      - Francophones
+      - Anglophones
+      - Classiques
+      - Beau Dommage
+      - Dalida
+      - Diane Dufresne
+      - Elvis Presley
+      - Jean-Pierre Ferland 
+      - Patricia Kass
+      - Richard Desjardins
+      - Richard Séguin 
+      - Robert Charlebois
+      - Roy Orbison
+      - The Beach Boys 
+      - The Beatles
+    icon: mdi:spotify
+  spotify_source:
+    name: 'Source:'
+    options:
+      - Denon
+      - Maison
+      - Deuxième
+      - Sous-Sol
+      - Bureau
+      - Chambre
+      - Cuisine
+      - Salon
+    initial: Salon
+    icon: mdi:speaker-wireless
+
+script:
+  spotify_music:
+    alias: "Play selected spotify playlist"
+    sequence:
+      - service: media_player.select_source
+        data_template: 
+          entity_id: media_player.spotify_michel
+          source: >
+            {% if is_state("input_select.spotify_source", "Denon") %} Denon AVR-X4500H
+            {% elif is_state("input_select.spotify_source", "Salon") %} Echo Show Salon
+            {% elif is_state("input_select.spotify_source", "Maison") %} Haut-parleurs maison
+            {% elif is_state("input_select.spotify_source", "Deuxième") %} Haut-parleurs deuxième
+            {% elif is_state("input_select.spotify_source", "Sous-Sol") %} 3492e9c3-7c23-485f-9d83-e63c39b281b7
+            {% elif is_state("input_select.spotify_source", "Bureau") %} Echo Show Bureau
+            {% elif is_state("input_select.spotify_source", "Chambre") %} Echo Show Chambre 
+            {% elif is_state("input_select.spotify_source", "Cuisine") %} f88715fe-25af-431a-852a-1304fc4592bc
+            {% endif %}
+      - service: media_player.play_media               
+        data_template:
+          entity_id: media_player.spotify_michel
+          media_content_type: playlist
+          media_content_id: >
+            {% if is_state("input_select.spotify_playlist", "Reposantes") %} https://open.spotify.com/playlist/10ojsfQoFjVAM8hePcFrjF?si=977e67a7b3184fa4
+            {% elif is_state("input_select.spotify_playlist", "Francophones") %} https://open.spotify.com/playlist/1welYp997veGv78SyLFgCu?si=8022ee82c09e4aca
+            {% elif is_state("input_select.spotify_playlist", "Anglophones") %} https://open.spotify.com/playlist/1RqDKUNEsnWTWeBdSTx09S?si=a6fff0d2430f4e18
+            {% elif is_state("input_select.spotify_playlist", "Classiques") %} https://open.spotify.com/playlist/3zBDm6CSdVyBvLGa4FL33J?si=9d23fa271b164d09
+            {% elif is_state("input_select.spotify_playlist", "Beau Dommage") %} https://open.spotify.com/artist/2cdnxq3gRcJudFLmWhDTQp?si=JMxKPHy_RcGO-luHqPhI_w&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "The Beatles") %} https://open.spotify.com/playlist/37i9dQZF1DXdLtD0qszB1w?si=cd27c93058cb423a
+            {% elif is_state("input_select.spotify_playlist", "Patricia Kass") %} https://open.spotify.com/playlist/37i9dQZF1DZ06evO2MkMFg?si=bzQZ92QXRQKvmt6gozz-qA&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "The Beach Boys") %} https://open.spotify.com/playlist/37i9dQZF1DXaZan2kzvaVc?si=_G6I2qrDR3Cx8n05ZAWYaQ&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Dalida") %} https://open.spotify.com/playlist/37i9dQZF1DZ06evNZY2f3S?si=R_qExW8GRRi4qd-KYk1Hxw&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Roy Orbison") %} https://open.spotify.com/playlist/37i9dQZF1DZ06evO0mZ0as?si=UQfVdUvMSwm51NxxTaHk3w&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Diane Dufresne") %} https://open.spotify.com/album/6WS4SEnixyqEIQHZ5TmmPV?si=x_Vyisu4SGWaEwrMV-dCMQ&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Elvis Presley") %} https://open.spotify.com/playlist/37i9dQZF1DX50yT1VeARvT?si=jCiUfrbwRledfrgLNzLAgw&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Richard Séguin") %} https://open.spotify.com/playlist/37i9dQZF1DZ06evO2CTTB3?si=5F8kOLSHQ2263L-ODJTMOQ&dl_branch=1            
+            {% elif is_state("input_select.spotify_playlist", "Jean-Pierre Ferland") %} https://open.spotify.com/playlist/37i9dQZF1DXb4s3LgwJp9Z?si=O-XQBoDMRUirI76lKe7OCA&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Robert Charlebois") %} https://open.spotify.com/playlist/37i9dQZF1DX10vkeTmS2EY?si=BidDsDo_Qmy2uDsQyGhDag&dl_branch=1
+            {% elif is_state("input_select.spotify_playlist", "Richard Desjardins") %} https://open.spotify.com/playlist/37i9dQZF1DZ06evO1tMV9c?si=BHlfZNk1QyK3fcHAzi0MxQ&dl_branch=1           
+            {% endif %}

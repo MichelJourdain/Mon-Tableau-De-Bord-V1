@@ -1,0 +1,351 @@
+# sensors pour afficher la température et l'humiditée par pièces.
+sensor:
+
+## Atelier
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_atelier:
+        unique_id: "ajout_sensor_temperature_atelier"
+        friendly_name: "Ajout Température atelier"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_atelier','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_atelier:
+        unique_id: "ajout_sensor_humidite_atelier"
+        friendly_name: "Ajout Humidité atelier"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_sous_sol_humidity') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_atelier:
+        unique_id: "ajout_etat_thermostat_atelier"
+        friendly_name: "Ajout Etat thermostat atelier"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_atelier','hvac_action') }}"
+        
+## Bureau
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_bureau:
+        unique_id: "ajout_sensor_temperature_bureau"
+        friendly_name: "Ajout Température bureau"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_bureau','current_temperature')  | round(0)}}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_bureau:
+        unique_id: "ajout_sensor_humidite_bureau"
+        friendly_name: "Ajout Humidité abureau"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_bureau_humidity')  | round(0)}}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_bureau:
+        unique_id: "ajout_etat_thermostat_bureau"
+        friendly_name: "Ajout Etat thermostat bureau"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_bureau','hvac_action') }}"
+
+## Chambre invités
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_chambre_invites:
+        unique_id: "ajout_sensor_temperature_chambre_invites"
+        friendly_name: "Ajout Température chambre invités"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_chambre_invites','current_temperature')  | round(0)}}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_chambre_invites:
+        unique_id: "ajout_sensor_humidite_chambre_invites"
+        friendly_name: "Ajout Humidité chambre invités"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_sous_sol_humidity')  | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_chambre_invites:
+        unique_id: "ajout_etat_thermostat_chambre_invites"
+        friendly_name: "Ajout Etat thermostat chambre invites"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_chambre_invites','hvac_action') }}"
+
+## Chambre des maîtres
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_chambre_maitres:
+        unique_id: "ajout_sensor_temperature_chambre_maitres"
+        friendly_name: "Ajout Température chambre maitres"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_chambre_maitres','current_temperature')  | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_chambre_maitres:
+        unique_id: "ajout_sensor_humidite_chambre_maitres"
+        friendly_name: "Ajout Humidité chambre maîtres"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_chambre_maitres_humidity') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_chambre_maitres:
+        unique_id: "ajout_etat_thermostat_chambre_maitres"
+        friendly_name: "Ajout Etat thermostat chambre maitres"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_chambre_maitres','hvac_action') }}"
+
+## Cusine
+        
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_cuisine:
+        unique_id: "ajout_sensor_temperature_cuisine"
+        friendly_name: "Ajout Température cuisine"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_cuisine','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_cuisine:
+        unique_id: "ajout_sensor_humidite_cuisinee"
+        friendly_name: "Ajout Humidité cuisine"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.sensibo_humiditee_courante_cuisine') | round(0) }}"
+
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_cuisine:
+        unique_id: "ajout_etat_thermostat_cuisine"
+        friendly_name: "Ajout Etat thermostat cuisine"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_cuisine','hvac_action') }}"
+
+## Salon    
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salon:
+        unique_id: "ajout_sensor_temperature_salon"
+        friendly_name: "Ajout Température salon"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_salon','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salon:
+        unique_id: "ajout_sensor_humidite_salon"
+        friendly_name: "Ajout Humidité salon"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_salon_humidity') | round(0) }}"
+
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_salon:
+        unique_id: "ajout_etat_thermostat_salon"
+        friendly_name: "Ajout Etat thermostat salon"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_salon','hvac_action') }}"
+        
+## Salle à manger
+        
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salle_a_manger:
+        unique_id: "ajout_sensor_temperature_salle_a_manger"
+        friendly_name: "Ajout Température Salle à manger"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ states('sensor.sensibo_temperature_courante_cuisine') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salle_a_manger:
+        unique_id: "ajout_sensor_humidite_sale_a_manger"
+        friendly_name: "Ajout Humidité Salle à manger"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.sensibo_humiditee_courante_cuisine') | round(0) }}"
+        
+## Salle d'eau
+        
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salle_deau:
+        unique_id: "ajout_sensor_temperature_salle_deau"
+        friendly_name: "Ajout Température Salle D'eau"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_deau','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salle_deau:
+        unique_id: "ajout_sensor_humidite_salle_deau"
+        friendly_name: "Ajout Humidité Salle D'eau"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_salon_humidity') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_salle_deau:
+        unique_id: "ajout_etat_thermostat_salle_deau"
+        friendly_name: "Ajout Etat thermostat salle deau"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_deau','hvac_action') }}"
+
+## Salle de bain maîtres
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salle_de_bain_maitres:
+        unique_id: "ajout_sensor_temperature__salle_dde_bain_maitres"
+        friendly_name: "Ajout Température Salle de bain maîtres"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_bain','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salle_de_bain_maitres:
+        unique_id: "ajout_sensor_humidite_salle_de_bain_maitress"
+        friendly_name: "Ajout Humidité Salle de bain maîtres"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.sensibo_humiditee_courante_salle_de_repos') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_salle_de_bain_maitres:
+        unique_id: "ajout_etat_thermostat_salle_de_bain_maitres"
+        friendly_name: "Ajout Etat thermostat salle de bain maitres"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_bain','hvac_action') }}"
+        
+## Salle de repos
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salle_de_repos:
+        unique_id: "ajout_sensor_temperature_salle_de_repos"
+        friendly_name: "Ajout Température Salle de Repos"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sensibo_salle_de_repos','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salle_de_repos:
+        unique_id: "ajout_sensor_humidite__salle_de_repos"
+        friendly_name: "Ajout Humidité Salle de Repos"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.sensibo_humiditee_courante_salle_de_repos') | round(0) }}"
+
+## Salle familiale
+
+  - platform: template
+    sensors:
+     ajout_sensor_temperature_salle_familiale:
+        unique_id: "ajout_sensor_temperature_salle_familiale"
+        friendly_name: "Ajout Température salle familiale"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_familiale','current_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_sensor_humidite_salle_familiale:
+        unique_id: "ajout_sensor_humidite_salle_familiale"
+        friendly_name: "Ajout Humidité salle familiale"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.netatmo_sous_sol_humidity') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_etat_thermostat_salle_familiale:
+        unique_id: "ajout_etat_thermostat_salle_familiale"
+        friendly_name: "Ajout Etat thermostat salle familiale"
+        icon_template: mdi:coffee-maker
+        value_template: "{{ state_attr('climate.sinope_thermostat_salle_familiale','hvac_action') }}"
+        
+## Extérieur        
+
+  - platform: template
+    sensors:
+     ajout_temperature_exterieur:
+        unique_id: "ajout_sensor_temperature_exterieur"
+        friendly_name: "Ajout Température exterieur"
+        icon_template: mdi:thermometer
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ states('sensor.tempest_st_00032986_temperature') | round(0) }}"
+        
+  - platform: template
+    sensors:
+     ajout_humidite_exterieur:
+        unique_id: "ajout_sensor_humidite_exterieur"
+        friendly_name: "Ajout Humidité exterieur"
+        icon_template: mdi:water-percent
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.tempest_st_00032986_humidity') | round(0) }}"
+  
+        
+        
+        
+        
+
+
+
+
+
+
+
+

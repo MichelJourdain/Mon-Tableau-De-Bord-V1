@@ -1,0 +1,10 @@
+# Plante Lis De La Paix
+plant:
+  lis_de_la_paix:
+    sensors:
+      moisture: sensor.lis_de_la_paix_moisture
+      battery: sensor.lis_de_la_paix_battery
+      temperature: sensor.lis_de_la_paix_temperature
+      conductivity: sensor.lis_de_la_paix_conductivity
+      brightness: sensor.lis_de_la_paix_brightness
+    min_moisture: 20
