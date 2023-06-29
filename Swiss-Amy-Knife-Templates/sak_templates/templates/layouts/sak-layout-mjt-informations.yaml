@@ -1,14 +1,12 @@
 sak_layout_mjt_informations:
   template:
     type: layout
-    defaults: 
-      - dummy: "Hum"
- 
+    
   layout:
+ 
+      aspectratio: 6/2      
          
-    aspectratio: 6/2      
-         
-    toolsets:
+      toolsets:
         
               - toolset: les-lignes
                 position:
@@ -155,281 +153,438 @@ sak_layout_mjt_informations:
                             return (state + '-day');
                           ]]]
                          
-     # ================================================================    
-              - toolset: column-cadran-temperature
+ # ================================================================    
+              - toolset: square-sensor-temperature
                 position:
-                  cx: 265
-                  cy: 23
+                  cx: 202.7
+                  cy: 53
+                  scale: 1
                 tools:
-                
-                  - type: icon
+    ####################################################
+                  - type: rectex
                     position:
-                      cx: 2
-                      cy: 69
-                      align: center
-                      icon_size: 20
-                    entity_index: 1
+                      cx: 105
+                      cy: 50
+                      width: 200
+                      height: 90
+                      radius:
+                        top_left: 50
+                        top_right: 10
+                        bottom_right: 10
+                        bottom_left: 50
                     styles:
-                      icon:
-                        fill: var(--theme-sys-color-secondary)
-                          
-                  - type: state
-                    position:
-                      cx: 2
-                      cy: 95
-                    entity_index: 1
-                    styles:
-                      state:
-                        text-anchor: middle
-                        font-size: 25em
-                        font-weight: 700
-                        fill: var(--primary-text-color)
-
+                      rectex:
+                        stroke: var(--primary-background-color)
+                        fill: 'var(--primary-background-color)'
+    ####################################################
                   - type: 'segarc'
-                    id: 0
-                    position:
-                      cx: 2
-                      cy: 87
-                      start_angle: 0
-                      end_angle: 360
-                      width: 9
-                      radius: 50
-                    entity_index: 1
+                    position:               
+                       cx: 60              
+                       cy: 50            
+                       start_angle: 225    
+                       end_angle: 315      
+                       width: 4            
+                       radius: 50        
+                    entity_index: 1         
                     scale:
-                      min: -40
+                      min: -40              
                       max: 40
-                      width: 3
-                      offset: -6
+                      offset: 1.5          
+                      width: 1
                     show:
-                      scale: true
-                      style: 'colorstops'
+                # style: colorlist     
+                      scale: true           
+                      style: colorstops       
+                      lastcolor: false         
                     segments:
-                      colorlist:
-                        gap: 2
-                        colors: 
-                          - var(--theme-sys-palette-primary50)
                       colorstops:
-                        gap: 2
+                        gap: 0.1
+                        fill: true
+                        stroke: false
                         colors:
-                          -30: '#22427C'
-                          -20: '#318CE7'
-                          -10: '#77B5FE'
-                          0: '#FFD700'
-                          10: '#FEF86C'
-                          20: '#16B84E'
-                          30: '#D90115'
+                           -36: '#0094ff' 
+                           -32: '#00b4ff' 
+                           -28: '#00d4ff' 
+                           -24: '#00fff4' 
+                           -20: '#00ffa8' 
+                           -16: '#00ff5c' 
+                           -12: '#00ff10'
+                           -8: '#3eff00'
+                           -4: '#8aff00'
+                           0: '#d7ff00'
+                           4: '#FFfa00'
+                           8: '#FFf000'
+                           12: '#FFe600'
+                           16: '#FFdc00'
+                           20: '#FFd200'
+                           24: '#FFc800'
+                           28: '#FFbe00'
+                           32: '#FFb400'
+                           36: '#FF8200'
                     styles:
-                      foreground:
-                        fill: var(--theme-gradient-color-02)
                       background:
-                        fill: var(--cs-theme-default-darken-15)
-                        opacity: 1
-  
-     # ================================================================    
-              - toolset: column-cadran-humidite
-                position:
-                  cx: 145
-                  cy: 105
-                tools:
-                
-                  - type: icon
-                    position:
-                      cx: 202
-                      cy: 69
-                      align: center
-                      icon_size: 20
-                    entity_index: 2
-                    styles:
-                      icon:
-                        fill: var(--theme-sys-color-secondary)
-                          
+                        fill: grey
+    ####################################################
+                  - type: 'usersvg'           
+                    entity_index: 1
+                    position:                
+                      cx: 35      
+                      cy: 40         
+                      height: 35      
+                      width: 35     
+                    style: 'images'
+                    images:             
+                      - default: /local/images/temperature.png
+    ####################################################
+                  - type: 'usersvg'           
+                    entity_index: 1
+                    position:                
+                      cx: 60     
+                      cy: 60        
+                      height: 35  
+                      width: 35     
+                    style: 'images'
+                    images:             
+                       - default: /local/images/humidite.png
+    ####################################################
                   - type: state
                     position:
-                      cx: 204
-                      cy: 95
-                    entity_index: 2
+                      cx: 138
+                      cy: 52
+                    entity_index: 1
                     styles:
                       state:
-                        text-anchor: middle
-                        font-size: 25em
-                        font-weight: 700
-                        fill: var(--primary-text-color)
-
+                        text-anchor: center
+                        font-size: 40em
+                        font-weight: 600
+                        opacity: 0.9
+                      uom: 
+                        opacity: 0.9
+    ####################################################
+                  - type: bar
+                    entity_index: 1
+                    position:
+                      orientation: vertical
+                      cx: 138
+                      cy: 52
+                      width: 115
+                      height: 50
+                      margin: .5
+                    hours: 24
+                    barhours: 1
+                    styles:
+                      bar:
+                        stroke: var(--primary-text-color)
+                        opacity: 0.3
+                        stroke-linecap: butt
+    ####################################################
                   - type: 'segarc'
                     id: 0
                     position:
-                      cx: 202
+                      cx: 138
                       cy: 85
-                      start_angle: 0
-                      end_angle: 360
-                      width: 9
-                      radius: 50
-                    entity_index: 2
-                    scale:
-                      min: 0
-                      max: 100
+                      start_angle: 190
+                      end_angle: 170
                       width: 3
-                      offset: -6
-                    show:
-                      scale: true
-                      style: 'colorstops'
-                    segments:
-                      colorlist:
-                        gap: 2
-                        colors: 
-                          - var(--theme-sys-palette-primary50)
-                      colorstops:
-                        gap: 2
-                        colors:
-                          0: 'green'
-                          25: 'yellow'
-                          50: 'orange'
-                          75: 'red'
-                    styles:
-                      foreground:
-                        fill: var(--theme-gradient-color-02)
-                      background:
-                        fill: var(--cs-theme-default-darken-15)
-                        opacity: 1
-     # ================================================================    
- 
-              - toolset: column-cadran-vent
-                position:
-                  cx: 348
-                  cy: 83
-                tools:
-                
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 10
-                      cy: 2
-                      icon_size: 17
-                    entity_index: 9
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-                        
-                  - type: state
-                    id: 3
-                    position:
-                      cx: 10
-                      cy: 20
-                    entity_index: 9
-                    styles:
-                      state:
-                        font-size: 17em
-                        font-weight: 700
-                        text-anchor: middle
-
-                  - type: 'segarc'
-                    id: 0
-                    position:
-                      cx: 10
-                      cy: 15
-                      start_angle: 0
-                      end_angle: 360
-                      width: 8
-                      radius: 35
+                      radius_x: 330
+                      radius_y: 1
                     entity_index: 9
                     scale:
                       min: 0
                       max: 100
-                      width: 2
-                      offset: -4.5
+                      width: 1
+                      offset: 3
                     show:
                       scale: true
                       style: 'colorstops'
                     segments:
-                      colorlist:
-                        gap: 4
-                        colors: 
-                          - var(--theme-sys-palette-primary50)
                       colorstops:
-                        gap: 4
+                        gap: 0.1
                         colors:
-                          0: 'green'
-                          15: 'yellow'
-                          30: 'yellow'
-                          45: 'orange'
-                          60: 'red'
+                          5: '#0094ff' 
+                          10: '#00b4ff' 
+                          15: '#00d4ff' 
+                          20: '#00fff4' 
+                          25: '#00ffa8' 
+                          30: '#00ff5c' 
+                          35: '#00ff10'
+                          40: '#3eff00'
+                          45: '#8aff00'
+                          50: '#d7ff00'
+                          55: '#FFfa00'
+                          60: '#FFf000'
+                          65: '#FFe600'
+                          70: '#FFdc00'
+                          75: '#FFd200'
+                          80: '#FFc800'
+                          85: '#FFbe00'
+                          90: '#FFb400'
+                          95: '#FF8200'
                     styles:
                       foreground:
-                        fill: var(--theme-gradient-color-02)
+                        fill: darkgrey
                       background:
-                        fill: var(--cs-theme-default-darken-15)
-                        opacity: 1
-                        
-     # ================================================================    
-
-              - toolset: column-pluie
-                position:
-                  cx: 247
-                  cy: 186
-                tools:
-                
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 10
-                      cy: 2
-                      icon_size: 17
-                    entity_index: 10
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-                        
+                        fill: var(--theme-scale)
+    ####################################################
                   - type: state
-                    id: 3
                     position:
-                      cx: 10
-                      cy: 20
-                    entity_index: 10
+                      cx: 65
+                      cy: 87
+                    entity_index: 9
                     styles:
                       state:
-                        font-size: 17em
-                        font-weight: 700
-                        text-anchor: middle
-
+                        text-anchor: center
+                        font-size: 12em
+                        font-weight: 600
+                        opacity: 0.9
+                      uom: 
+                        opacity: 0.9
+    ####################################################
+                  - type: 'text'              
+                    position:                 
+                       cx: 37                
+                       cy: 13                
+                    text: '40°C'
+                    styles:
+                      text:
+                         font-size: 9em
+                         font-weight: 600
+                         opacity: 0.7
+    ####################################################
+                  - type: 'text'              
+                    position:                 
+                      cx: 37      
+                      cy: 87      
+                    text: '-40°C'
+                    styles:
+                      text:
+                        font-size: 9em
+                        font-weight: 600
+                        opacity: 0.7
+    ####################################################
+    ####################################################
+                  - type: line
+                    position:
+                      cx: 105
+                      cy: 97
+                      orientation: horizontal
+                      length: 190
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 1
+    ####################################################
+    ####################################################
+              - toolset: square-sensor-humidite
+                position:
+                  cx: 202.7
+                  cy: 147
+                  scale: 1
+                tools:
+    ####################################################
+                  - type: rectex
+                    position:
+                      cx: 105
+                      cy: 50
+                      width: 200
+                      height: 90
+                      radius:
+                        top_left: 50
+                        top_right: 10
+                        bottom_right: 10
+                        bottom_left: 50
+                    styles:
+                      rectex:
+                        stroke: var(--primary-background-color)
+                        fill: 'var(--primary-background-color)'
+    ####################################################
+                  - type: 'segarc'
+                    position:               
+                       cx: 60              
+                       cy: 50            
+                       start_angle: 225    
+                       end_angle: 315      
+                       width: 4            
+                       radius: 50        
+                    entity_index: 2         
+                    scale:
+                      min: 0              
+                      max: 60
+                      offset: 1.5          
+                      width: 1
+                    show:
+                # style: colorlist     
+                      scale: true           
+                      style: colorstops       
+                      lastcolor: false         
+                    segments:
+                      colorstops:
+                        gap: 0.1
+                        fill: true
+                        stroke: false
+                        colors:
+                          3: '#0094ff' 
+                          6: '#00b4ff' 
+                          9: '#00d4ff' 
+                          12: '#00fff4' 
+                          15: '#00ffa8' 
+                          18: '#00ff5c' 
+                          21: '#00ff10'
+                          24: '#3eff00'
+                          27: '#8aff00'
+                          30: '#d7ff00'
+                          33: '#FFfa00'
+                          36: '#FFf000'
+                          39: '#FFe600'
+                          42: '#FFdc00'
+                          45: '#FFd200'
+                          48: '#FFc800'
+                          51: '#FFbe00'
+                          54: '#FFb400'
+                          57: '#FF8200'
+                    styles:
+                     background:
+                       fill: grey
+    ####################################################
+                  - type: 'usersvg'           
+                    entity_index: 2
+                    position:                
+                      cx: 35      
+                      cy: 40         
+                      height: 35      
+                      width: 35     
+                    style: 'images'
+                    images:             
+                      - default: /local/images/Wind.svg
+    ####################################################
+                  - type: 'usersvg'           
+                    entity_index: 2
+                    position:                
+                      cx: 60     
+                      cy: 60        
+                      height: 31  
+                      width: 31    
+                    style: 'images'
+                    images:             
+                       - default: /local/images/pluie.png
+    ####################################################
+                  - type: state
+                    position:
+                      cx: 138
+                      cy: 52
+                    entity_index: 2
+                    styles:
+                      state:
+                        text-anchor: center
+                        font-size: 40em
+                        font-weight: 600
+                        opacity: 0.9
+                      uom: 
+                        opacity: 0.9
+    ####################################################
+                  - type: bar
+                    entity_index: 2
+                    position:
+                      orientation: vertical
+                      cx: 138
+                      cy: 52
+                      width: 115
+                      height: 50
+                      margin: .5
+                    hours: 24
+                    barhours: 1
+                    styles:
+                      bar:
+                        stroke: var(--primary-text-color)
+                        opacity: 0.3
+                        stroke-linecap: butt
+    ####################################################
                   - type: 'segarc'
                     id: 0
                     position:
-                      cx: 10
-                      cy: 15
-                      start_angle: 0
-                      end_angle: 360
-                      width: 8
-                      radius: 35
+                      cx: 138
+                      cy: 85
+                      start_angle: 190
+                      end_angle: 170
+                      width: 3
+                      radius_x: 330
+                      radius_y: 1
                     entity_index: 10
                     scale:
                       min: 0
                       max: 100
-                      width: 2
-                      offset: -4.5
+                      width: 1
+                      offset: 3
                     show:
                       scale: true
                       style: 'colorstops'
                     segments:
-                      colorlist:
-                        gap: 4
-                        colors: 
-                          - var(--theme-sys-palette-primary50)
                       colorstops:
-                        gap: 2
+                        gap: 0.1
                         colors:
-                          0: '#0000FF'
-                          20: '#16B84E'
-                          40: '#FFFF00'
-                          60: '#DF6D14'
-                          80: '#FF0000'
+                          5: '#0094ff' 
+                          10: '#00b4ff' 
+                          15: '#00d4ff' 
+                          20: '#00fff4' 
+                          25: '#00ffa8' 
+                          30: '#00ff5c' 
+                          35: '#00ff10'
+                          40: '#3eff00'
+                          45: '#8aff00'
+                          50: '#d7ff00'
+                          55: '#FFfa00'
+                          60: '#FFf000'
+                          65: '#FFe600'
+                          70: '#FFdc00'
+                          75: '#FFd200'
+                          80: '#FFc800'
+                          85: '#FFbe00'
+                          90: '#FFb400'
+                          95: '#FF8200'
                     styles:
                       foreground:
-                        fill: var(--theme-gradient-color-02)
+                        fill: darkgrey
                       background:
-                        fill: var(--cs-theme-default-darken-15)
-                        opacity: 1
-                        
- #==========================================================                         
+                        fill: var(--theme-scale)
+    ####################################################
+                  - type: state
+                    position:
+                      cx: 65
+                      cy: 87
+                    entity_index: 10
+                    styles:
+                      state:
+                        text-anchor: center
+                        font-size: 12em
+                        font-weight: 600
+                        opacity: 0.9
+                      uom: 
+                        opacity: 0.9
+    ####################################################
+                  - type: 'text'              
+                    position:                 
+                       cx: 39                
+                       cy: 13                
+                    text: '60kph'
+                    styles:
+                      text:
+                         font-size: 9em
+                         font-weight: 600
+                         opacity: 0.7
+    ####################################################
+                  - type: 'text'              
+                    position:                 
+                      cx: 37      
+                      cy: 87      
+                    text: '0kph'
+                    styles:
+                      text:
+                        font-size: 9em
+                        font-weight: 600
+                        opacity: 0.7
+    ####################################################
+
+ # ================================================================                         
               - toolset: column-soleil
                 position:
                   cx: 450
@@ -718,7 +873,4 @@ sak_layout_mjt_informations:
                         text-anchor: start
                         font-size:  12em
                         font-weight: 700            
-                        
-                        
-                        
                         
