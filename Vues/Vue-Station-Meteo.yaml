@@ -33,61 +33,19 @@ cards:
                 - type: custom:vertical-stack-in-card
                   item_classes: "col-xs-12 col-sm-6"
                   cards:
-                    - type: custom:apexcharts-card
-                      experimental:
-                        color_threshold: true
-                      show:
-                        last_updated: false
-                      header:
-                        standard_format: false
-                        show: false
-                        show_states: false
-                        colorize_states: false
-                        title: Température
-                      graph_span: 12d
-                      apex_config:
-                        chart:
-                          height: 185px
-                      series:
-                        - entity: sensor.tempest_st_00032986_temperature
-                          name: Température
-                          type: area
-                          group_by:
-                            func: last
-                            duration: 1d
-                          stroke_width: 5
-                          show:
-                            extremas: true
-                            header_color_threshold: true
-                          color_threshold:
-                            - value: -30
-                              color: "#003366"
-                            - value: -20
-                              color: "#22427C"
-                            - value: -15
-                              color: "#77B5FE"
-                            - value: -10
-                              color: "#77B5FE"
-                            - value: -5
-                              color: "#A9EAFE"
-                            - value: 0
-                              color: "#EF9B0F"
-                            - value: 10
-                              color: "#FFFF05"
-                            - value: 15
-                              color: "#16B84E"
-                            - value: 20
-                              color: "#00FF00"
-                            - value: 30
-                              color: "#EE1010"
+                  
+                    - type: custom:text-divider-row
+                      text: "Direction du vent"
+                      align: center
 
                     - type: custom:windrose-card
-                      hours_to_show: 12
-                      max_width: 400
+                      data_period: 
+                        from_hour_of_day: 0
+                      max_width: 532
                       refresh_interval: 300
                       windspeed_bar_location: right
                       windspeed_bar_full: true
-                      wind_direction_count: 16
+                      wind_direction_count: 20
                       wind_direction_entity:
                         entity: sensor.tempest_st_00032986_wind_bearing
                         direction_unit: degrees
@@ -119,20 +77,27 @@ cards:
                           color: orange
                         - from_value: 30
                           color: red
+                          
+                    - type: custom:text-divider-row
+                      text: "Indice UV"
+                      align: center
 
                     - type: custom:uv-index-card
                       entity: sensor.tempest_st_00032986_uv_index
                       name: Indice UV
                       language: fr
-
+                      
                 - type: custom:vertical-stack-in-card
                   item_classes: "col-xs-12 col-sm-6"
                   cards:
+
+                    - type: custom:text-divider-row
+                      text: "États de la station"
+                      align: center
+
                     - type: markdown
                       content: |
-                        ## État de la station Tempest 
-                        Voltage : {{ states('sensor.tempest_st_00032986_voltage') }}V  
-                        État : {{ states('sensor.tempest_st_00032986_battery_mode') }}
+                        Voltage : {{ states('sensor.tempest_st_00032986_voltage') }}v  État : {{ states('sensor.tempest_st_00032986_battery_mode') }}
                         {{ states('sensor.weatherflow_mode_descption') }}
 
                     - type: custom:apexcharts-card
@@ -149,7 +114,7 @@ cards:
                       graph_span: 12d
                       apex_config:
                         chart:
-                          height: 210px
+                          height: 150px
                       series:
                         - entity: sensor.tempest_st_00032986_battery
                           type: area
@@ -172,6 +137,10 @@ cards:
                               color: steelblue
                             - value: 80
                               color: green
+                              
+                    - type: custom:text-divider-row
+                      text: "MM de Pluis"
+                      align: center
 
                     - type: custom:rain-gauge-card
                       entity: sensor.tempest_st_00032986_rain_today
