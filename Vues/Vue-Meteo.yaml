@@ -28,8 +28,9 @@ cards:
 
           - type: "custom:swiss-army-knife-card"
             entities:
+            
               #entity_indexes 0-5
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
+              - entity: sensor.conditions_meteo_par_jours_prevision_condition_j0
               - entity: sensor.tempest_st_00032986_temperature
                 decimals: 1
                 unit: "°C"
@@ -41,26 +42,19 @@ cards:
                 decimals: 0
               - entity: sensor.tempest_st_00032986_wind_direction
 
-                #entity_indexes 6-13
-              - entity: sensor.minmax_temperature_max_jour
-                icon: mdi:arrow-collapse-up
-                unit: "°C"
+              #entity_indexes 6-11
+              - entity: sensor.tempest_st_00032986_rain_yesterday
                 decimals: 0
-              - entity: sensor.minmax_temperature_min_jour
-                icon: mdi:arrow-collapse-down
-                unit: "°C"
-                decimals: 0
-              - entity: sensor.tempest_st_00032986_feels_like_temperature
-                unit: "°C"
-                decimals: 0
+                unit: "mm"
+                icon: mdi:calendar-arrow-left
+              - entity: sensor.tempest_st_00032986_lightning_count_today
+                icon: mdi:flash
               - entity: sensor.tempest_st_00032986_rain_intensity
                 icon: mdi:weather-pouring
-              - entity: sensor.tempest_st_00032986_pressure_trend
-              - entity: sensor.meteo_def_detecteurs_prevision_precipitation
+              - entity: sensor.conditions_meteo_par_jours_prevision_precipitation_probability_j0
               - entity: sensor.tempest_st_00032986_rain_rate
-                unit: "m/h"
+                unit: "mm/h"
                 decimals: 1
-                icon: mdi:weather-cloudy-clock
               - entity: sensor.tempest_st_00032986_rain_today
                 decimals: 1
 
@@ -198,7 +192,7 @@ cards:
                 unit: "%"
               - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
                 attribute: forecast[0].precipitation
-                decimals: 0
+                decimals: 1
                 unit: "mm"
 
                 #entity_indexes 50-55 heure 2
@@ -223,7 +217,7 @@ cards:
                 unit: "%"
               - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
                 attribute: forecast[1].precipitation
-                decimals: 0
+                decimals: 1
                 unit: "mm"
 
                 #entity_indexes 56-61 heure 3
@@ -248,7 +242,7 @@ cards:
                 unit: "%"
               - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
                 attribute: forecast[2].precipitation
-                decimals: 0
+                decimals: 1
                 unit: "mm"
 
                 #entity_indexes 62-67 heure 4
@@ -273,7 +267,7 @@ cards:
                 unit: "%"
               - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
                 attribute: forecast[3].precipitation
-                decimals: 0
+                decimals: 1
                 unit: "mm"
 
                 #entity_indexes 68-73 heure 5
@@ -298,35 +292,14 @@ cards:
                 unit: "%"
               - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
                 attribute: forecast[4].precipitation
-                decimals: 0
+                decimals: 1
                 unit: "mm"
-
-              #entity_indexes 74-80
-              - entity: sensor.tempest_st_00032986_dew_point
-                unit: "°C"
-                decimals: 0
-              - entity: sensor.phases_de_la_lune
-              - entity: sensor.soleil_position
-              - entity: sun.sun
-              - entity: sensor.moon
-              - entity: sensor.soleil_lever
-              - entity: sensor.soleil_coucher
-
-              #entity_indexes 81-83
-              - entity: sensor.tempest_st_00032986_rain_yesterday
-                decimals: 0
-                unit: "mm"
-                icon: mdi:calendar-arrow-left
-              - entity: sensor.tempest_st_00032986_lightning_count_today
-                icon: mdi:flash
-              - entity: sensor.tempest_st_00032986_lightning_distance
-                icon: mdi:map-marker-distance
-
+                
+                #entity_indexes 72             
+              - entity: sensor.tempest_st_00032986_pressure_trend
             layout:
               template:
                 name: sak_layout_mjt_meteo
-                variables:
-                  - dummy: "dummy"
                   
       - type: custom:vertical-stack-in-card
         item_classes: "col-xs-12 col-sm-5"
@@ -334,12 +307,16 @@ cards:
                   
           # ==============================================================================
 
-          - type: picture-entity
-            show_state: false
-            show_name: false
-            camera_view: auto
-            entity: camera.shawinigan_radar
-            name: Radar Shawinigan
+          - type: custom:config-template-card
+            entities:
+              - sensor.iphone_de_michel_geocoded_location
+            card:
+              type: custom:hui-element
+              card_type: iframe
+              title: null
+              url: >-
+                 ${'https://embed.windy.com/embed2.html?lat='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[0]+'&lon='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[1]+'&detailLat='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[0]+'&detailLon='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[1]+'&width=650&height=450&zoom=6&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1'}
+              aspect_ratio: 80%
             
           # ==============================================================================
           - type: markdown
