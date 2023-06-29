@@ -12,7 +12,7 @@
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/9c5e7aca-e3d3-4821-8b85-74121d8df3f0)
 
-![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/160fa165-dc3a-42f7-aa5a-2f9c8a6e6a78)
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/a1a354ea-8d97-49e7-85ac-e0bd288a3b8d)
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/fc3669f1-8658-4132-b350-656bb42d5b21)
 
