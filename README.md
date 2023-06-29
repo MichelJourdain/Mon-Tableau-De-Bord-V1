@@ -2,7 +2,7 @@
 
 ## Vues principales
 
-![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/7fc4944d-fd33-44ae-b270-9de7d34e0c50)
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/4a8faa6c-acb2-42b3-89e9-708fb94e0ddb)
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/733ea948-1b94-47b2-9d99-44ba8b7ce137)
 
@@ -10,7 +10,7 @@
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/341eed63-fdb7-474e-a3b8-7152409fafe2)
 
-![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/28b0d7fb-4936-4ef4-8417-685496c7b74e)
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/9c5e7aca-e3d3-4821-8b85-74121d8df3f0)
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/160fa165-dc3a-42f7-aa5a-2f9c8a6e6a78)
 
