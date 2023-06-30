@@ -14,8 +14,10 @@ cards:
       - type: custom:vertical-stack-in-card
         item_classes: "col-xs-12 col-sm-10"
         cards:
-          - type: markdown
-            content: "Informations"
+
+          - type: custom:text-divider-row
+            text: "Informations"
+            align: left
 
           # Personnes cartes Pop-Up
 
@@ -50,13 +52,24 @@ cards:
               - entity: sensor.saison_courante
               - entity: sensor.minmax_temperature_min_jour
                 icon: mdi:arrow-down-bold-box
+                decimals: 0
               - entity: sensor.minmax_temperature_max_jour
                 icon: mdi:arrow-up-bold-box
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_wind_direction
+                icon: mdi:compass
+              - entity: sensor.weatherflow_vitesse_rafale_vent_km
+                icon: mdi:arrow-up-bold-box
+                decimals: 0
+              - entity: sensor.weatherflow_vitesse_calme_vent_km
+                icon: mdi:arrow-down-bold-box
+                decimals: 0
+              - entity: sensor.tempest_st_00032986_feels_like_temperature
+                icon: mdi:waves
+                decimals: 0
             layout:
               template:
                 name: sak_layout_mjt_informations
-                variables:
-                  - dummy: "dummy"
 
           # Collectes des déchets
           
@@ -67,15 +80,21 @@ cards:
         cards:
         
           # Contrôles
-
-          - type: markdown
-            content: "Contrôles"
+          - type: custom:text-divider-row
+            text: "Contrôles"
+            align: left
+ 
           - !include ../Cartes/Carte-Controles.yaml
 
       # Tuiles pour les pièces
 
       - type: vertical-stack
         cards:
+        
+          - type: custom:text-divider-row
+            text: "Pièces"
+            align: left
+            
           - type: horizontal-stack
             cards:
               - !include ../Tuiles/Tuile-Salon.yaml
