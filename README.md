@@ -2,7 +2,7 @@
 
 ## Vues principales
 
-![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/4a8faa6c-acb2-42b3-89e9-708fb94e0ddb)
+![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/0944b79d-98e3-4e5b-b4a9-f22647aab04f)
 
 ![image](https://github.com/MichelJourdain/Mon-Tableau-De-Bord-V1/assets/83040228/733ea948-1b94-47b2-9d99-44ba8b7ce137)
 
