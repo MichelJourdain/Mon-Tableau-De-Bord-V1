@@ -80,16 +80,6 @@ sak_layout_mjt_informations:
                         fill: var(--primary-text-color)
                         opacity: 1
                         
-                  - type: line
-                    position:
-                      cx: 555
-                      cy: 214
-                      orientation: vertical
-                      length: 55
-                    styles:
-                      line:
-                        fill: var(--primary-text-color)
-                        opacity: 1
  #==========================================================                         
               - toolset: colonne-previsions
                 position:
@@ -361,6 +351,72 @@ sak_layout_mjt_informations:
                         font-size: 9em
                         font-weight: 600
                         opacity: 0.7
+    ####################################################  
+                  - type: icon
+                    position:
+                      cx: 85
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 13
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+
+                  - type: state
+                    position:
+                      cx: 93
+                      cy: 13
+                    entity_index: 13
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700    
+                        
+                  - type: icon
+                    position:
+                      cx: 126
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 14
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 134
+                      cy: 13
+                    entity_index: 14
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700     
+                        
+                  - type: icon
+                    position:
+                      cx: 166
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 18
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 176
+                      cy: 13
+                    entity_index: 18
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700            
     ####################################################
     ####################################################
                   - type: line
@@ -583,7 +639,73 @@ sak_layout_mjt_informations:
                         font-weight: 600
                         opacity: 0.7
     ####################################################
+                  - type: icon
+                    position:
+                      cx: 85
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 16
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
 
+                  - type: state
+                    position:
+                      cx: 93
+                      cy: 13
+                    entity_index: 16
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700    
+                        
+                  - type: icon
+                    position:
+                      cx: 126
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 17
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 134
+                      cy: 13
+                    entity_index: 17
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700     
+                        
+                  - type: icon
+                    position:
+                      cx: 166
+                      cy: 13
+                      align: center
+                      icon_size: 14
+                    entity_index: 15
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        
+                  - type: state
+                    position:
+                      cx: 176
+                      cy: 13
+                    entity_index: 15
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size:  12em
+                        font-weight: 700            
+
+    ####################################################
  # ================================================================                         
               - toolset: column-soleil
                 position:
@@ -819,58 +941,4 @@ sak_layout_mjt_informations:
                         font-size:  12em
                         font-weight: 700
                         
-                  - type: text
-                    position:
-                      cx: 150
-                      cy: 0
-                    text: "Jour Min Max"
-                    styles:
-                      text:
-                        text-anchor: middle  
-                        font-size: 10em
-                        font-weight: 700
-                        
-                  - type: icon
-                    position:
-                      cx: 132
-                      cy: 18
-                      align: center
-                      icon_size: 20
-                    entity_index: 13
-                    styles:
-                      icon:
-                        fill: var(--theme-sys-color-secondary)
-                        
-                  - type: state
-                    position:
-                      cx: 149
-                      cy: 18
-                    entity_index: 13
-                    styles:
-                      state:
-                        text-anchor: start
-                        font-size:  12em
-                        font-weight: 700    
-                        
-                  - type: icon
-                    position:
-                      cx: 132
-                      cy: 40
-                      align: center
-                      icon_size: 20
-                    entity_index: 14
-                    styles:
-                      icon:
-                        fill: var(--theme-sys-color-secondary)
-                        
-                  - type: state
-                    position:
-                      cx: 149
-                      cy: 40
-                    entity_index: 14
-                    styles:
-                      state:
-                        text-anchor: start
-                        font-size:  12em
-                        font-weight: 700            
                         
