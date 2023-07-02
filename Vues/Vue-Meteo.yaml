@@ -12,7 +12,7 @@ cards:
     cards:
     
       - type: custom:swiss-army-knife-card
-        disable_card: true
+        disable_card: false
         layout:
           template:
             name: sak_layout_mjt_barre_pieces
@@ -39,7 +39,7 @@ cards:
               - entity: sensor.tempest_st_00032986_sea_level_pressure
                 decimals: 0
               - entity: sensor.weatherflow_vitesse_vent_km
-                decimals: 0
+                decimals: 1
               - entity: sensor.tempest_st_00032986_wind_direction
 
               #entity_indexes 6-11
@@ -57,249 +57,12 @@ cards:
                 decimals: 1
               - entity: sensor.tempest_st_00032986_rain_today
                 decimals: 1
-
-                #entity_indexes 14-19 jour 1
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].datetime
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].templow
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[0].precipitation
-                decimals: 0
-                unit: "mm"
-
-                #entity_indexes 20-25 jour 2
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].datetime
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].temperature
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].templow
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[1].precipitation
-                decimals: 0
-                unit: "mm"
-
-                #entity_indexes 26-31 jour 3
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].datetime
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].temperature
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].templow
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[2].precipitation
-                decimals: 0
-                unit: "mm"
-
-                #entity_indexes 32-37 jour 4
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].datetime
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].temperature
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].templow
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[3].precipitation
-                decimals: 0
-                unit: "mm"
-
-                #entity_indexes 38-43 jour 5
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].datetime
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].temperature
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].templow
-                decimals: 0
-                unit: "°C"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_daily
-                attribute: forecast[4].precipitation
-                decimals: 0
-                unit: "mm"
-
-                #entity_indexes 44-49 heure 1
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].datetime
-                unit: "H"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].wind_speed
-                decimals: 0
-                unit: "km"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[0].precipitation
-                decimals: 1
-                unit: "mm"
-
-                #entity_indexes 50-55 heure 2
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].datetime
-                unit: "H"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].wind_speed
-                decimals: 0
-                unit: "km"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[1].precipitation
-                decimals: 1
-                unit: "mm"
-
-                #entity_indexes 56-61 heure 3
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].datetime
-                unit: "H"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].wind_speed
-                decimals: 0
-                unit: "km"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[2].precipitation
-                decimals: 1
-                unit: "mm"
-
-                #entity_indexes 62-67 heure 4
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].datetime
-                unit: "H"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].wind_speed
-                decimals: 0
-                unit: "km"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[3].precipitation
-                decimals: 1
-                unit: "mm"
-
-                #entity_indexes 68-73 heure 5
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].datetime
-                unit: "H"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].condition
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].temperature
-                decimals: 0
-                unit: "°C"
-                icon: mdi:thermometer-chevron-up
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].wind_speed
-                decimals: 0
-                unit: "km"
-                icon: mdi:thermometer-chevron-down
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].precipitation_probability
-                decimals: 0
-                unit: "%"
-              - entity: weather.tempest_st_00032986_shawinigan_sud_hourly
-                attribute: forecast[4].precipitation
-                decimals: 1
-                unit: "mm"
                 
-                #entity_indexes 72             
               - entity: sensor.tempest_st_00032986_pressure_trend
+
             layout:
               template:
-                name: sak_layout_mjt_meteo
+                name: sak_layout_mjt_meteo2
                   
       - type: custom:vertical-stack-in-card
         item_classes: "col-xs-12 col-sm-5"
@@ -316,26 +79,10 @@ cards:
               title: null
               url: >-
                  ${'https://embed.windy.com/embed2.html?lat='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[0]+'&lon='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[1]+'&detailLat='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[0]+'&detailLon='+states['sensor.iphone_de_michel_geocoded_location'].attributes.Location[1]+'&width=650&height=450&zoom=6&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1'}
-              aspect_ratio: 80%
+              aspect_ratio: 98%
             
           # ==============================================================================
-          - type: markdown
-            content: >
-
-              {% set x = [ 'sensor.shawinigan_avis', 'sensor.shawinigan_bulletins', 'sensor.shawinigan_veilles', 'sensor.shawinigan_alertes', 'sensor.shawinigan_terminaisons' ] %}
-              {{ states("sensor.shawinigan_prevision") }}
-              {% for state in states.sensor if state.entity_id in x %}
-                {% for attr in state.attributes %}
-                  {%- if attr.startswith('alert_') %}
-                    {%- if attr.startswith('alert_time_') %}
-                      {{ state_attr(state.entity_id, attr) }}</ha-alert>
-                    {% else %}
-                      {{'\n'}}<ha-alert title="{{ state_attr(state.entity_id,'friendly_name') }}">{{ state_attr(state.entity_id, attr) }}
-                    {%- endif %}
-                  {%- endif %}
-                {%- endfor %}
-              {% endfor %}
-
+          
       - type: horizontal-stack
         item_classes: "col-xs-12 col-sm-12"
         cards:
@@ -432,4 +179,24 @@ cards:
                   action: none
                 double_tap_action:
                   action: none
+
+      - type: horizontal-stack
+        cards:
+
+          - type: markdown
+            content: >
+
+              {% set x = [ 'sensor.shawinigan_avis', 'sensor.shawinigan_bulletins', 'sensor.shawinigan_veilles', 'sensor.shawinigan_alertes', 'sensor.shawinigan_terminaisons' ] %}
+              {{ states("sensor.shawinigan_prevision") }}
+              {% for state in states.sensor if state.entity_id in x %}
+                {% for attr in state.attributes %}
+                  {%- if attr.startswith('alert_') %}
+                    {%- if attr.startswith('alert_time_') %}
+                      {{ state_attr(state.entity_id, attr) }}</ha-alert>
+                    {% else %}
+                       {{'\n'}}<ha-alert title="{{ state_attr(state.entity_id,'friendly_name') }}">{{ state_attr(state.entity_id, attr) }}
+                    {%- endif %}
+                  {%- endif %}
+                {%- endfor %}
+              {% endfor %}
 
